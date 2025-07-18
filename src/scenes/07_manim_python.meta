@@ -1,0 +1,26 @@
+{
+  "version": 0,
+  "timeEvents": [
+    {
+      "name": "manim_mentioned",
+      "targetTime": 0.5
+    },
+    {
+      "name": "written_in_python",
+      "targetTime": 1
+    },
+    {
+      "name": "python_for_me",
+      "targetTime": 1.5
+    },
+    {
+      "name": "sacrifice_sanity",
+      "targetTime": 2
+    },
+    {
+      "name": "end_scene_7",
+      "targetTime": 2.4000000000000004
+    }
+  ],
+  "seed": 114782765
+}

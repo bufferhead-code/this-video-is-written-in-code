@@ -1,0 +1,1694 @@
+[
+    {
+      "end": 6.134,
+      "text": " When Premiere Pro crashed three times in row during my last editing session, I decided it is finally time for a change.",
+      "start": 0.069,
+      "words": [
+        {
+          "end": 0.189,
+          "word": "When",
+          "score": 0.925,
+          "start": 0.069
+        },
+        {
+          "end": 0.589,
+          "word": "Premiere",
+          "score": 0.839,
+          "start": 0.229
+        },
+        {
+          "end": 0.83,
+          "word": "Pro",
+          "score": 0.82,
+          "start": 0.629
+        },
+        {
+          "end": 1.19,
+          "word": "crashed",
+          "score": 0.801,
+          "start": 0.89
+        },
+        {
+          "end": 1.45,
+          "word": "three",
+          "score": 0.731,
+          "start": 1.25
+        },
+        {
+          "end": 1.79,
+          "word": "times",
+          "score": 0.858,
+          "start": 1.49
+        },
+        {
+          "end": 1.93,
+          "word": "in",
+          "score": 0.881,
+          "start": 1.87
+        },
+        {
+          "end": 2.231,
+          "word": "row",
+          "score": 0.747,
+          "start": 1.99
+        },
+        {
+          "end": 2.451,
+          "word": "during",
+          "score": 0.929,
+          "start": 2.271
+        },
+        {
+          "end": 2.571,
+          "word": "my",
+          "score": 0.914,
+          "start": 2.471
+        },
+        {
+          "end": 2.891,
+          "word": "last",
+          "score": 0.678,
+          "start": 2.631
+        },
+        {
+          "end": 3.231,
+          "word": "editing",
+          "score": 0.989,
+          "start": 2.951
+        },
+        {
+          "end": 3.632,
+          "word": "session,",
+          "score": 0.834,
+          "start": 3.291
+        },
+        {
+          "end": 3.972,
+          "word": "I",
+          "score": 0.99,
+          "start": 3.912
+        },
+        {
+          "end": 4.412,
+          "word": "decided",
+          "score": 0.935,
+          "start": 4.012
+        },
+        {
+          "end": 4.512,
+          "word": "it",
+          "score": 0.754,
+          "start": 4.452
+        },
+        {
+          "end": 4.632,
+          "word": "is",
+          "score": 0.751,
+          "start": 4.572
+        },
+        {
+          "end": 5.113,
+          "word": "finally",
+          "score": 0.823,
+          "start": 4.733
+        },
+        {
+          "end": 5.453,
+          "word": "time",
+          "score": 0.879,
+          "start": 5.173
+        },
+        {
+          "end": 5.613,
+          "word": "for",
+          "score": 0.779,
+          "start": 5.493
+        },
+        {
+          "end": 5.673,
+          "word": "a",
+          "score": 0.379,
+          "start": 5.633
+        },
+        {
+          "end": 6.134,
+          "word": "change.",
+          "score": 0.705,
+          "start": 5.733
+        }
+      ]
+    },
+    {
+      "end": 7.655,
+      "text": "There had to be a better way.",
+      "start": 6.474,
+      "words": [
+        {
+          "end": 6.634,
+          "word": "There",
+          "score": 0.748,
+          "start": 6.474
+        },
+        {
+          "end": 6.774,
+          "word": "had",
+          "score": 0.841,
+          "start": 6.654
+        },
+        {
+          "end": 6.854,
+          "word": "to",
+          "score": 0.75,
+          "start": 6.794
+        },
+        {
+          "end": 6.994,
+          "word": "be",
+          "score": 0.83,
+          "start": 6.894
+        },
+        {
+          "end": 7.054,
+          "word": "a",
+          "score": 0.997,
+          "start": 7.034
+        },
+        {
+          "end": 7.354,
+          "word": "better",
+          "score": 0.894,
+          "start": 7.094
+        },
+        {
+          "end": 7.655,
+          "word": "way.",
+          "score": 0.833,
+          "start": 7.415
+        }
+      ]
+    },
+    {
+      "end": 15.821,
+      "text": "Not only do I want to get away from this incredibly unstable and buggy software, but more importantly, $70 for a bunch of crappy software.",
+      "start": 8.095,
+      "words": [
+        {
+          "end": 8.255,
+          "word": "Not",
+          "score": 0.808,
+          "start": 8.095
+        },
+        {
+          "end": 8.555,
+          "word": "only",
+          "score": 0.863,
+          "start": 8.375
+        },
+        {
+          "end": 8.715,
+          "word": "do",
+          "score": 0.896,
+          "start": 8.615
+        },
+        {
+          "end": 8.816,
+          "word": "I",
+          "score": 0.673,
+          "start": 8.756
+        },
+        {
+          "end": 9.016,
+          "word": "want",
+          "score": 0.809,
+          "start": 8.856
+        },
+        {
+          "end": 9.096,
+          "word": "to",
+          "score": 0.858,
+          "start": 9.036
+        },
+        {
+          "end": 9.256,
+          "word": "get",
+          "score": 0.891,
+          "start": 9.136
+        },
+        {
+          "end": 9.476,
+          "word": "away",
+          "score": 0.87,
+          "start": 9.296
+        },
+        {
+          "end": 9.656,
+          "word": "from",
+          "score": 0.905,
+          "start": 9.536
+        },
+        {
+          "end": 9.816,
+          "word": "this",
+          "score": 0.78,
+          "start": 9.676
+        },
+        {
+          "end": 10.477,
+          "word": "incredibly",
+          "score": 0.89,
+          "start": 9.876
+        },
+        {
+          "end": 11.177,
+          "word": "unstable",
+          "score": 0.792,
+          "start": 10.617
+        },
+        {
+          "end": 11.317,
+          "word": "and",
+          "score": 0.834,
+          "start": 11.237
+        },
+        {
+          "end": 11.638,
+          "word": "buggy",
+          "score": 0.973,
+          "start": 11.357
+        },
+        {
+          "end": 12.138,
+          "word": "software,",
+          "score": 0.877,
+          "start": 11.678
+        },
+        {
+          "end": 12.398,
+          "word": "but",
+          "score": 0.749,
+          "start": 12.278
+        },
+        {
+          "end": 12.598,
+          "word": "more",
+          "score": 0.75,
+          "start": 12.458
+        },
+        {
+          "end": 13.219,
+          "word": "importantly,",
+          "score": 0.921,
+          "start": 12.658
+        },
+        {
+          "word": "$70"
+        },
+        {
+          "end": 14.54,
+          "word": "for",
+          "score": 0.884,
+          "start": 14.42
+        },
+        {
+          "end": 14.58,
+          "word": "a",
+          "score": 0.98,
+          "start": 14.56
+        },
+        {
+          "end": 14.84,
+          "word": "bunch",
+          "score": 0.852,
+          "start": 14.62
+        },
+        {
+          "end": 14.94,
+          "word": "of",
+          "score": 0.75,
+          "start": 14.88
+        },
+        {
+          "end": 15.34,
+          "word": "crappy",
+          "score": 0.944,
+          "start": 15.02
+        },
+        {
+          "end": 15.821,
+          "word": "software.",
+          "score": 0.906,
+          "start": 15.38
+        }
+      ]
+    },
+    {
+      "end": 26.183,
+      "text": " There is no way in hell that I pay those prices, and I have only been able to avoid them because my university has not kicked me out for inactivity yet, making me still eligible for student discounts.",
+      "start": 16.161,
+      "words": [
+        {
+          "end": 16.281,
+          "word": "There",
+          "score": 0.902,
+          "start": 16.161
+        },
+        {
+          "end": 16.381,
+          "word": "is",
+          "score": 0.69,
+          "start": 16.321
+        },
+        {
+          "end": 16.541,
+          "word": "no",
+          "score": 0.671,
+          "start": 16.421
+        },
+        {
+          "end": 16.741,
+          "word": "way",
+          "score": 0.874,
+          "start": 16.601
+        },
+        {
+          "end": 16.841,
+          "word": "in",
+          "score": 0.993,
+          "start": 16.781
+        },
+        {
+          "end": 17.101,
+          "word": "hell",
+          "score": 0.905,
+          "start": 16.881
+        },
+        {
+          "end": 17.261,
+          "word": "that",
+          "score": 0.852,
+          "start": 17.141
+        },
+        {
+          "end": 17.501,
+          "word": "I",
+          "score": 0.852,
+          "start": 17.421
+        },
+        {
+          "end": 17.781,
+          "word": "pay",
+          "score": 0.831,
+          "start": 17.581
+        },
+        {
+          "end": 17.981,
+          "word": "those",
+          "score": 0.843,
+          "start": 17.821
+        },
+        {
+          "end": 18.502,
+          "word": "prices,",
+          "score": 0.747,
+          "start": 18.061
+        },
+        {
+          "end": 19.082,
+          "word": "and",
+          "score": 0.842,
+          "start": 18.982
+        },
+        {
+          "end": 19.282,
+          "word": "I",
+          "score": 0.969,
+          "start": 19.222
+        },
+        {
+          "end": 19.442,
+          "word": "have",
+          "score": 0.909,
+          "start": 19.322
+        },
+        {
+          "end": 19.722,
+          "word": "only",
+          "score": 0.77,
+          "start": 19.542
+        },
+        {
+          "end": 19.882,
+          "word": "been",
+          "score": 1,
+          "start": 19.762
+        },
+        {
+          "end": 20.062,
+          "word": "able",
+          "score": 0.657,
+          "start": 19.922
+        },
+        {
+          "end": 20.182,
+          "word": "to",
+          "score": 0.668,
+          "start": 20.102
+        },
+        {
+          "end": 20.542,
+          "word": "avoid",
+          "score": 0.831,
+          "start": 20.242
+        },
+        {
+          "end": 20.722,
+          "word": "them",
+          "score": 0.88,
+          "start": 20.582
+        },
+        {
+          "end": 21.022,
+          "word": "because",
+          "score": 0.928,
+          "start": 20.782
+        },
+        {
+          "end": 21.202,
+          "word": "my",
+          "score": 0.832,
+          "start": 21.082
+        },
+        {
+          "end": 21.842,
+          "word": "university",
+          "score": 0.871,
+          "start": 21.282
+        },
+        {
+          "end": 22.022,
+          "word": "has",
+          "score": 0.858,
+          "start": 21.882
+        },
+        {
+          "end": 22.243,
+          "word": "not",
+          "score": 0.84,
+          "start": 22.082
+        },
+        {
+          "end": 22.523,
+          "word": "kicked",
+          "score": 0.87,
+          "start": 22.303
+        },
+        {
+          "end": 22.623,
+          "word": "me",
+          "score": 1,
+          "start": 22.563
+        },
+        {
+          "end": 22.783,
+          "word": "out",
+          "score": 0.898,
+          "start": 22.683
+        },
+        {
+          "end": 22.923,
+          "word": "for",
+          "score": 0.936,
+          "start": 22.823
+        },
+        {
+          "end": 23.523,
+          "word": "inactivity",
+          "score": 0.937,
+          "start": 22.983
+        },
+        {
+          "end": 23.763,
+          "word": "yet,",
+          "score": 0.798,
+          "start": 23.563
+        },
+        {
+          "end": 24.283,
+          "word": "making",
+          "score": 0.911,
+          "start": 24.023
+        },
+        {
+          "end": 24.403,
+          "word": "me",
+          "score": 0.73,
+          "start": 24.323
+        },
+        {
+          "end": 24.683,
+          "word": "still",
+          "score": 0.773,
+          "start": 24.463
+        },
+        {
+          "end": 25.163,
+          "word": "eligible",
+          "score": 0.859,
+          "start": 24.783
+        },
+        {
+          "end": 25.343,
+          "word": "for",
+          "score": 0.819,
+          "start": 25.223
+        },
+        {
+          "end": 25.683,
+          "word": "student",
+          "score": 0.817,
+          "start": 25.383
+        },
+        {
+          "end": 26.183,
+          "word": "discounts.",
+          "score": 0.907,
+          "start": 25.723
+        }
+      ]
+    },
+    {
+      "end": 28.704,
+      "text": "So I started looking for alternatives.",
+      "start": 26.764,
+      "words": [
+        {
+          "end": 26.904,
+          "word": "So",
+          "score": 0.736,
+          "start": 26.764
+        },
+        {
+          "end": 27.144,
+          "word": "I",
+          "score": 0.796,
+          "start": 27.044
+        },
+        {
+          "end": 27.564,
+          "word": "started",
+          "score": 0.831,
+          "start": 27.204
+        },
+        {
+          "end": 27.884,
+          "word": "looking",
+          "score": 0.846,
+          "start": 27.604
+        },
+        {
+          "end": 28.024,
+          "word": "for",
+          "score": 0.844,
+          "start": 27.924
+        },
+        {
+          "end": 28.704,
+          "word": "alternatives.",
+          "score": 0.806,
+          "start": 28.064
+        }
+      ]
+    },
+    {
+      "end": 35.126,
+      "text": "While different video editing tools exist, I was always intrigued by the idea of programmatically created videos.",
+      "start": 29.164,
+      "words": [
+        {
+          "end": 29.324,
+          "word": "While",
+          "score": 0.75,
+          "start": 29.164
+        },
+        {
+          "end": 29.644,
+          "word": "different",
+          "score": 0.89,
+          "start": 29.384
+        },
+        {
+          "end": 29.944,
+          "word": "video",
+          "score": 0.949,
+          "start": 29.664
+        },
+        {
+          "end": 30.325,
+          "word": "editing",
+          "score": 0.935,
+          "start": 30.024
+        },
+        {
+          "end": 30.645,
+          "word": "tools",
+          "score": 0.728,
+          "start": 30.365
+        },
+        {
+          "end": 31.125,
+          "word": "exist,",
+          "score": 0.816,
+          "start": 30.725
+        },
+        {
+          "end": 31.425,
+          "word": "I",
+          "score": 1,
+          "start": 31.385
+        },
+        {
+          "end": 31.565,
+          "word": "was",
+          "score": 0.807,
+          "start": 31.465
+        },
+        {
+          "end": 31.965,
+          "word": "always",
+          "score": 0.77,
+          "start": 31.705
+        },
+        {
+          "end": 32.525,
+          "word": "intrigued",
+          "score": 0.685,
+          "start": 32.025
+        },
+        {
+          "end": 32.705,
+          "word": "by",
+          "score": 0.764,
+          "start": 32.585
+        },
+        {
+          "end": 32.825,
+          "word": "the",
+          "score": 0.833,
+          "start": 32.745
+        },
+        {
+          "end": 33.225,
+          "word": "idea",
+          "score": 0.883,
+          "start": 32.885
+        },
+        {
+          "end": 33.345,
+          "word": "of",
+          "score": 1,
+          "start": 33.305
+        },
+        {
+          "end": 34.225,
+          "word": "programmatically",
+          "score": 0.856,
+          "start": 33.465
+        },
+        {
+          "end": 34.666,
+          "word": "created",
+          "score": 0.817,
+          "start": 34.285
+        },
+        {
+          "end": 35.126,
+          "word": "videos.",
+          "score": 0.861,
+          "start": 34.706
+        }
+      ]
+    },
+    {
+      "end": 39.507,
+      "text": "Like any other programmer, I am obsessed with the idea of automating things.",
+      "start": 35.586,
+      "words": [
+        {
+          "end": 35.726,
+          "word": "Like",
+          "score": 0.908,
+          "start": 35.586
+        },
+        {
+          "end": 35.966,
+          "word": "any",
+          "score": 0.796,
+          "start": 35.826
+        },
+        {
+          "end": 36.226,
+          "word": "other",
+          "score": 0.754,
+          "start": 36.046
+        },
+        {
+          "end": 36.766,
+          "word": "programmer,",
+          "score": 0.772,
+          "start": 36.266
+        },
+        {
+          "end": 37.046,
+          "word": "I",
+          "score": 0.779,
+          "start": 36.946
+        },
+        {
+          "end": 37.266,
+          "word": "am",
+          "score": 0.804,
+          "start": 37.186
+        },
+        {
+          "end": 37.746,
+          "word": "obsessed",
+          "score": 0.975,
+          "start": 37.326
+        },
+        {
+          "end": 37.886,
+          "word": "with",
+          "score": 0.751,
+          "start": 37.766
+        },
+        {
+          "end": 38.006,
+          "word": "the",
+          "score": 0.851,
+          "start": 37.926
+        },
+        {
+          "end": 38.367,
+          "word": "idea",
+          "score": 0.988,
+          "start": 38.066
+        },
+        {
+          "end": 38.487,
+          "word": "of",
+          "score": 0.75,
+          "start": 38.427
+        },
+        {
+          "end": 39.107,
+          "word": "automating",
+          "score": 0.859,
+          "start": 38.627
+        },
+        {
+          "end": 39.507,
+          "word": "things.",
+          "score": 0.896,
+          "start": 39.187
+        }
+      ]
+    },
+    {
+      "end": 44.148,
+      "text": "Even if that means that it will take much longer than just doing the work manually,",
+      "start": 40.087,
+      "words": [
+        {
+          "end": 40.247,
+          "word": "Even",
+          "score": 0.865,
+          "start": 40.087
+        },
+        {
+          "end": 40.387,
+          "word": "if",
+          "score": 0.848,
+          "start": 40.307
+        },
+        {
+          "end": 40.647,
+          "word": "that",
+          "score": 0.667,
+          "start": 40.447
+        },
+        {
+          "end": 40.987,
+          "word": "means",
+          "score": 0.758,
+          "start": 40.707
+        },
+        {
+          "end": 41.267,
+          "word": "that",
+          "score": 0.659,
+          "start": 41.067
+        },
+        {
+          "end": 41.507,
+          "word": "it",
+          "score": 0.997,
+          "start": 41.467
+        },
+        {
+          "end": 41.667,
+          "word": "will",
+          "score": 0.994,
+          "start": 41.547
+        },
+        {
+          "end": 41.867,
+          "word": "take",
+          "score": 0.794,
+          "start": 41.707
+        },
+        {
+          "end": 42.127,
+          "word": "much",
+          "score": 0.868,
+          "start": 41.947
+        },
+        {
+          "end": 42.588,
+          "word": "longer",
+          "score": 0.761,
+          "start": 42.227
+        },
+        {
+          "end": 42.788,
+          "word": "than",
+          "score": 0.99,
+          "start": 42.668
+        },
+        {
+          "end": 43.028,
+          "word": "just",
+          "score": 0.671,
+          "start": 42.828
+        },
+        {
+          "end": 43.308,
+          "word": "doing",
+          "score": 0.825,
+          "start": 43.068
+        },
+        {
+          "end": 43.408,
+          "word": "the",
+          "score": 0.999,
+          "start": 43.348
+        },
+        {
+          "end": 43.648,
+          "word": "work",
+          "score": 0.891,
+          "start": 43.448
+        },
+        {
+          "end": 44.148,
+          "word": "manually,",
+          "score": 0.919,
+          "start": 43.728
+        }
+      ]
+    },
+    {
+      "end": 48.31,
+      "text": " So I looked at the most popular solutions for creating videos with code.",
+      "start": 44.708,
+      "words": [
+        {
+          "end": 44.828,
+          "word": "So",
+          "score": 0.835,
+          "start": 44.708
+        },
+        {
+          "end": 44.928,
+          "word": "I",
+          "score": 0.666,
+          "start": 44.868
+        },
+        {
+          "end": 45.168,
+          "word": "looked",
+          "score": 0.917,
+          "start": 44.968
+        },
+        {
+          "end": 45.228,
+          "word": "at",
+          "score": 0.995,
+          "start": 45.188
+        },
+        {
+          "end": 45.348,
+          "word": "the",
+          "score": 0.83,
+          "start": 45.268
+        },
+        {
+          "end": 45.548,
+          "word": "most",
+          "score": 0.958,
+          "start": 45.388
+        },
+        {
+          "end": 46.109,
+          "word": "popular",
+          "score": 0.837,
+          "start": 45.669
+        },
+        {
+          "end": 46.709,
+          "word": "solutions",
+          "score": 0.804,
+          "start": 46.169
+        },
+        {
+          "end": 46.889,
+          "word": "for",
+          "score": 0.972,
+          "start": 46.769
+        },
+        {
+          "end": 47.309,
+          "word": "creating",
+          "score": 0.942,
+          "start": 46.949
+        },
+        {
+          "end": 47.769,
+          "word": "videos",
+          "score": 0.83,
+          "start": 47.369
+        },
+        {
+          "end": 47.93,
+          "word": "with",
+          "score": 0.653,
+          "start": 47.789
+        },
+        {
+          "end": 48.31,
+          "word": "code.",
+          "score": 0.883,
+          "start": 48.01
+        }
+      ]
+    },
+    {
+      "end": 52.452,
+      "text": "First there is Manim, created by the popular YouTuber 3Blue1Brown.",
+      "start": 48.79,
+      "words": [
+        {
+          "end": 49.01,
+          "word": "First",
+          "score": 0.814,
+          "start": 48.79
+        },
+        {
+          "end": 49.21,
+          "word": "there",
+          "score": 0.732,
+          "start": 49.05
+        },
+        {
+          "end": 49.33,
+          "word": "is",
+          "score": 0.508,
+          "start": 49.25
+        },
+        {
+          "end": 49.73,
+          "word": "Manim,",
+          "score": 0.654,
+          "start": 49.39
+        },
+        {
+          "end": 50.191,
+          "word": "created",
+          "score": 0.901,
+          "start": 49.83
+        },
+        {
+          "end": 50.351,
+          "word": "by",
+          "score": 0.896,
+          "start": 50.251
+        },
+        {
+          "end": 50.451,
+          "word": "the",
+          "score": 0.996,
+          "start": 50.391
+        },
+        {
+          "end": 50.911,
+          "word": "popular",
+          "score": 0.802,
+          "start": 50.511
+        },
+        {
+          "end": 51.611,
+          "word": "YouTuber",
+          "score": 0.685,
+          "start": 50.931
+        },
+        {
+          "end": 52.452,
+          "word": "3Blue1Brown.",
+          "score": 0.875,
+          "start": 51.651
+        }
+      ]
+    },
+    {
+      "end": 55.333,
+      "text": "It is made for creating mathematical animations.",
+      "start": 52.812,
+      "words": [
+        {
+          "end": 52.872,
+          "word": "It",
+          "score": 0.782,
+          "start": 52.812
+        },
+        {
+          "end": 52.992,
+          "word": "is",
+          "score": 0.506,
+          "start": 52.912
+        },
+        {
+          "end": 53.212,
+          "word": "made",
+          "score": 0.878,
+          "start": 53.032
+        },
+        {
+          "end": 53.392,
+          "word": "for",
+          "score": 0.885,
+          "start": 53.272
+        },
+        {
+          "end": 53.872,
+          "word": "creating",
+          "score": 0.748,
+          "start": 53.492
+        },
+        {
+          "end": 54.632,
+          "word": "mathematical",
+          "score": 0.8,
+          "start": 53.932
+        },
+        {
+          "end": 55.333,
+          "word": "animations.",
+          "score": 0.813,
+          "start": 54.712
+        }
+      ]
+    },
+    {
+      "end": 63.736,
+      "text": "Manim looks awesome and even though I'm not creating mathematical videos, I would have tried it out immediately if it wasn't for the fact that it is written in Python.",
+      "start": 55.973,
+      "words": [
+        {
+          "end": 56.273,
+          "word": "Manim",
+          "score": 0.606,
+          "start": 55.973
+        },
+        {
+          "end": 56.513,
+          "word": "looks",
+          "score": 0.801,
+          "start": 56.293
+        },
+        {
+          "end": 56.973,
+          "word": "awesome",
+          "score": 0.86,
+          "start": 56.653
+        },
+        {
+          "end": 57.134,
+          "word": "and",
+          "score": 0.888,
+          "start": 57.054
+        },
+        {
+          "end": 57.414,
+          "word": "even",
+          "score": 0.794,
+          "start": 57.254
+        },
+        {
+          "end": 57.594,
+          "word": "though",
+          "score": 0.896,
+          "start": 57.434
+        },
+        {
+          "end": 57.754,
+          "word": "I'm",
+          "score": 0.803,
+          "start": 57.634
+        },
+        {
+          "end": 57.954,
+          "word": "not",
+          "score": 0.722,
+          "start": 57.794
+        },
+        {
+          "end": 58.414,
+          "word": "creating",
+          "score": 0.769,
+          "start": 58.034
+        },
+        {
+          "end": 59.094,
+          "word": "mathematical",
+          "score": 0.81,
+          "start": 58.454
+        },
+        {
+          "end": 59.555,
+          "word": "videos,",
+          "score": 0.883,
+          "start": 59.134
+        },
+        {
+          "end": 59.935,
+          "word": "I",
+          "score": 0.957,
+          "start": 59.895
+        },
+        {
+          "end": 60.075,
+          "word": "would",
+          "score": 0.918,
+          "start": 59.955
+        },
+        {
+          "end": 60.195,
+          "word": "have",
+          "score": 0.876,
+          "start": 60.095
+        },
+        {
+          "end": 60.435,
+          "word": "tried",
+          "score": 0.81,
+          "start": 60.215
+        },
+        {
+          "end": 60.495,
+          "word": "it",
+          "score": 0.999,
+          "start": 60.455
+        },
+        {
+          "end": 60.655,
+          "word": "out",
+          "score": 0.922,
+          "start": 60.555
+        },
+        {
+          "end": 61.255,
+          "word": "immediately",
+          "score": 0.806,
+          "start": 60.715
+        },
+        {
+          "end": 61.455,
+          "word": "if",
+          "score": 0.907,
+          "start": 61.375
+        },
+        {
+          "end": 61.555,
+          "word": "it",
+          "score": 0.762,
+          "start": 61.495
+        },
+        {
+          "end": 61.836,
+          "word": "wasn't",
+          "score": 0.858,
+          "start": 61.595
+        },
+        {
+          "end": 61.976,
+          "word": "for",
+          "score": 0.849,
+          "start": 61.876
+        },
+        {
+          "end": 62.096,
+          "word": "the",
+          "score": 0.825,
+          "start": 61.996
+        },
+        {
+          "end": 62.376,
+          "word": "fact",
+          "score": 0.801,
+          "start": 62.136
+        },
+        {
+          "end": 62.536,
+          "word": "that",
+          "score": 0.882,
+          "start": 62.416
+        },
+        {
+          "end": 62.596,
+          "word": "it",
+          "score": 0.999,
+          "start": 62.556
+        },
+        {
+          "end": 62.736,
+          "word": "is",
+          "score": 0.808,
+          "start": 62.656
+        },
+        {
+          "end": 63.056,
+          "word": "written",
+          "score": 0.856,
+          "start": 62.796
+        },
+        {
+          "end": 63.196,
+          "word": "in",
+          "score": 0.811,
+          "start": 63.116
+        },
+        {
+          "end": 63.736,
+          "word": "Python.",
+          "score": 0.849,
+          "start": 63.256
+        }
+      ]
+    },
+    {
+      "end": 71.36,
+      "text": "I think every programmer has that one language where they look at it and just want to erase every single line written in that language from the universe.",
+      "start": 64.157,
+      "words": [
+        {
+          "end": 64.217,
+          "word": "I",
+          "score": 0.666,
+          "start": 64.157
+        },
+        {
+          "end": 64.437,
+          "word": "think",
+          "score": 0.83,
+          "start": 64.257
+        },
+        {
+          "end": 64.717,
+          "word": "every",
+          "score": 0.903,
+          "start": 64.537
+        },
+        {
+          "end": 65.317,
+          "word": "programmer",
+          "score": 0.865,
+          "start": 64.777
+        },
+        {
+          "end": 65.557,
+          "word": "has",
+          "score": 0.786,
+          "start": 65.377
+        },
+        {
+          "end": 65.777,
+          "word": "that",
+          "score": 0.804,
+          "start": 65.617
+        },
+        {
+          "end": 66.057,
+          "word": "one",
+          "score": 0.834,
+          "start": 65.937
+        },
+        {
+          "end": 66.478,
+          "word": "language",
+          "score": 0.826,
+          "start": 66.097
+        },
+        {
+          "end": 66.658,
+          "word": "where",
+          "score": 0.898,
+          "start": 66.518
+        },
+        {
+          "end": 66.778,
+          "word": "they",
+          "score": 0.937,
+          "start": 66.678
+        },
+        {
+          "end": 66.978,
+          "word": "look",
+          "score": 0.942,
+          "start": 66.818
+        },
+        {
+          "end": 67.138,
+          "word": "at",
+          "score": 0.826,
+          "start": 67.038
+        },
+        {
+          "end": 67.238,
+          "word": "it",
+          "score": 0.75,
+          "start": 67.178
+        },
+        {
+          "end": 67.598,
+          "word": "and",
+          "score": 0.987,
+          "start": 67.518
+        },
+        {
+          "end": 67.778,
+          "word": "just",
+          "score": 0.752,
+          "start": 67.638
+        },
+        {
+          "end": 67.958,
+          "word": "want",
+          "score": 0.624,
+          "start": 67.798
+        },
+        {
+          "end": 68.038,
+          "word": "to",
+          "score": 0.814,
+          "start": 67.978
+        },
+        {
+          "end": 68.398,
+          "word": "erase",
+          "score": 0.783,
+          "start": 68.098
+        },
+        {
+          "end": 68.799,
+          "word": "every",
+          "score": 0.768,
+          "start": 68.579
+        },
+        {
+          "end": 69.219,
+          "word": "single",
+          "score": 0.738,
+          "start": 68.879
+        },
+        {
+          "end": 69.559,
+          "word": "line",
+          "score": 0.89,
+          "start": 69.279
+        },
+        {
+          "end": 69.879,
+          "word": "written",
+          "score": 0.74,
+          "start": 69.599
+        },
+        {
+          "end": 69.999,
+          "word": "in",
+          "score": 0.808,
+          "start": 69.919
+        },
+        {
+          "end": 70.219,
+          "word": "that",
+          "score": 0.692,
+          "start": 70.039
+        },
+        {
+          "end": 70.659,
+          "word": "language",
+          "score": 0.84,
+          "start": 70.279
+        },
+        {
+          "end": 70.82,
+          "word": "from",
+          "score": 0.874,
+          "start": 70.699
+        },
+        {
+          "end": 70.92,
+          "word": "the",
+          "score": 1,
+          "start": 70.86
+        },
+        {
+          "end": 71.36,
+          "word": "universe.",
+          "score": 0.735,
+          "start": 71
+        }
+      ]
+    },
+    {
+      "end": 73.263,
+      "text": " Well, that's Python for me.",
+      "start": 72,
+      "words": [
+        {
+          "end": 72.161,
+          "word": "Well,",
+          "score": 0.878,
+          "start": 72
+        },
+        {
+          "end": 72.421,
+          "word": "that's",
+          "score": 0.882,
+          "start": 72.201
+        },
+        {
+          "end": 72.962,
+          "word": "Python",
+          "score": 0.896,
+          "start": 72.501
+        },
+        {
+          "end": 73.123,
+          "word": "for",
+          "score": 0.71,
+          "start": 72.982
+        },
+        {
+          "end": 73.263,
+          "word": "me.",
+          "score": 0.651,
+          "start": 73.143
+        }
+      ]
+    },
+    {
+      "end": 80.799,
+      "text": "So in the interest of my mental health, I will not use Manim, but I'm sure it's great if you are willing to sacrifice your sanity for Python.",
+      "start": 73.744,
+      "words": [
+        {
+          "end": 73.864,
+          "word": "So",
+          "score": 1,
+          "start": 73.744
+        },
+        {
+          "end": 73.984,
+          "word": "in",
+          "score": 0.766,
+          "start": 73.924
+        },
+        {
+          "end": 74.105,
+          "word": "the",
+          "score": 0.834,
+          "start": 74.025
+        },
+        {
+          "end": 74.445,
+          "word": "interest",
+          "score": 0.918,
+          "start": 74.165
+        },
+        {
+          "end": 74.546,
+          "word": "of",
+          "score": 0.75,
+          "start": 74.486
+        },
+        {
+          "end": 74.686,
+          "word": "my",
+          "score": 0.979,
+          "start": 74.586
+        },
+        {
+          "end": 75.047,
+          "word": "mental",
+          "score": 0.833,
+          "start": 74.746
+        },
+        {
+          "end": 75.327,
+          "word": "health,",
+          "score": 0.83,
+          "start": 75.087
+        },
+        {
+          "end": 75.728,
+          "word": "I",
+          "score": 0.669,
+          "start": 75.668
+        },
+        {
+          "end": 75.929,
+          "word": "will",
+          "score": 0.911,
+          "start": 75.748
+        },
+        {
+          "end": 76.149,
+          "word": "not",
+          "score": 0.852,
+          "start": 75.989
+        },
+        {
+          "end": 76.41,
+          "word": "use",
+          "score": 0.832,
+          "start": 76.289
+        },
+        {
+          "end": 76.871,
+          "word": "Manim,",
+          "score": 0.584,
+          "start": 76.49
+        },
+        {
+          "end": 77.292,
+          "word": "but",
+          "score": 0.848,
+          "start": 77.191
+        },
+        {
+          "end": 77.432,
+          "word": "I'm",
+          "score": 0.863,
+          "start": 77.312
+        },
+        {
+          "end": 77.652,
+          "word": "sure",
+          "score": 0.816,
+          "start": 77.492
+        },
+        {
+          "end": 77.833,
+          "word": "it's",
+          "score": 0.87,
+          "start": 77.712
+        },
+        {
+          "end": 78.173,
+          "word": "great",
+          "score": 0.816,
+          "start": 77.913
+        },
+        {
+          "end": 78.274,
+          "word": "if",
+          "score": 0.992,
+          "start": 78.214
+        },
+        {
+          "end": 78.394,
+          "word": "you",
+          "score": 0.796,
+          "start": 78.294
+        },
+        {
+          "end": 78.514,
+          "word": "are",
+          "score": 0.815,
+          "start": 78.434
+        },
+        {
+          "end": 78.815,
+          "word": "willing",
+          "score": 0.85,
+          "start": 78.534
+        },
+        {
+          "end": 78.955,
+          "word": "to",
+          "score": 0.615,
+          "start": 78.855
+        },
+        {
+          "end": 79.576,
+          "word": "sacrifice",
+          "score": 0.925,
+          "start": 79.015
+        },
+        {
+          "end": 79.737,
+          "word": "your",
+          "score": 0.658,
+          "start": 79.597
+        },
+        {
+          "end": 80.178,
+          "word": "sanity",
+          "score": 0.911,
+          "start": 79.797
+        },
+        {
+          "end": 80.338,
+          "word": "for",
+          "score": 0.876,
+          "start": 80.218
+        },
+        {
+          "end": 80.799,
+          "word": "Python.",
+          "score": 0.996,
+          "start": 80.378
+        }
+      ]
+    }
+  ]

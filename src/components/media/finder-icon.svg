@@ -1,0 +1,25 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="finderGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4A90E2;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#357ABD;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="faceGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFFFFF;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#E5E5E5;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- App background -->
+  <rect x="64" y="64" width="896" height="896" rx="200" ry="200" fill="url(#finderGradient)"/>
+  
+  <!-- Finder face -->
+  <rect x="256" y="256" width="512" height="512" rx="80" ry="80" fill="url(#faceGradient)"/>
+  
+  <!-- Eyes -->
+  <circle cx="384" cy="400" r="32" fill="#333"/>
+  <circle cx="640" cy="400" r="32" fill="#333"/>
+  
+  <!-- Mouth -->
+  <path d="M 384 560 Q 512 640 640 560" stroke="#333" stroke-width="24" fill="none" stroke-linecap="round"/>
+</svg> 
