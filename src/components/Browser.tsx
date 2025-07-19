@@ -11,6 +11,7 @@ export interface BrowserProps extends NodeProps {
   scale?: SignalValue<number>;
   screenshotSrc?: SignalValue<string>;
   screenshotDelay?: SignalValue<number>;
+  darkMode?: SignalValue<boolean>;
 }
 
 export class Browser extends Node {
@@ -38,6 +39,10 @@ export class Browser extends Node {
   @signal()
   declare public readonly screenshotDelay: SimpleSignal<number>;
 
+  @initial(false)
+  @signal()
+  declare public readonly darkMode: SimpleSignal<boolean>;
+
   private macWindow: MacWindow;
   private contentArea: Rect;
   private screenshotImg: Img;
@@ -62,8 +67,8 @@ export class Browser extends Node {
   private setupBrowserUI() {
     const windowWidth = this.width();
     const windowHeight = this.height();
-    const navBarHeight = 80; // Increased navbar height
-    const titleBarHeight = 80; // Increased title bar height to match navbar
+    const navBarHeight = 50; // Navigation bar height
+    const titleBarHeight = 100; // Increased title bar height
     const contentHeight = windowHeight - titleBarHeight - navBarHeight;
 
     // Create Mac window (Safari style)
@@ -71,7 +76,7 @@ export class Browser extends Node {
       width: windowWidth,
       height: windowHeight,
       showTitle: false, // Safari doesn't show title in title bar
-      lightMode: true, // Safari uses light mode styling
+      lightMode: !this.darkMode(), // Safari uses light/dark mode styling
       scale: this.browserScale(),
       titleBarHeight: titleBarHeight,
     });
@@ -80,43 +85,74 @@ export class Browser extends Node {
     // Add URL bar to title bar slot
     const titleBarSlot = this.macWindow.getTitleBarSlot();
 
-    // Reload button
-    const reloadBtn = new Txt({
-      text: '↻',
-      fontSize: 20,
-      fill: '#5f6368',
-      marginRight: 15,
+    // Navigation buttons container
+    const navButtons = new Layout({
+      layout: true,
+      direction: 'row',
+      gap: 10,
+      alignItems: 'center',
     });
-    titleBarSlot.add(reloadBtn);
+
+    // Back button
+    const backBtn = new Txt({
+      text: '‹',
+      fontSize: 24,
+      fill: this.darkMode() ? '#9aa0a6' : '#5f6368',
+    });
+    navButtons.add(backBtn);
+
+    // Forward button
+    const forwardBtn = new Txt({
+      text: '›',
+      fontSize: 24,
+      fill: this.darkMode() ? '#9aa0a6' : '#5f6368',
+    });
+    navButtons.add(forwardBtn);
+
+    titleBarSlot.add(navButtons);
 
     // URL bar in title bar
-    const urlBar = new Rect({
+    const urlBar = new Layout({
       layout: true,
-      width: windowWidth - 120,
-      height: 36,
-      fill: '#f1f3f4',
-      radius: 18,
-      stroke: '#dadce0',
+      direction: 'row',
+      justifyContent: 'center',
+      grow: 1,
+      gap: 10,
+      alignItems: 'center',
+    });
+
+    // URL bar rectangle with text overlay
+    const urlBarRect = new Rect({
+      margin: 10,
+      width: windowWidth / 2,
+      height: 38,
+      fill: this.darkMode() ? '#1E1E1E' : '#f1f3f4',
+      radius: 10,
+      stroke: this.darkMode() ? '#424244' : '#dadce0',
       lineWidth: 1,
       alignItems: 'center',
       paddingLeft: 20,
     });
-    titleBarSlot.add(urlBar);
 
-    // URL text in URL bar
+    // URL text as overlay on the rectangle
     this.urlText = new Txt({
       text: this.url(),
-      fontSize: 14,
-      fill: '#3c4043',
+      fontSize: 18,
+      fontWeight: 400,
+      fill: this.darkMode() ? '#e0e0e0' : '#5c6063',
       fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+      textAlign: 'center',
+      width: '100%',
     });
-    urlBar.add(this.urlText);
+    urlBarRect.add(this.urlText);
+    urlBar.add(urlBarRect);
+    titleBarSlot.add(urlBar);
 
     // Content area filling the remaining space
     this.contentArea = new Rect({
       layout: true,
       width: windowWidth,
-      fill: '#ffffff',
+      fill: this.darkMode() ? '#1c1c1e' : '#ffffff',
       clip: true,
     });
 
@@ -158,8 +194,8 @@ export class Browser extends Node {
     const naturalSize = this.screenshotImg.naturalSize();
     if (naturalSize.width > 0 && naturalSize.height > 0) {
       // Respect the browser's width setting and calculate height based on image aspect ratio
-      const navBarHeight = 80; // Updated to match new navbar height
-      const titleBarHeight = 80; // Updated to match new title bar height
+      const navBarHeight = 50; // Updated to match new navbar height
+      const titleBarHeight = 100; // Updated to match new title bar height
       const browserWidth = this.width();
 
       // Calculate the height based on the image's aspect ratio

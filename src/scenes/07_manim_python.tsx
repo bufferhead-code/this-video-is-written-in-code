@@ -5,6 +5,7 @@ import { Rect, Txt, SVG } from '@motion-canvas/2d/lib/components';
 import { ManimShowcase } from '../components/ManimShowcase';
 import { PythonLogo } from '../components/PythonLogo';
 import { BrainIcon } from '../components/BrainIcon';
+import { BlueprintBackground } from '../components/BlueprintBackground';
 
 export default makeScene2D(function* (view) {
   const sceneRef = createRef<Rect>();
@@ -19,8 +20,9 @@ export default makeScene2D(function* (view) {
       opacity={0}
       width={'100%'}
       height={'100%'}
-      fill={'#242424'}
     >
+      {/* Blueprint background */}
+      <BlueprintBackground width={'100%'} height={'100%'} />
       <ManimShowcase ref={manimShowcaseRef} opacity={0} />
       <PythonLogo ref={pythonLogoRef} opacity={0} width={200} height={200} />
       <Rect

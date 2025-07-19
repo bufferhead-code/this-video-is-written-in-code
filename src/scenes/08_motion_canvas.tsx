@@ -6,6 +6,7 @@ import { Rect, Code, Video } from '@motion-canvas/2d/lib/components';
 import { Logo } from '../components/Logo';
 import { Browser } from '../components/Browser';
 import { YoutubeChannelCard } from '../components/YouTubeChannelCard';
+import { BlueprintBackground } from '../components/BlueprintBackground';
 import { zoomIn, slideInBottom } from '../animation';
 import { MEME_STYLE } from '../components/MemeStyle';
 
@@ -21,7 +22,9 @@ export default makeScene2D(function* (view) {
   const aarthificialCardRef = createRef<YoutubeChannelCard>();
 
   view.add(
-    <Rect ref={sceneRef} width={'100%'} height={'100%'} fill={'#242424'}>
+    <Rect ref={sceneRef} width={'100%'} height={'100%'}>
+      {/* Blueprint background */}
+      <BlueprintBackground width={'100%'} height={'100%'} />
       {/* Motion Canvas Logo */}
       <Logo
         ref={motionCanvasLogoRef}

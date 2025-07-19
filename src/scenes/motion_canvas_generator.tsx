@@ -6,6 +6,7 @@ import { Rect, Code, Video, Txt } from '@motion-canvas/2d/lib/components';
 import { blur } from '@motion-canvas/2d';
 import { slideInLeft, slideInRight, slideInBottom, zoomIn } from '../animation';
 import { Background } from '../components/Background';
+import { BlueprintBackground } from '../components/BlueprintBackground';
 import { COLORS } from '../utils/colors';
 import motionCanvasLogo from '../images/motion-canvas-logo.svg';
 import remotionLogo from '../components/media/remotion-logo.svg';
@@ -101,8 +102,10 @@ export const MoveRightAndBack: React.FC = () => {
   // --- LOGO ELEMENTS ---
   view.add(
     <>
-      {/* Fullscreen dark background */}
-      <Rect width={'100%'} height={'100%'} fill={COLORS.grayBg} zIndex={-100} />
+      {/* Fullscreen blueprint background */}
+      <Rect width={'100%'} height={'100%'} zIndex={-100}>
+        <BlueprintBackground width={'100%'} height={'100%'} />
+      </Rect>
       {/* Logos in a horizontal layout */}
       <Layout
         layout
