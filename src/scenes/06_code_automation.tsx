@@ -3,11 +3,12 @@ import { fadeTransition } from '@motion-canvas/core';
 import { all, waitFor, waitUntil } from '@motion-canvas/core/lib/flow';
 import { createRef } from '@motion-canvas/core/lib/utils';
 import { Vector2 } from '@motion-canvas/core/lib/types';
-import { Rect, Node } from '@motion-canvas/2d/lib/components';
+import { Rect, Node, Img } from '@motion-canvas/2d/lib/components';
 import { MemeImage } from '../components/MemeImage';
 import { RedButtonMeme } from '../components/RedButtonMeme';
 import { Logo } from '../components/Logo';
 import { Browser } from '../components/Browser';
+import { BlueprintBackground } from '../components/BlueprintBackground';
 import { zoomIn, slideInBottom } from '../animation';
 import { COLORS } from '../utils/colors';
 
@@ -21,11 +22,14 @@ import { CircleMark } from '../components/CircleMark';
 
 export default makeScene2D(function* (view) {
   const sceneRef = createRef<Rect>();
+  const blueprintBgRef = createRef<Img>();
   const manimLogoRef = createRef<Logo>();
   const browserRef = createRef<Browser>();
 
   view.add(
-    <Rect ref={sceneRef} width={'100%'} height={'100%'} fill={COLORS.grayBg}>
+    <Rect ref={sceneRef} width={'100%'} height={'100%'}>
+      {/* Blueprint background */}
+      <BlueprintBackground ref={blueprintBgRef} width={'100%'} height={'100%'} />
       {/* Manim Logo in center */}
       <Logo
         ref={manimLogoRef}
@@ -43,6 +47,7 @@ export default makeScene2D(function* (view) {
         screenshotSrc={manimScreenshot}
         width={1600}
         opacity={0}
+        darkMode={true}
       >
         <TextMarker
           markerColor="#FF6B6B"

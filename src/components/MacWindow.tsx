@@ -179,7 +179,7 @@ export class MacWindow extends Rect {
     const lightMode = this.lightMode();
     return {
       windowBackground: lightMode ? '#F6F6F6' : '#282828',
-      titleBar: lightMode ? '#E5E5E5' : '#1E1E1E',
+      titleBar: lightMode ? '#E5E5E5' : '#2d2d2f',
       titleText: lightMode
         ? 'rgba(28, 28, 30, 0.6)'
         : 'rgba(235, 235, 245, 0.6)',

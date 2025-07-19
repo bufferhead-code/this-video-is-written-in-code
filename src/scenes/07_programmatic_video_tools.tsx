@@ -27,6 +27,7 @@ export default makeScene2D(function* (view) {
         screenshotSrc={remotionScreenshot}
         width={1600}
         opacity={0}
+        darkMode={true}
       />
 
       {/* YouTube video thumbnail */}

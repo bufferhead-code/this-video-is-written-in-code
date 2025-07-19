@@ -7,6 +7,7 @@ import theAlternatives from './scenes/05_the_alternatives?scene';
 import codeAutomation from './scenes/06_code_automation?scene';
 import programmaticVideoTools from './scenes/07_programmatic_video_tools?scene';
 import motionCanvas from './scenes/08_motion_canvas?scene';
+import logoHexagon from './scenes/08_logo_hexagon?scene';
 import motionCanvasGenerator from './scenes/motion_canvas_generator?scene';
 import manimPython from './scenes/07_manim_python?scene';
 import loadingBars from './scenes/loading_bars?scene';
@@ -34,6 +35,7 @@ export default makeProject({
     codeAutomation,
     programmaticVideoTools,
     motionCanvas,
+    logoHexagon,
     motionCanvasGenerator,
     testYoutubeCard,
   ],
