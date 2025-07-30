@@ -152,7 +152,7 @@ export class Browser extends Node {
     this.contentArea = new Rect({
       layout: true,
       width: windowWidth,
-      fill: this.darkMode() ? '#1c1c1e' : '#ffffff',
+      fill: this.darkMode() ? '#1c1c1e' : '#f5f5f5',
       clip: true,
     });
 

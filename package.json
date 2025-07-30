@@ -11,9 +11,9 @@
   },
   "dependencies": {
     "@lezer/javascript": "^1.5.1",
-    "@motion-canvas/2d": "file:../motion-canvas/packages/2d",
-    "@motion-canvas/core": "file:../motion-canvas/packages/core",
-    "@motion-canvas/ffmpeg": "file:../motion-canvas/packages/ffmpeg",
+    "@motion-canvas/2d": "file:/Users/gregorvostrak/dev/motion-canvas/motion-canvas/packages/2d",
+    "@motion-canvas/core": "file:/Users/gregorvostrak/dev/motion-canvas/motion-canvas/packages/core",
+    "@motion-canvas/ffmpeg": "file:/Users/gregorvostrak/dev/motion-canvas/motion-canvas/packages/ffmpeg",
     "@preact/signals": "^2.2.1",
     "kokoro-js": "*",
     "motion-canvas-script-editor": "file:src/plugins/script-editor",
@@ -23,8 +23,8 @@
     "tesseract.js": "^6.0.1"
   },
   "devDependencies": {
-    "@motion-canvas/ui": "file:../motion-canvas/packages/ui",
-    "@motion-canvas/vite-plugin": "file:../motion-canvas/packages/vite-plugin",
+    "@motion-canvas/ui": "file:/Users/gregorvostrak/dev/motion-canvas/motion-canvas/packages/ui",
+    "@motion-canvas/vite-plugin": "file:/Users/gregorvostrak/dev/motion-canvas/motion-canvas/packages/vite-plugin",
     "prettier": "^3.6.2",
     "typescript": "^5.2.2",
     "vite": "^4.0.0"

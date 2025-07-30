@@ -151,7 +151,7 @@ export default makeScene2D(function* (view) {
       opacity={1}
       zIndex={100}
       x={420}
-      y={100}
+      y={145}
       width={800}
       height={70}
     />,
@@ -173,7 +173,7 @@ export default makeScene2D(function* (view) {
       opacity={1}
       markerColor="#FF0000"
       x={-120}
-      y={100}
+      y={145}
       width={300}
       height={70}
     />,
@@ -206,7 +206,7 @@ export default makeScene2D(function* (view) {
   );
 
   // Animate typewriter text about automation
-  yield* redButtonMemeRef().typewrite('Erase Python', 2);
+  yield* redButtonMemeRef().typewrite('Erase Python', 0.5);
   yield* waitFor(1);
 
   yield* waitUntil('end_scene_6'); // End of scene 6

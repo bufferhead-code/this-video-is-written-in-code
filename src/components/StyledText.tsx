@@ -22,6 +22,14 @@ export interface StyledTextProps extends NodeProps {
   fontSize?: SignalValue<number>;
   opacity?: SignalValue<number>;
   fixWidth?: SignalValue<boolean>;
+  /**
+   * Custom stroke width for the outline. If provided, overrides the default calculated value.
+   */
+  strokeWidth?: SignalValue<number>;
+  /**
+   * If true, use monospace font for code blocks.
+   */
+  monospace?: boolean;
 }
 
 /**
@@ -53,11 +61,16 @@ export class StyledText extends Node {
     const fontSize =
       typeof fontSizeValue === 'number' ? fontSizeValue : SIZES.sm;
 
-    // Calculate stroke width proportional to font size (approximately 3% of font size)
-    const strokeWidth = fontSize * 0.25;
+    // Determine font family
+    const fontFamily = props?.monospace
+      ? 'Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace'
+      : '"Baloo 2", "Baloo", Arial, sans-serif';
+
+    // Use custom strokeWidth if provided, otherwise calculate proportional to font size (approximately 3% of font size)
+    const strokeWidth = props?.strokeWidth ?? fontSize * 0.25;
 
     const baseStyle = {
-      fontFamily: '"Baloo 2", "Baloo", Arial, sans-serif',
+      fontFamily,
       fontSize: fontSizeValue,
       fontWeight: 700,
       fontStyle: 'normal',

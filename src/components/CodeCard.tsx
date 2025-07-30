@@ -6,6 +6,8 @@ import {
 } from '@motion-canvas/2d/lib/components';
 import { Node, NodeProps } from '@motion-canvas/2d/lib/components';
 import { createRef } from '@motion-canvas/core/lib/utils';
+import { ThreadGenerator } from '@motion-canvas/core/lib/threading';
+import { DEFAULT } from '@motion-canvas/core';
 
 export interface CodeCardProps extends RectProps {
   code: string;
@@ -13,7 +15,16 @@ export interface CodeCardProps extends RectProps {
   codeProps?: any;
   preview?: Node | any;
   layoutDirection?: 'row' | 'column';
+  alignItems?: 'start' | 'center' | 'end';
+  justifyContent?: 'start' | 'center' | 'end';
+  fontSize?: number;
   children?: Node[];
+}
+
+// Interface for the CodeCard return type with highlight method
+export interface CodeCardInstance extends Rect {
+  highlight: (text: string, duration?: number) => ThreadGenerator;
+  resetHighlight: (duration?: number) => ThreadGenerator;
 }
 
 export const CodeCard = ({
@@ -22,10 +33,31 @@ export const CodeCard = ({
   codeProps,
   preview,
   layoutDirection = 'row',
+  alignItems = 'start',
+  justifyContent = 'start',
+  fontSize = 32,
   children,
   ...rectProps
-}: CodeCardProps) => {
-  return (
+}: CodeCardProps): CodeCardInstance => {
+  // Create a ref for the Code component if not provided
+  const internalCodeRef = createRef<Code>();
+  const finalCodeRef = codeRef || internalCodeRef;
+
+  // Highlight function that can be called on the CodeCard instance
+  const highlight = function* (text: string, duration: number = 0.5): ThreadGenerator {
+    const range = finalCodeRef().findFirstRange(text);
+    if (range) {
+      yield* finalCodeRef().selection(range, duration);
+    }
+  };
+
+  // Reset highlight function that clears any current selection
+  const resetHighlight = function* (duration: number = 0.5): ThreadGenerator {
+    yield* finalCodeRef().selection(DEFAULT, duration);
+  };
+
+  // Create the CodeCard instance
+  const codeCard = (
     <Rect
       radius={18}
       padding={36}
@@ -37,15 +69,15 @@ export const CodeCard = ({
       shadowOffsetY={10}
       layout
       direction={layoutDirection}
-      alignItems={'center'}
-      justifyContent={'center'}
+      alignItems={alignItems}
+      justifyContent={justifyContent}
       gap={60}
       {...rectProps}
     >
       <Code
-        ref={codeRef}
+        ref={finalCodeRef}
         code={code}
-        fontSize={32}
+        fontSize={fontSize}
         fontFamily={'Fira Code, Consolas, monospace'}
         fill={'#d4d4d4'}
         offsetX={-1}
@@ -55,5 +87,11 @@ export const CodeCard = ({
       {preview}
       {children}
     </Rect>
-  );
+  ) as CodeCardInstance;
+
+  // Attach the highlight and resetHighlight methods to the CodeCard instance
+  codeCard.highlight = highlight;
+  codeCard.resetHighlight = resetHighlight;
+
+  return codeCard;
 };
