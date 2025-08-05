@@ -1,6 +1,6 @@
 import { makeScene2D } from '@motion-canvas/2d/lib/scenes';
 import { Layout, Rect, Txt, Code, Img, Node, signal } from '@motion-canvas/2d';
-import { all, Vector2, waitFor, waitUntil, createSignal, SimpleSignal, createRef } from '@motion-canvas/core';
+import { all, Vector2, waitFor, waitUntil, createSignal, SimpleSignal, createRef, fadeTransition } from '@motion-canvas/core';
 import { CodeCard, CodeCardInstance } from '../components/CodeCard';
 import { fadeIn, slideInLeft, slideInRight, zoomIn, fadeOut } from '../animation';
 import { DynamicColumnLayout } from '../components/DynamicColumnLayout';
@@ -24,6 +24,8 @@ public declare readonly position: Vector2Signal<this>;`}
     />
   );
   view.add(signalCard);
+
+  yield* fadeTransition(1);
 
   yield* fadeIn(signalCard, { duration: 0.8 });
   yield* waitUntil('show_opacity_signal');
@@ -140,6 +142,8 @@ public declare readonly scale: Vector2Signal<this>;`, 1);
   previewWindow.add(emoji);
   rightSide.add([previewWindow]);
 
+  
+
   // Add items to DynamicColumnLayout
   yield* customNodeLayout.addItem(leftSide, 1100);
   yield* waitFor(0.3);
@@ -192,21 +196,6 @@ public declare readonly scale: Vector2Signal<this>;`, 1);
   // Update title
   codeTitleRef().text("Animating the Signal");
 
-  yield* waitFor(1);
-
-  // Highlight the method call
-  yield* waitUntil('highlight_method_call');
-  yield* animationCodeCard.highlight('emoji().silliness(100, 1)', 0.5);
-  yield* waitFor(1);
-
-  // Highlight the comment
-  yield* waitUntil('highlight_comment');
-  yield* animationCodeCard.highlight('// silliness: 0', 0.5);
-  yield* waitFor(1);
-
-  // Clear highlight
-  yield* animationCodeCard.resetHighlight(0.3);
-  yield* waitFor(0.5);
 
   yield* waitUntil('animate_silliness');
 
@@ -221,25 +210,6 @@ public declare readonly scale: Vector2Signal<this>;`, 1);
     })()
   );
   
-  
-  yield* waitFor(2);
-
-  // Final fade out
-  yield* waitFor(0.5);
-
   yield* waitUntil('final_silliness_animations');
 
-  // change silliness to 10000
-  emoji.silliness(10000, 1);
-  yield* waitFor(1);
-
-  // change silliness to 0
-  emoji.silliness(0, 1);
-  yield* waitFor(1);
-
-  // change silliness to 10000
-  emoji.silliness(10000, 1);
-
-
-  
 });

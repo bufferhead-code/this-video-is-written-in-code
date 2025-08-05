@@ -3,43 +3,35 @@
   "timeEvents": [
     {
       "name": "show_opacity_signal",
-      "targetTime": 7.0751571021789745
+      "targetTime": 4.668125496335425
     },
     {
       "name": "show_scale_signal",
-      "targetTime": 8.075157102178974
+      "targetTime": 5.668125496335425
     },
     {
       "name": "highlight_extends_node",
-      "targetTime": 14.875157102178974
+      "targetTime": 12.468125496335425
     },
     {
       "name": "highlight_signal_decorator",
-      "targetTime": 21.41761828104037
+      "targetTime": 17.93568121843178
     },
     {
       "name": "highlight_silliness_property",
-      "targetTime": 24.116453961656525
+      "targetTime": 20.667888484966838
     },
     {
       "name": "show_animation_code",
-      "targetTime": 27.980603261331545
-    },
-    {
-      "name": "highlight_method_call",
-      "targetTime": 29.980603261331545
-    },
-    {
-      "name": "highlight_comment",
-      "targetTime": 31.480603261331545
+      "targetTime": 22.96788848496684
     },
     {
       "name": "animate_silliness",
-      "targetTime": 33.78060326133154
+      "targetTime": 30.73633177171456
     },
     {
       "name": "final_silliness_animations",
-      "targetTime": 37.29060326133134
+      "targetTime": 34.787468907181506
     }
   ],
   "seed": 2283614918

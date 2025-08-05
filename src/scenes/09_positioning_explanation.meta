@@ -7,47 +7,35 @@
     },
     {
       "name": "show_distance_arrows",
-      "targetTime": 5.1291895971761265
-    },
-    {
-      "name": "right_arrow",
-      "targetTime": 6.338915478592785
-    },
-    {
-      "name": "bottom_arrow",
-      "targetTime": 7.593621138146737
-    },
-    {
-      "name": "left_arrow",
-      "targetTime": 8.578448128876923
+      "targetTime": 9.532028550858128
     },
     {
       "name": "fade_distance_arrows",
-      "targetTime": 10.66424410320946
+      "targetTime": 14.598496900548035
     },
     {
       "name": "show_coordinates",
-      "targetTime": 12.873080331187117
+      "targetTime": 15.297889483174117
     },
     {
       "name": "show_y_axis",
-      "targetTime": 13.673080331187117
+      "targetTime": 16.097889483174118
     },
     {
       "name": "show_code_card",
-      "targetTime": 14.473080331187118
+      "targetTime": 16.89788948317412
     },
     {
       "name": "animate_x_value",
-      "targetTime": 15.273080331187119
+      "targetTime": 17.69788948317412
     },
     {
       "name": "animate_y_value",
-      "targetTime": 16.95879476983275
+      "targetTime": 19.383603921819752
     },
     {
       "name": "scene_end",
-      "targetTime": 23.25101125090584
+      "targetTime": 25.675820402892843
     }
   ],
   "seed": 3694159992

@@ -11,19 +11,19 @@
     },
     {
       "name": "show_generators_text",
-      "targetTime": 6.331007042690744
+      "targetTime": 3.86856417802311
     },
     {
       "name": "show_bufferhead",
-      "targetTime": 7.331007042690742
+      "targetTime": 4.868564178023108
     },
     {
       "name": "show_clueless_text",
-      "targetTime": 7.831007042690742
+      "targetTime": 5.368564178023108
     },
     {
       "name": "end_scene",
-      "targetTime": 23.05848082431588
+      "targetTime": 20.596037959648243
     }
   ],
   "seed": 2516751292

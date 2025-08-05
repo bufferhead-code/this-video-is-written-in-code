@@ -9,7 +9,7 @@ import { CodeCard } from '../components/CodeCard';
 import { Code } from '@motion-canvas/2d/lib/components';
 import { easeInCirc, easeInCubic, easeInElastic, easeInOutBack, easeInOutCubic } from '@motion-canvas/core/lib/tweening';
 import motionCanvasLogoColored from '../images/motion-canvas-logo.svg';
-import { DEFAULT } from '@motion-canvas/core';
+import { DEFAULT, fadeTransition } from '@motion-canvas/core';
 
 export default makeScene2D(function* (view) {
   const backgroundRef = createRef<Rect>();
@@ -74,6 +74,8 @@ export default makeScene2D(function* (view) {
 
   // Animation sequence
   
+
+  yield* fadeTransition(1);
   // 1. Logo slides in from bottom with fade
   yield* slideInBottom(logoRef(), {
     distance: 300,
@@ -106,6 +108,7 @@ export default makeScene2D(function* (view) {
     }),
     logoRef().position.x(500, 1),
   );
+  yield* waitUntil('show_teach');
 
   // show teach image
   yield* logoRef().showTeach();

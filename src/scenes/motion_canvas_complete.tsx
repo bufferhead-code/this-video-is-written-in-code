@@ -1,5 +1,6 @@
 import { makeScene2D } from '@motion-canvas/2d/lib/scenes';
 import { Layout, Rect, Txt, Code } from '@motion-canvas/2d/lib/components';
+import { CodeCard } from '../components/CodeCard';
 import { NodeTree } from '../components/NodeTree';
 import { MacWindow } from '../components/MacWindow';
 import { Terminal } from '../components/Terminal';
@@ -90,13 +91,26 @@ export default  makeScene2D(function* (view) {
   // ==================== PART 2: Node Tree Example ====================
   
   // Create main layout container for NodeTree section using DynamicColumnLayout
-  const nodeTreeLayout = new DynamicColumnLayout({
+  const nodeTreeLayout = new Layout({
     width: '100%',
     height: '100%',
-    itemGap: 40,
+    direction: 'row',
+    layout: true,
+    gap: 40,
     justifyContent: 'center',
     alignItems: 'start',
-    paddingTop: 50,
+    padding: 50,
+  });
+
+  // Left side container
+  const leftSideContainer = new Layout({
+    layout: true,
+    direction: 'column',
+    width: 800,
+    height: 1500,
+    gap: 30,
+    justifyContent: 'center',
+    alignItems: 'center',
   });
 
   // Left side - HTML DOM Tree structure
@@ -110,6 +124,19 @@ export default  makeScene2D(function* (view) {
     padding: 40,
     opacity: 0,
   });
+
+  // Add DOM title
+  const domTitle = new Txt({
+    text: 'DOM',
+    fontSize: 64,
+    fontWeight: 700,
+    fill: '#ffffff',
+    fontFamily: '"Baloo 2", "Baloo", Arial, sans-serif',
+    shadowColor: '#000000',
+    shadowBlur: 40,
+    shadowOffset: [2, 2],
+  });
+  leftSideContainer.add(domTitle);
 
   // HTML DOM node tree structure
   const htmlTreeStructure = [
@@ -155,10 +182,23 @@ export default  makeScene2D(function* (view) {
     elementColor: '#4fc3f7',
     textColor: '#95a5a6',
     labelColor: '#ffffff',
-    textSize: 32,
-    rowSize: 48,
+    textSize: 40,
+    rowSize: 80,
+    indentAmount: 80,
   });
   leftSide.add(htmlTree);
+  leftSideContainer.add(leftSide);
+
+  // Right side container
+  const rightSideContainer = new Layout({
+    layout: true,
+    direction: 'column',
+    width: 800,
+    height: 1500,
+    gap: 30,
+    justifyContent: 'center',
+    alignItems: 'center',
+  });
 
   // Right side - Motion Canvas Component Tree
   const rightSide = new Rect({
@@ -171,6 +211,20 @@ export default  makeScene2D(function* (view) {
     padding: 40,
     opacity: 0,
   });
+
+  // Add Motion Canvas title
+  const motionCanvasTitle = new Txt({
+    text: 'Motion Canvas',
+    fontSize: 64,
+    fontWeight: 700,
+    fill: '#ffffff',
+    fontFamily: '"Baloo 2", "Baloo", Arial, sans-serif',
+    shadowColor: '#000000',
+    shadowBlur: 40,
+    shadowOffset: [2, 2],
+  });
+  rightSideContainer.add(motionCanvasTitle);
+  
 
   // Motion Canvas component node tree structure
   const sceneTreeStructure = [
@@ -203,10 +257,12 @@ export default  makeScene2D(function* (view) {
     elementColor: '#ff6b6b',
     textColor: '#95a5a6',
     labelColor: '#ffffff',
-    textSize: 32,
-    rowSize: 48,
+    textSize: 40,
+    rowSize: 80,
+    indentAmount: 80,
   });
   rightSide.add(sceneTree);
+  rightSideContainer.add(rightSide);
 
   // Add nodeTree layout to view
   view.add(nodeTreeLayout);
@@ -216,22 +272,26 @@ export default  makeScene2D(function* (view) {
   yield* waitUntil('dom_tree_card');
 
   // Add DOM tree card first using DynamicColumnLayout
-  yield* nodeTreeLayout.addItem(leftSide, 800);
+  nodeTreeLayout.add(leftSideContainer),
+  nodeTreeLayout.add(rightSideContainer),
 
+  yield* all(
+    fadeIn(leftSideContainer),
+    fadeIn(rightSideContainer),
+  );
+    
   yield* waitUntil('dom_tree_fade');
 
-  // Fade in the DOM tree nodes sequentially
-  yield* htmlTree.fadeInSequentially(0.2, 0);
-  
-  yield* waitUntil('binary_tree_card');
-  
-  // Add Binary Tree card using DynamicColumnLayout
-  yield* nodeTreeLayout.addItem(rightSide, 800);
-  
-  yield* waitUntil('mc_tree_fade');
-  
-  // Fade in the Motion Canvas tree nodes sequentially
-  yield* sceneTree.fadeInSequentially(0.2, 0.01);
+
+  yield* all(
+    fadeIn(leftSide),
+    fadeIn(rightSide),
+  );
+
+  yield* all(
+    htmlTree.fadeInSequentially(0.2, 0),
+    sceneTree.fadeInSequentially(0.2, 0),
+  );
 
   yield* waitUntil('trees_fade_out');
 
@@ -245,34 +305,34 @@ export default  makeScene2D(function* (view) {
   // Create main layout for code examples using DynamicColumnLayout
   const codeLayout = new DynamicColumnLayout({
     width: '100%',
-    y: 100,
+    y: 70,
     height: 1000,
-    itemGap: 200,
+    itemGap: 60,
   });
 
   // JSX Example Section as Rect for DynamicColumnLayout
   const jsxSection = new Rect({
     layout: true,
     direction: 'column',
-    gap: 20,
+    gap: 30,
     alignItems: 'center',
   });
 
   const jsxTitle = new Txt({
-    text: 'Motion Canvas with JSX',
-    fontSize: 40,
+    text: 'With JSX',
+    fontSize: 60,
+    shadowBlur: 50,
+    shadowOffset: [2, 2],
+    shadowColor: '#000000',
     fontWeight: 700,
     fill: '#ffffff',
     fontFamily: '"Baloo 2", "Baloo", Arial, sans-serif',
   });
 
   const jsxCodeContainer = new Rect({
-    fill: '#1e1e1e',
-    radius: 10,
-    padding: 30,
   });
 
-  const jsxCodeBlock = new Code({
+  const jsxCodeBlock = CodeCard({
     code: `{/* JSX */}
 <Layout direction="column" gap={20}>
   <Txt fontSize={48} fill="#ffffff">
@@ -288,8 +348,7 @@ export default  makeScene2D(function* (view) {
     />
   </Rect>
 </Layout>`,
-    fontSize: 24,
-    fontFamily: 'JetBrains Mono, Consolas, monospace',
+    fontSize: 30,
   });
 
   jsxCodeContainer.add(jsxCodeBlock);
@@ -305,20 +364,20 @@ export default  makeScene2D(function* (view) {
   });
 
   const nonJsxTitle = new Txt({
-    text: 'Motion Canvas without JSX',
-    fontSize: 40,
+    text: 'Without JSX',
+    fontSize: 60,
+    shadowBlur: 50,
+    shadowOffset: [2, 2],
+    shadowColor: '#000000',
     fontWeight: 700,
     fill: '#ffffff',
     fontFamily: '"Baloo 2", "Baloo", Arial, sans-serif',
   });
 
   const nonJsxCodeContainer = new Rect({
-    fill: '#1e1e1e',
-    radius: 10,
-    padding: 30,
   });
 
-  const nonJsxCodeBlock = new Code({
+  const nonJsxCodeBlock = CodeCard({
     code: `// No JSX
 view.add([
   new Circle({
@@ -340,8 +399,7 @@ view.add([
     ],
   }),
 ]);`,
-    fontSize: 24,
-    fontFamily: 'JetBrains Mono, Consolas, monospace',
+    fontSize: 30,
   });
 
   nonJsxCodeContainer.add(nonJsxCodeBlock);
@@ -354,11 +412,11 @@ view.add([
   // ==================== PART 3 ANIMATION: Code Examples ====================
   
   // Use DynamicColumnLayout to animate the code blocks appearing
-  yield* codeLayout.addItem(jsxSection, 580);
+  yield* codeLayout.addItem(jsxSection, 940);
   
   yield* waitUntil('no_jsx_example');
   
-  yield* codeLayout.addItem(nonJsxSection, 580);
+  yield* codeLayout.addItem(nonJsxSection, 722);
 
   yield* waitUntil('jsx_fade_out');
 

@@ -3,31 +3,35 @@
   "timeEvents": [
     {
       "name": "show_speech_bubble",
-      "targetTime": 0.8919175708914566
+      "targetTime": 1.5
     },
     {
       "name": "typewriter_text",
-      "targetTime": 1.4919175708914567
+      "targetTime": 2.1
     },
     {
       "name": "hide_speech_bubble",
       "targetTime": 4.552271255032635
     },
     {
+      "name": "show_teach",
+      "targetTime": 13.393037330859293
+    },
+    {
       "name": "highlight_300",
-      "targetTime": 12.876532841347107
+      "targetTime": 14.732105206182908
     },
     {
       "name": "highlight_1",
-      "targetTime": 16.08578050167106
+      "targetTime": 17.57830609947377
     },
     {
       "name": "highlight_ease",
-      "targetTime": 22.817558291685074
+      "targetTime": 19.973691949925854
     },
     {
       "name": "end",
-      "targetTime": 27.652950489632836
+      "targetTime": 24.117408399067997
     }
   ],
   "seed": 1234567890

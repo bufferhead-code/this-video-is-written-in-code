@@ -34,32 +34,24 @@
       "targetTime": 14.6321574976489
     },
     {
-      "name": "binary_tree_card",
-      "targetTime": 17.532157497648893
-    },
-    {
-      "name": "mc_tree_fade",
-      "targetTime": 18.532157497648893
-    },
-    {
       "name": "trees_fade_out",
-      "targetTime": 20.272157497648895
+      "targetTime": 18.68354379522993
     },
     {
       "name": "jsx_example",
-      "targetTime": 21.272157497648895
+      "targetTime": 19.68354379522993
     },
     {
       "name": "no_jsx_example",
-      "targetTime": 36.987435151969144
+      "targetTime": 32.51335814427582
     },
     {
       "name": "jsx_fade_out",
-      "targetTime": 41.29374103417184
+      "targetTime": 39.91366554472524
     },
     {
       "name": "scene_end",
-      "targetTime": 43.646773249973734
+      "targetTime": 40.91366554472524
     }
   ],
   "seed": 3750633995

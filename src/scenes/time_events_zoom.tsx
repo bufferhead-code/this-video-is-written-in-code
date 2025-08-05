@@ -6,6 +6,7 @@ import { HexagonLayout } from '../components/HexagonLayout';
 import { StyledText } from '../components/StyledText';
 import { fadeOut, fadeIn, zoomIn } from '../animation';
 import { COLORS } from '../utils/colors';  
+import motionCanvasLogoColored from '../images/motion-canvas-logo-colored.svg';
 import motionCanvasLogoWhite from '../images/motion-canvas-logo-white.svg';
 import timeEventsIcon from '../images/time-events-icon.svg';
 
@@ -14,12 +15,25 @@ export default makeScene2D(function* (view) {
   view.fill(COLORS.grayBg);
 
   // Create refs for hexagon animation
+  const logoColoredRef = createRef<Img>();
   const logoWhiteRef = createRef<Img>();
   const hexagonLayoutRef = createRef<HexagonLayout>();
   const circleRefs = Array.from({ length: 5 }, () => createRef<Circle>());
   const numberRefs = Array.from({ length: 5 }, () => createRef<Txt>());
   const timeEventsTextRef = createRef<StyledText>();
   const timeEventsIconRef = createRef<Img>();
+
+  // Motion Canvas logo - colored parts
+  view.add(
+    <Img
+      ref={logoColoredRef}
+      src={motionCanvasLogoColored}
+      width={400}
+      height={400}
+      scale={0}
+      opacity={0}
+    />
+  );
 
   // Motion Canvas logo - white parts
   view.add(
@@ -28,8 +42,8 @@ export default makeScene2D(function* (view) {
       src={motionCanvasLogoWhite}
       width={400}
       height={400}
-      scale={2.5}
-      position={[-115, -115]}
+      scale={0}
+      opacity={0}
     />
   );
 
@@ -55,6 +69,8 @@ export default makeScene2D(function* (view) {
         fill={'#333333'}
         lineWidth={2}
         position={[positions[i].x, positions[i].y]}
+        scale={0}
+        opacity={0}
       />
     );
     
@@ -66,6 +82,8 @@ export default makeScene2D(function* (view) {
         fill={'#ffffff'}
         fontWeight={600}
         position={[positions[i].x, positions[i].y]}
+        scale={0}
+        opacity={0}
       />
     );
   }
@@ -93,9 +111,57 @@ export default makeScene2D(function* (view) {
     />
   );
 
-  yield* fadeTransition(0.5);
+  yield* fadeTransition(1);
 
-  // Wait for a moment
+  // Animate both logo parts zoom fade in together
+  yield* all(
+    zoomIn(logoColoredRef(), {
+      duration: 0.7,
+      fromScale: 0,
+      toScale: 1,
+    }),
+    zoomIn(logoWhiteRef(), {
+      duration: 0.7,
+      fromScale: 0,
+      toScale: 1,
+    })
+  );
+
+  yield* waitUntil('logo_fade_start');
+
+  // Fade out only the colored parts of the logo
+  yield* fadeOut(logoColoredRef(), {
+    duration: 0.5,
+  });
+
+  yield* waitUntil('logo_scale_up');
+
+  // scale up the white parts of the logo and move it to the center of the screen
+  yield* all(
+    logoWhiteRef().position([-115, -115], 0.5),
+    logoWhiteRef().scale(2.5, 0.5),
+  );
+
+  yield* waitUntil('show_numbers');
+
+  // Animate circles and numbers appearing one by one
+  for (let i = 0; i < 5; i++) {
+    yield* all(
+      zoomIn(circleRefs[i](), {
+        duration: 0.2,
+        fromScale: 0,
+        toScale: 1,
+        overshoot: true
+      }),
+      zoomIn(numberRefs[i](), {
+        duration: 0.2,
+        fromScale: 0,
+        toScale: 1,
+        overshoot: true
+      })
+    );
+  }
+
   yield* waitUntil('zoom_to_time_events');
 
   // Zoom into fifth circle (index 4) for "Time Events" - top left position

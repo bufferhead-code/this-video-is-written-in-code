@@ -1,5 +1,5 @@
 import {Circle, Line, Txt, Rect, makeScene2D} from '@motion-canvas/2d';
-import {Vector2, all, createSignal, waitFor, waitUntil} from '@motion-canvas/core';
+import {Vector2, all, createSignal, fadeTransition, waitFor, waitUntil} from '@motion-canvas/core';
 import {COLORS} from '../utils/colors';
 import {CodeCard, CodeCardInstance} from '../components/CodeCard';
 import {DynamicColumnLayout} from '../components/DynamicColumnLayout';
@@ -27,7 +27,8 @@ const area = createSignal(
 
 ...
 
-yield* radius(4, 2).to(3, 2);`;
+yield* radius(4, 2).to(3, 2);
+yield* waitFor(1);`;
 
   // Create preview visualization
   const previewContent = (
@@ -111,6 +112,8 @@ yield* radius(4, 2).to(3, 2);`;
     />
   ) as CodeCardInstance;
 
+  yield* fadeTransition(1);
+
   // Add items to the layout with animations
   yield* layout.addItem(codeCard, 900);
 
@@ -140,6 +143,10 @@ yield* radius(4, 2).to(3, 2);`;
   );
   yield* waitUntil('reset_final_highlight');
   yield* codeCard.resetHighlight(0.5);
+
+  // Add final wait and highlight
+  yield* waitFor(1);
+  yield* codeCard.highlight('yield* waitFor(1);', 0.5);
   yield* waitUntil('end');
 
 });

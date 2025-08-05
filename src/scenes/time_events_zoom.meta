@@ -2,12 +2,24 @@
   "version": 0,
   "timeEvents": [
     {
+      "name": "logo_fade_start",
+      "targetTime": 2.26
+    },
+    {
+      "name": "logo_scale_up",
+      "targetTime": 2.76
+    },
+    {
+      "name": "show_numbers",
+      "targetTime": 3.26
+    },
+    {
       "name": "zoom_to_time_events",
-      "targetTime": 0.9556158304256137
+      "targetTime": 5.795293214484227
     },
     {
       "name": "end",
-      "targetTime": 4.209598445519868
+      "targetTime": 9.495293214484231
     }
   ],
   "seed": 2030006442

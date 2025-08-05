@@ -3,55 +3,51 @@
   "timeEvents": [
     {
       "name": "center_generator",
-      "targetTime": 2.499999999999999
+      "targetTime": 3.3601485527931527
     },
     {
       "name": "highlight_function_star",
-      "targetTime": 6.661105723325086
+      "targetTime": 6.793436269908652
     },
     {
       "name": "highlight_yields",
-      "targetTime": 11.21933304755884
+      "targetTime": 11.113468610291992
     },
     {
       "name": "reset_selection",
-      "targetTime": 15.97361000098263
+      "targetTime": 15.867745563715783
     },
     {
       "name": "highlight_first_yield",
-      "targetTime": 19.688970810830043
+      "targetTime": 19.583106373563194
     },
     {
       "name": "highlight_second_yield",
-      "targetTime": 21.5613182151603
+      "targetTime": 21.45545377789345
     },
     {
       "name": "reset_all_selections",
-      "targetTime": 25.57714156530162
+      "targetTime": 25.47127712803477
     },
     {
       "name": "edit_code",
-      "targetTime": 34.85569399031676
-    },
-    {
-      "name": "remove_second_card",
-      "targetTime": 35.0670342362556
+      "targetTime": 32.93690106485511
     },
     {
       "name": "scale_first_card",
-      "targetTime": 36.0670342362556
+      "targetTime": 35.273050956754226
     },
     {
       "name": "show_film_tape",
-      "targetTime": 42.125351379047046
+      "targetTime": 40.28595678153553
     },
     {
       "name": "fade_in_code_components",
-      "targetTime": 43.513264969788324
+      "targetTime": 41.67387037227681
     },
     {
       "name": "end",
-      "targetTime": 50.42770833056865
+      "targetTime": 48.588313733057134
     }
   ],
   "seed": 2361819194

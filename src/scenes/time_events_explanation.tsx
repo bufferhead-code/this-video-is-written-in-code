@@ -115,6 +115,8 @@ export default makeScene2D(function* (view) {
   );
 
   // Video is already set to play automatically
+  // play video
+  video().play();
 
   // Wait a bit for video to play
   yield* waitUntil('zoom_to_bottom');
@@ -126,8 +128,6 @@ export default makeScene2D(function* (view) {
   );
 
 
-  // play video
-  video().play();
   yield* waitUntil('wait_for_video');
 
   // Wait for zoom effect

@@ -61,6 +61,7 @@ export default makeScene2D(function* (view) {
       x={xValue}
       y={yValue}
       scale={0}
+      zIndex={100}
     />
   );
 
@@ -69,14 +70,14 @@ export default makeScene2D(function* (view) {
   view.add(
     <Line
       ref={topArrowRef}
-      stroke={'#4ecdc4'}
-      lineWidth={3}
+      stroke={'#666666'}
+      lineWidth={8}
       startArrow
       endArrow
-      arrowSize={8}
+      arrowSize={20}
       points={[
-        [0, -400], // top of card
-        [0, -30]   // top of circle
+        [0, -350], // top of card with padding
+        [0, -50]   // top of circle with padding
       ]}
       opacity={0}
     />
@@ -88,14 +89,14 @@ export default makeScene2D(function* (view) {
   view.add(
     <Line
       ref={rightArrowRef}
-      stroke={'#4ecdc4'}
-      lineWidth={3}
+      stroke={'#666666'}
+      lineWidth={8}
       startArrow
       endArrow
-      arrowSize={8}
+      arrowSize={20}
       points={[
-        [30, 0],   // right of circle
-        [500, 0]   // right of card
+        [50, 0],   // right of circle with padding
+        [450, 0]   // right of card with padding
       ]}
       opacity={0}
     />
@@ -107,14 +108,14 @@ export default makeScene2D(function* (view) {
   view.add(
     <Line
       ref={bottomArrowRef}
-      stroke={'#4ecdc4'}
-      lineWidth={3}
+      stroke={'#666666'}
+      lineWidth={8}
       startArrow
       endArrow
-      arrowSize={8}
+      arrowSize={20}
       points={[
-        [0, 30],   // bottom of circle
-        [0, 400]   // bottom of card
+        [0, 50],   // bottom of circle with padding
+        [0, 350]   // bottom of card with padding
       ]}
       opacity={0}
     />
@@ -126,14 +127,14 @@ export default makeScene2D(function* (view) {
   view.add(
     <Line
       ref={leftArrowRef}
-      stroke={'#4ecdc4'}
-      lineWidth={3}
+      stroke={'#666666'}
+      lineWidth={8}
       startArrow
       endArrow
-      arrowSize={8}
+      arrowSize={20}
       points={[
-        [-500, 0], // left of card
-        [-30, 0]   // left of circle
+        [-450, 0], // left of card with padding
+        [-50, 0]   // left of circle with padding
       ]}
       opacity={0}
     />
@@ -147,12 +148,12 @@ export default makeScene2D(function* (view) {
     <Line
       ref={xAxisArrowRef}
       stroke={'#ff4757'}
-      lineWidth={4}
+      lineWidth={8}
       endArrow
-      arrowSize={12}
+      arrowSize={20}
       points={[
-        [0, 0],
-        [150, 0]
+        [50, 0],
+        [200, 0]
       ]}
       opacity={0}
     />
@@ -163,12 +164,12 @@ export default makeScene2D(function* (view) {
     <Line
       ref={yAxisArrowRef}
       stroke={'#2ed573'}
-      lineWidth={4}
+      lineWidth={8}
       endArrow
-      arrowSize={12}
+      arrowSize={20}
       points={[
-        [0, 0],
-        [0, 150]
+        [0, 60],
+        [0, 210]
       ]}
       opacity={0}
     />
@@ -182,7 +183,7 @@ export default makeScene2D(function* (view) {
       fontSize={32}
       fill={'#ff4757'}
       fontWeight={700}
-      position={[180, 0]}
+      position={[230, 0]}
       opacity={0}
     />
   );
@@ -194,7 +195,7 @@ export default makeScene2D(function* (view) {
       fontSize={32}
       fill={'#2ed573'}
       fontWeight={700}
-      position={[0, 180]}
+      position={[0, 250]}
       opacity={0}
     />
   );
@@ -231,19 +232,10 @@ export default makeScene2D(function* (view) {
 
   yield* waitUntil('show_distance_arrows');
 
-  // 3. Show distance indicators
+  // 3. Show distance indicators sequentially
   yield* fadeIn(topArrowRef(), { duration: 0.6 });
-
-  yield* waitUntil('right_arrow');
-
   yield* fadeIn(rightArrowRef(), { duration: 0.6 });
-
-  yield* waitUntil('bottom_arrow');
-
   yield* fadeIn(bottomArrowRef(), { duration: 0.6 });
-
-  yield* waitUntil('left_arrow');
-
   yield* fadeIn(leftArrowRef(), { duration: 0.6 });
 
   yield* waitUntil('fade_distance_arrows');

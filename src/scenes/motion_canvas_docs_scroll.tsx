@@ -1,5 +1,5 @@
 import { makeScene2D } from '@motion-canvas/2d';
-import { waitFor, all, delay, waitUntil } from '@motion-canvas/core';
+import { waitFor, all, delay, waitUntil, fadeTransition } from '@motion-canvas/core';
 import { createRef } from '@motion-canvas/core/lib/utils';
 import { Img, Rect, Circle, Txt } from '@motion-canvas/2d/lib/components';
 import { Browser } from '../components/Browser';
@@ -24,6 +24,7 @@ export default makeScene2D(function* (view) {
     screenshotSrc: motionCanvasDocs,
     url: 'https://motioncanvas.io/docs/',
     position: [0, -180],
+    opacity: 0,
   });
 
   // Create CodeCard with signal code
@@ -135,6 +136,8 @@ export default makeScene2D(function* (view) {
     />
   );
 
+  yield* fadeTransition(1);
+
   // Slide in browser from bottom
   yield* slideInBottom(browser, { duration: 1, distance: 300 });
 
@@ -144,35 +147,26 @@ export default makeScene2D(function* (view) {
   // Fade out browser
   yield* all(
     browser.position([0, -10000], 2.5),
-    delay(1, fadeOut(browser, { duration: 1 }))
-  );
-
-  yield* waitFor(0.5);
-
-  // Show both logo parts appearing together
-  yield* all(
+    delay(1, fadeOut(browser, { duration: 1 })),
+    delay(1.5,
     zoomIn(logoColoredRef(), {
-      duration: 1.5,
+      duration: 0.5,
       fromScale: 0,
       toScale: 1,
       overshoot: true
-    }),
+    })),
+    delay(1.5,
     zoomIn(logoWhiteRef(), {
-      duration: 1.5,
+      duration: 0.5,
       fromScale: 0,
       toScale: 1,
       overshoot: true
-    })
+    }))
   );
-
-  yield* waitFor(0.5);
-
   // Fade out only the colored parts of the logo
   yield* fadeOut(logoColoredRef(), {
-    duration: 1,
+    duration: 0.5,
   });
-
-  yield* waitFor(1);
 
   // Move white logo to top-left and scale up
   yield* all(
@@ -180,29 +174,25 @@ export default makeScene2D(function* (view) {
     logoWhiteRef().scale(2.5, 1),
   );
 
-  yield* waitFor(0.5);
-
   yield* waitUntil('event');
 
   // Animate circles and numbers appearing one by one
   for (let i = 0; i < 5; i++) {
     yield* all(
       zoomIn(circleRefs[i](), {
-        duration: 0.2,
+        duration: 0.15,
         fromScale: 0,
         toScale: 1,
         overshoot: true
       }),
       zoomIn(numberRefs[i](), {
-        duration: 0.2,
+        duration: 0.15,
         fromScale: 0,
         toScale: 1,
         overshoot: true
       })
     );
   }
-
-  yield* waitFor(1);
 
   // Zoom into fourth circle (index 3) for "Signals"
   yield* all(

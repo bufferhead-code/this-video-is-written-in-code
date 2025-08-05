@@ -3,115 +3,115 @@
   "timeEvents": [
     {
       "name": "remotion_comparison",
-      "targetTime": 1.9
+      "targetTime": 3.120310332060707
     },
     {
       "name": "remotion_frame_based",
-      "targetTime": 2.5
+      "targetTime": 3.98213936882469
     },
     {
       "name": "remotion_showcase",
-      "targetTime": 3.1
+      "targetTime": 5.1151484793799415
     },
     {
       "name": "frame_based_example",
-      "targetTime": 4.6
+      "targetTime": 8.92017910660572
     },
     {
       "name": "frame_calculation",
-      "targetTime": 5.3999999999999995
+      "targetTime": 11.754029660040233
     },
     {
       "name": "transform_example",
-      "targetTime": 5.6
+      "targetTime": 13.496950769542277
     },
     {
       "name": "preview_animate",
-      "targetTime": 6.199999999999999
+      "targetTime": 16.14950339703136
     },
     {
       "name": "messy_process",
-      "targetTime": 8.2
+      "targetTime": 26.62621846226532
     },
     {
       "name": "brain_mess_meme",
-      "targetTime": 9.1
+      "targetTime": 35.357711972616606
     },
     {
       "name": "motion_canvas_intro",
-      "targetTime": 9.9
+      "targetTime": 36.1577119726166
     },
     {
       "name": "sequential_order",
-      "targetTime": 10.5
+      "targetTime": 37.28604556465822
     },
     {
       "name": "motion_canvas_example",
-      "targetTime": 11.1
+      "targetTime": 38.722963378600234
     },
     {
       "name": "move_position_example",
-      "targetTime": 11.7
+      "targetTime": 40.29079571092424
     },
     {
       "name": "motion_canvas_code",
-      "targetTime": 12.7
+      "targetTime": 41.29079571092424
     },
     {
       "name": "add_preview",
-      "targetTime": 13.2
+      "targetTime": 42.26302308080214
     },
     {
       "name": "preview_setup",
-      "targetTime": 14.2
+      "targetTime": 43.26302308080214
     },
     {
       "name": "animate_preview",
-      "targetTime": 14.2
+      "targetTime": 46.35354081831987
     },
     {
       "name": "wait_second",
-      "targetTime": 15.8
+      "targetTime": 49.45438226119913
     },
     {
       "name": "move_back",
-      "targetTime": 17.1
+      "targetTime": 51.020886816476754
     },
     {
       "name": "comparison_analysis",
-      "targetTime": 17.900000000000002
+      "targetTime": 51.82088681647676
     },
     {
       "name": "remove_preview",
-      "targetTime": 17.900000000000002
+      "targetTime": 51.82088681647676
     },
     {
       "name": "add_remotion_code",
-      "targetTime": 19.45000000000001
+      "targetTime": 53.67479551986353
     },
     {
       "name": "fade_out_comparison",
-      "targetTime": 20.25000000000001
+      "targetTime": 56.42448674005247
     },
     {
       "name": "cross_out_remotion",
-      "targetTime": 21.25000000000001
+      "targetTime": 58.7242808868451
     },
     {
       "name": "gray_out_remotion",
-      "targetTime": 22.45000000000001
+      "targetTime": 59.9242808868451
     },
     {
       "name": "motion_canvas_crown",
-      "targetTime": 23.25000000000001
+      "targetTime": 61.03754062725915
     },
     {
       "name": "crown_complete",
-      "targetTime": 24.45000000000001
+      "targetTime": 62.23754062725915
     },
     {
       "name": "scene_end",
-      "targetTime": 24.45000000000001
+      "targetTime": 65.75433349951315
     }
   ],
   "seed": 3631563773

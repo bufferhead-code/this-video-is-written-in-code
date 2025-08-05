@@ -200,8 +200,6 @@ export default makeScene2D(function* (view) {
   );
 
   yield* waitUntil('edit_code');
-  yield* codeCardCode1Ref().code.edit(0)`function* generator(i) {\n  // some code...\n  yield i;\n  // some more code...\n  yield i + 10;\n}`;
-  yield* waitUntil('remove_second_card');
 
   // reset to default
   yield* codeCardCode1Ref().selection(DEFAULT, 0.5);
@@ -209,10 +207,12 @@ export default makeScene2D(function* (view) {
   // remove the second card from the column layout
   yield* columnLayoutRef().removeByIndex(1, 0.5);
 
-  yield* waitUntil('scale_first_card');
-
   // scale up the first card
   yield* codeCard1Ref().scale(1.5, 0.5);
+
+  yield* waitUntil('scale_first_card');
+  yield* codeCardCode1Ref().code.edit(0)`function* generator(i) {\n  // some code...\n  yield i;\n  // some more code...\n  yield i + 10;\n}`;
+
 
   yield* waitUntil('show_film_tape');
 

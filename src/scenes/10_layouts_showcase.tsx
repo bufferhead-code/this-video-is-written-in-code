@@ -51,18 +51,13 @@ export default makeScene2D(function* (view) {
     />
   );
 
-  // CodeCard showing Layout code
+  // CodeCard showing Layout code - start with simple Rect
   view.add(
     <CodeCard
       ref={codeCardRef}
       codeRef={codeRef}
-      code={`<Layout
-  alignItems={'center'}
-  justifyContent={'center'}
-  gap={10}
-  direction={'column'}
->
-</Layout>`}
+      code={`<Rect>
+</Rect>`}
       width={800}
       opacity={0}
     />
@@ -106,46 +101,65 @@ export default makeScene2D(function* (view) {
     browserRef().filters.blur(10, 0.8)
   );
 
-  yield* waitUntil('highlight_align');
+  yield* waitUntil('add_layout_property');
 
-  // 5. Highlight attributes one by one
-  // Highlight alignItems with value
+  // 5. Add layout property to Rect
+  yield* codeRef().code.replace(
+    codeRef().findFirstRange('<Rect>'),
+    '<Rect\n  layout={true}>',
+    0.6
+  );
+
+  yield* waitUntil('transform_to_layout');
+
+  // 6. Transform Rect to Layout
+  yield* all(
+    codeRef().code.replace(
+      codeRef().findFirstRange('Rect'),
+      'Layout',
+      0.6
+    ),
+    codeRef().code.replace(
+      codeRef().findFirstRange('</Rect>'),
+      '</Layout>',
+      0.6
+    )
+  );
+
+  yield* waitUntil('add_layout_attributes');
+
+  // 7. Add all layout attributes at once
+  yield* codeRef().code.replace(
+    codeRef().findFirstRange('layout={true}'),
+    'layout={true}\n  alignItems={\'center\'}\n  justifyContent={\'center\'}\n  gap={10}\n  direction={\'column\'}',
+    0.6
+  );
+
+  yield* waitUntil('highlight_alignItems');
+
+  // 8. Highlight alignItems
   const alignItemsRange = codeRef().findFirstRange("alignItems={'center'}");
   yield* codeRef().selection(alignItemsRange, 0.5);
-  yield* waitUntil('highlight_justify');
+  yield* waitUntil('highlight_justifyContent');
 
-  // Highlight justifyContent with value
+  // 9. Highlight justifyContent
   const justifyContentRange = codeRef().findFirstRange("justifyContent={'center'}");
   yield* codeRef().selection(justifyContentRange, 0.5);
   yield* waitUntil('highlight_gap');
 
-  // Highlight gap with value
+  // 10. Highlight gap
   const gapRange = codeRef().findFirstRange('gap={10}');
   yield* codeRef().selection(gapRange, 0.5);
   yield* waitUntil('highlight_direction');
 
-  // Highlight direction with value
+  // 11. Highlight direction
   const directionRange = codeRef().findFirstRange("direction={'column'}");
   yield* codeRef().selection(directionRange, 0.5);
+
   yield* waitUntil('clear_selection');
 
   // Clear selection
   yield* codeRef().selection(DEFAULT, 0.3);
-
-  yield* waitUntil('unblur_browser');
-
-  // 6. Unblur browser
-  yield* browserRef().filters.blur(0, 0.8);
-
-  yield* waitUntil('show_video');
-
-  // 7. Fade out browser and codecard, zoom in video
-  yield* all(
-    browserRef().opacity(0, 0.8),
-    codeCardRef().opacity(0, 0.8),
-    videoRef().opacity(1, 0.8),
-    videoRef().scale(1, 1.2)
-  );
 
   yield* waitUntil('scene_end');
 });

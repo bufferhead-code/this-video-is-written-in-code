@@ -3,51 +3,51 @@
   "timeEvents": [
     {
       "name": "change_to_waituntil",
-      "targetTime": 3.3160709549795055
+      "targetTime": 3.277525000028679
     },
     {
       "name": "remove_code_card",
-      "targetTime": 6.32621780744814
+      "targetTime": 6.287671852497313
     },
     {
       "name": "zoom_to_bottom",
-      "targetTime": 9.162233790708171
+      "targetTime": 9.123687835757345
     },
     {
       "name": "wait_for_video",
-      "targetTime": 15.03609273280522
+      "targetTime": 14.997546777854392
     },
     {
       "name": "zoom_out",
-      "targetTime": 15.03609273280522
+      "targetTime": 14.997546777854392
     },
     {
       "name": "add_zoom_code_card",
-      "targetTime": 19.468353260754128
+      "targetTime": 19.4298073058033
     },
     {
       "name": "fade_in_workplace",
-      "targetTime": 23.73746654021395
+      "targetTime": 23.698920585263124
     },
     {
       "name": "slide_in_zoom_code",
-      "targetTime": 25.73746654021395
+      "targetTime": 25.698920585263124
     },
     {
       "name": "reset_highlight",
-      "targetTime": 27.037466540213952
+      "targetTime": 26.998920585263125
     },
     {
       "name": "remove_blur",
-      "targetTime": 27.950771984771354
+      "targetTime": 27.912226029820527
     },
     {
       "name": "zoom_back",
-      "targetTime": 31.875702823177576
+      "targetTime": 31.83715686822675
     },
     {
       "name": "end",
-      "targetTime": 32.875702823177576
+      "targetTime": 32.83715686822675
     }
   ],
   "seed": 1234567890
