@@ -1,5 +1,54 @@
 {
   "version": 0,
-  "timeEvents": [],
+  "timeEvents": [
+    {
+      "name": "change_to_waituntil",
+      "targetTime": 3.3160709549795055
+    },
+    {
+      "name": "remove_code_card",
+      "targetTime": 6.32621780744814
+    },
+    {
+      "name": "zoom_to_bottom",
+      "targetTime": 9.162233790708171
+    },
+    {
+      "name": "wait_for_video",
+      "targetTime": 15.03609273280522
+    },
+    {
+      "name": "zoom_out",
+      "targetTime": 15.03609273280522
+    },
+    {
+      "name": "add_zoom_code_card",
+      "targetTime": 19.468353260754128
+    },
+    {
+      "name": "fade_in_workplace",
+      "targetTime": 23.73746654021395
+    },
+    {
+      "name": "slide_in_zoom_code",
+      "targetTime": 25.73746654021395
+    },
+    {
+      "name": "reset_highlight",
+      "targetTime": 27.037466540213952
+    },
+    {
+      "name": "remove_blur",
+      "targetTime": 27.950771984771354
+    },
+    {
+      "name": "zoom_back",
+      "targetTime": 31.875702823177576
+    },
+    {
+      "name": "end",
+      "targetTime": 32.875702823177576
+    }
+  ],
   "seed": 1234567890
 }

@@ -1,5 +1,5 @@
 import { makeScene2D } from '@motion-canvas/2d';
-import { waitFor } from '@motion-canvas/core/lib/flow';
+import { waitFor, waitUntil } from '@motion-canvas/core/lib/flow';
 import { all } from '@motion-canvas/core/lib/flow';
 import { createRef } from '@motion-canvas/core/lib/utils';
 import { Img, Rect } from '@motion-canvas/2d/lib/components';
@@ -10,6 +10,7 @@ import { Browser } from '../components/Browser';
 import motionCanvasLogoColored from '../images/motion-canvas-logo-dark.svg';
 import aarthificialAvatar from '../images/aarthificial-avatar.jpg';
 import motionCanvasDocsQuickstart from '../images/motion_canvas_docs_quickstart.jpeg';
+import { fadeTransition } from '@motion-canvas/core';
 
 export default makeScene2D(function* (view) {
   const backgroundRef = createRef<Rect>();
@@ -71,6 +72,8 @@ export default makeScene2D(function* (view) {
     />
   );
 
+  yield* fadeTransition(1);
+
   // Single zoomIn animation
   yield* zoomIn(logoRef(), {
     duration: 1.5,
@@ -79,7 +82,7 @@ export default makeScene2D(function* (view) {
     overshoot: true
   });
 
-  yield* waitFor(1.0);
+  yield* waitUntil('show_aarthificial');
 
   // Show aarthificial YouTube channel card with blur effect on logo container
   yield* all(
@@ -87,7 +90,7 @@ export default makeScene2D(function* (view) {
     logoContainerRef().filters.blur(10, 0.5),
   );
 
-  yield* waitFor(1.5);
+  yield* waitUntil('hide_aarthificial');
 
   yield* aarthificialCardRef().opacity(0, 0.8),
 
@@ -98,5 +101,5 @@ export default makeScene2D(function* (view) {
 
   yield* logoContainerRef().filters.blur(0, 0.5),
 
-  yield* waitFor(1.0);
+  yield* waitUntil('end');
 }); 

@@ -1,5 +1,58 @@
 {
   "version": 1,
-  "timeEvents": [],
+  "timeEvents": [
+    {
+      "name": "center_generator",
+      "targetTime": 2.499999999999999
+    },
+    {
+      "name": "highlight_function_star",
+      "targetTime": 6.661105723325086
+    },
+    {
+      "name": "highlight_yields",
+      "targetTime": 11.21933304755884
+    },
+    {
+      "name": "reset_selection",
+      "targetTime": 15.97361000098263
+    },
+    {
+      "name": "highlight_first_yield",
+      "targetTime": 19.688970810830043
+    },
+    {
+      "name": "highlight_second_yield",
+      "targetTime": 21.5613182151603
+    },
+    {
+      "name": "reset_all_selections",
+      "targetTime": 25.57714156530162
+    },
+    {
+      "name": "edit_code",
+      "targetTime": 34.85569399031676
+    },
+    {
+      "name": "remove_second_card",
+      "targetTime": 35.0670342362556
+    },
+    {
+      "name": "scale_first_card",
+      "targetTime": 36.0670342362556
+    },
+    {
+      "name": "show_film_tape",
+      "targetTime": 42.125351379047046
+    },
+    {
+      "name": "fade_in_code_components",
+      "targetTime": 43.513264969788324
+    },
+    {
+      "name": "end",
+      "targetTime": 50.42770833056865
+    }
+  ],
   "seed": 2361819194
 }

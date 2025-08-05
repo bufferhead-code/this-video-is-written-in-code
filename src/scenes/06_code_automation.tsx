@@ -3,7 +3,7 @@ import { fadeTransition } from '@motion-canvas/core';
 import { all, waitFor, waitUntil } from '@motion-canvas/core/lib/flow';
 import { createRef } from '@motion-canvas/core/lib/utils';
 import { Vector2 } from '@motion-canvas/core/lib/types';
-import { Rect, Node, Img } from '@motion-canvas/2d/lib/components';
+import { Rect, Node, Img, Video } from '@motion-canvas/2d/lib/components';
 import { MemeImage } from '../components/MemeImage';
 import { RedButtonMeme } from '../components/RedButtonMeme';
 import { Logo } from '../components/Logo';
@@ -15,6 +15,8 @@ import { COLORS } from '../utils/colors';
 import manimLogo from '../images/manim-logo.svg';
 import manimScreenshot from '../images/manim_screenshot.png';
 import aarthificialAvatar from '../images/aarthificial-avatar.jpg';
+import gatesOfHeavenVideo from '../images/gates_of_heaven.mp4';
+import curlyBracesLogo from '../images/curly-braces.svg';
 import { TextMarker } from '../components/TextMarker';
 import { YoutubeChannelCard } from '../components/YouTubeChannelCard';
 import threeBlueBrownAvatar from '../images/3blue1brown-logo.svg';
@@ -67,11 +69,11 @@ export default makeScene2D(function* (view) {
     overshoot: true,
   });
 
-  yield* waitFor(1.0); // Let the logo settle
+  yield* waitUntil('github_search');
 
   // Cross out the manim logo
 
-  yield* waitFor(0.5); // Brief pause after cross-out
+  yield* waitUntil('manim_website');
 
   // Hide pseudo-code and show browser with manim website
   yield* all(
@@ -85,12 +87,12 @@ export default makeScene2D(function* (view) {
     }),
   );
 
-  yield* waitFor(0.5); // When meme is mentioned
+  yield* waitUntil('zoom_browser');
 
   // zoom in to manim browser
   yield* all(browserRef().scale(2, 1), browserRef().position([0, 100], 1));
 
-  yield* waitFor(0.5); // When meme is mentioned
+  yield* waitUntil('3blue1brown_intro');
 
   // add youtube channel cards
   const threeBlueBrownCardRef = createRef<YoutubeChannelCard>();
@@ -125,7 +127,7 @@ export default makeScene2D(function* (view) {
     />,
   );
 
-  yield* waitFor(1.5); // When meme is mentioned
+  yield* waitUntil('show_3blue1brown');
 
   // animate in youtube channel cards
   yield* all(
@@ -133,7 +135,7 @@ export default makeScene2D(function* (view) {
     browserRef().filters.blur(10, 0.5),
   );
 
-  yield* waitFor(1.5);
+  yield* waitUntil('mathematical_animations');
 
   // unblur image, fade out youtube channel cards
   yield* all(
@@ -159,11 +161,11 @@ export default makeScene2D(function* (view) {
 
   yield* textMarkerRef().animateMarkerPen(0);
 
-  yield* waitFor(1.5);
+  yield* waitUntil('python_hate_start');
 
-  yield* textMarkerRef().opacity(0, 1);
+  yield* textMarkerRef().opacity(0, 0.5);
 
-  yield* waitFor(1.5);
+  yield* waitUntil('python_written');
 
   // add a red text marker
   const textMarkerRef2 = createRef<TextMarker>();
@@ -181,7 +183,51 @@ export default makeScene2D(function* (view) {
 
   yield* textMarkerRef2().animateMarkerPen(0);
 
-  yield* waitFor(1.5);
+  yield* waitUntil('python_marker');
+
+  // Add video background over the entire scene
+  const videoBackgroundRef = createRef<Video>();
+  view.add(
+    <Video
+      ref={videoBackgroundRef}
+      src={gatesOfHeavenVideo}
+      width={'100%'}
+      height={'100%'}
+      opacity={0}
+      zIndex={200}
+      play
+    />,
+  );
+
+  // Fade in the video background
+  yield* videoBackgroundRef().opacity(1, 1);
+
+  yield* waitUntil('video_background_ready');
+
+  // Add Logo component with curly braces SVG and "{}" text that slides in from bottom
+  const codeLogoRef = createRef<Logo>();
+  view.add(
+    <Logo
+      ref={codeLogoRef}
+      src={curlyBracesLogo}
+      textSize="3xl"
+      textFontSize={120}
+      textColorType="primary"
+      containerSize={400}
+      opacity={0}
+      y={800} // Start below the screen
+      zIndex={300}
+    />,
+  );
+
+  // Animate the Logo component sliding in from bottom and show the text
+  yield* all(
+    codeLogoRef().opacity(1, 0.8),
+    codeLogoRef().position.y(0, 1.2), // Slide to center
+    codeLogoRef().showText(0.8), // Show the "{}" text
+  );
+
+  yield* waitUntil('code_logo_ready');
 
   // Add red button meme for automation concept
   const redButtonMemeRef = createRef<RedButtonMeme>();
@@ -190,6 +236,7 @@ export default makeScene2D(function* (view) {
       ref={redButtonMemeRef}
       textSize="xl"
       textColorType="primary"
+      zIndex={300}
       opacity={0}
       scale={0}
     />,
@@ -197,9 +244,9 @@ export default makeScene2D(function* (view) {
 
   // Hide browser and show red button meme
   yield* all(
-    browserRef().filters.blur(10, 0.8),
+    browserRef().filters.blur(10, 0.7),
     zoomIn(redButtonMemeRef(), {
-      duration: 1.0,
+      duration: 0.7,
       fromScale: 0,
       toScale: 1,
     }),
@@ -207,7 +254,7 @@ export default makeScene2D(function* (view) {
 
   // Animate typewriter text about automation
   yield* redButtonMemeRef().typewrite('Erase Python', 0.5);
-  yield* waitFor(1);
+  yield* waitUntil('erase_python_complete');
 
   yield* waitUntil('end_scene_6'); // End of scene 6
 });

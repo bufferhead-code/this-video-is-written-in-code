@@ -1,5 +1,30 @@
 {
   "version": 1,
-  "timeEvents": [],
+  "timeEvents": [
+    {
+      "name": "start_logo_fade",
+      "targetTime": 1
+    },
+    {
+      "name": "logo_fade_start",
+      "targetTime": 2.26
+    },
+    {
+      "name": "logo_scale_up",
+      "targetTime": 2.76
+    },
+    {
+      "name": "show_numbers",
+      "targetTime": 3.5429167797564105
+    },
+    {
+      "name": "zoom_to_scene",
+      "targetTime": 7.337039582264964
+    },
+    {
+      "name": "scene_end",
+      "targetTime": 12.42962154424803
+    }
+  ],
   "seed": 196571940
 }

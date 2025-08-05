@@ -215,10 +215,11 @@ export default makeScene2D(function* (view) {
   yield* signalsTextRef().typewrite("Signals", 0.5);
 
   // Fade out number 4 and zoom in signals icon
+  yield* fadeOut(numberRefs[3](), {
+    duration: 0.8,
+  });
+
   yield* all(
-    fadeOut(numberRefs[3](), {
-      duration: 0.8,
-    }),
     zoomIn(signalsIconRef(), {
       fromScale: 0,
       toScale: 1,

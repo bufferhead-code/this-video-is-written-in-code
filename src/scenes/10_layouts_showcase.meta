@@ -1,5 +1,50 @@
 {
   "version": 1,
-  "timeEvents": [],
+  "timeEvents": [
+    {
+      "name": "cross_out_css",
+      "targetTime": 1.5
+    },
+    {
+      "name": "show_browser",
+      "targetTime": 3.1951287200332166
+    },
+    {
+      "name": "show_code",
+      "targetTime": 11.513467899614518
+    },
+    {
+      "name": "highlight_align",
+      "targetTime": 19.748923856396477
+    },
+    {
+      "name": "highlight_justify",
+      "targetTime": 21.003042983831683
+    },
+    {
+      "name": "highlight_gap",
+      "targetTime": 22.272396841114066
+    },
+    {
+      "name": "highlight_direction",
+      "targetTime": 23.64839380732668
+    },
+    {
+      "name": "clear_selection",
+      "targetTime": 27.503359427227213
+    },
+    {
+      "name": "unblur_browser",
+      "targetTime": 27.803359427227214
+    },
+    {
+      "name": "show_video",
+      "targetTime": 28.603359427227215
+    },
+    {
+      "name": "scene_end",
+      "targetTime": 30.493626185975447
+    }
+  ],
   "seed": 617168422
 }

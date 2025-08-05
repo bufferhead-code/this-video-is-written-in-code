@@ -5,6 +5,7 @@ export const COLORS = {
   grayBg: '#171717',
   grayBgCard: '#202020',
   grayCardBorder: '#282828',
+  lightGrayCard: '#2d2d2f',
 } as const;
 
 export type ColorType = keyof typeof COLORS | string;

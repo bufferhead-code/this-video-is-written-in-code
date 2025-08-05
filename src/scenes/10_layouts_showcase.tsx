@@ -1,7 +1,8 @@
 import { makeScene2D } from '@motion-canvas/2d';
-import { all, waitFor } from '@motion-canvas/core/lib/flow';
+import { all, waitFor, waitUntil } from '@motion-canvas/core/lib/flow';
 import { createRef } from '@motion-canvas/core/lib/utils';
 import { Rect, Code, Video, Img } from '@motion-canvas/2d/lib/components';
+import { fadeTransition } from '@motion-canvas/core';
 import { Browser } from '../components/Browser';
 import { Logo } from '../components/Logo';
 import { CodeCard } from '../components/CodeCard';
@@ -25,6 +26,8 @@ export default makeScene2D(function* (view) {
   view.add(
     <Background ref={backgroundRef} />
   );
+
+  yield* fadeTransition(1);
 
   // Logo component - slideInBottom will handle initial positioning
   view.add(
@@ -82,12 +85,12 @@ export default makeScene2D(function* (view) {
   // 1. Slide logo in from bottom
   yield* slideInBottom(logoRef());
 
-  yield* waitFor(1);
+  yield* waitUntil('cross_out_css');
 
   // 2. Cross out the logo
   yield* logoRef().crossOut(0.8);
 
-  yield* waitFor(0.5);
+  yield* waitUntil('show_browser');
 
   // 3. Fade out logo and slide in browser simultaneously
   yield* all(
@@ -95,7 +98,7 @@ export default makeScene2D(function* (view) {
     slideInBottom(browserRef())
   );
 
-  yield* waitFor(1);
+  yield* waitUntil('show_code');
 
   // 4. Slide in CodeCard and blur browser
   yield* all(
@@ -103,38 +106,38 @@ export default makeScene2D(function* (view) {
     browserRef().filters.blur(10, 0.8)
   );
 
-  yield* waitFor(1);
+  yield* waitUntil('highlight_align');
 
   // 5. Highlight attributes one by one
   // Highlight alignItems with value
   const alignItemsRange = codeRef().findFirstRange("alignItems={'center'}");
   yield* codeRef().selection(alignItemsRange, 0.5);
-  yield* waitFor(1);
+  yield* waitUntil('highlight_justify');
 
   // Highlight justifyContent with value
   const justifyContentRange = codeRef().findFirstRange("justifyContent={'center'}");
   yield* codeRef().selection(justifyContentRange, 0.5);
-  yield* waitFor(1);
+  yield* waitUntil('highlight_gap');
 
   // Highlight gap with value
   const gapRange = codeRef().findFirstRange('gap={10}');
   yield* codeRef().selection(gapRange, 0.5);
-  yield* waitFor(1);
+  yield* waitUntil('highlight_direction');
 
   // Highlight direction with value
   const directionRange = codeRef().findFirstRange("direction={'column'}");
   yield* codeRef().selection(directionRange, 0.5);
-  yield* waitFor(1);
+  yield* waitUntil('clear_selection');
 
   // Clear selection
   yield* codeRef().selection(DEFAULT, 0.3);
 
-  yield* waitFor(1);
+  yield* waitUntil('unblur_browser');
 
   // 6. Unblur browser
   yield* browserRef().filters.blur(0, 0.8);
 
-  yield* waitFor(1);
+  yield* waitUntil('show_video');
 
   // 7. Fade out browser and codecard, zoom in video
   yield* all(
@@ -144,5 +147,5 @@ export default makeScene2D(function* (view) {
     videoRef().scale(1, 1.2)
   );
 
-  yield* waitFor(2);
+  yield* waitUntil('scene_end');
 });

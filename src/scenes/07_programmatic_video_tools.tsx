@@ -13,12 +13,13 @@ import manimLogo from '../images/manim-logo.svg';
 import remotionLogo from '../components/media/remotion-logo.svg';
 import remotionScreenshot from '../images/remotion_screenshot.png';
 import youtubeThumbnail from '../images/youtube-video-thumbnail.png';
+import { Crossout } from '../components/Crossout';
 
 export default makeScene2D(function* (view) {
   const sceneRef = createRef<Rect>();
   const browserRef = createRef<Browser>();
   const youtubeImageRef = createRef<Img>();
-
+  const crossoutRef = createRef<Crossout>();
   view.add(
     <Rect ref={sceneRef} width={'100%'} height={'100%'}>
       <BlueprintBackground width={'100%'} height={'100%'} />
@@ -40,6 +41,7 @@ export default makeScene2D(function* (view) {
         {...MEME_STYLE}
         opacity={0}
       />
+      <Crossout ref={crossoutRef} text="intro" textSize={50} textPosition="above" width={120} textOffset={60} position={[-375, 290]} />
     </Rect>,
   );
 
@@ -75,16 +77,16 @@ export default makeScene2D(function* (view) {
 
   yield* zoomIn(secondManimLogoRef());
   yield* secondManimLogoRef().typewriteText('Manim');
-  yield* waitFor(0.5);
+  yield* waitUntil('manim_cross_out');
   yield* secondManimLogoRef().crossOut();
-  yield* waitFor(0.5);
+  yield* waitUntil('remotion_appear');
   yield* zoomIn(blueLogoRef());
   yield* blueLogoRef().typewriteText('Remotion');
-  yield* waitFor(0.5);
+  yield* waitUntil('logos_merge');
   yield* secondManimLogoRef().opacity(0, 0.5);
   yield* all(gapSignal(0, 0.5), layoutRef().width(0, 0.5));
 
-  yield* waitFor(1.0);
+  yield* waitUntil('show_remotion_website');
 
   // Hide logos and show browser with remotion website
   yield* all(
@@ -98,12 +100,12 @@ export default makeScene2D(function* (view) {
     }),
   );
 
-  yield* waitFor(0.5);
+  yield* waitUntil('zoom_remotion');
 
   // zoom in to remotion browser
   yield* all(browserRef().scale(2, 1), browserRef().position([0, 100], 1));
 
-  yield* waitFor(2.0);
+  yield* waitUntil('youtube_thumbnail_appear');
 
   // Slide in YouTube video thumbnail from bottom
   yield* browserRef().filters.blur(10, 1);
@@ -112,19 +114,25 @@ export default makeScene2D(function* (view) {
     distance: 300,
   });
 
-  yield* waitFor(2.0);
+  yield* crossoutRef().animateCrossout(1);
+  yield* crossoutRef().animateText(1);
 
-  yield* browserRef().filters.blur(0, 1);
-  yield* youtubeImageRef().opacity(0, 1);
+  yield* waitUntil('primary_use_case');
 
-  yield* waitFor(1.0);
+  yield* all(
+    youtubeImageRef().opacity(0, 1),
+    crossoutRef().opacity(0, 1),
+    browserRef().filters.blur(0, 1)
+  );
+
+  yield* waitUntil('data_driven_videos');
 
   // move the browser down
   yield* all(browserRef().position([0, -2500], 1), browserRef().scale(1.6, 1));
 
-  yield* waitFor(1.0);
+  yield* waitUntil('another_tool');
 
   yield* youtubeImageRef().opacity(0, 1);
 
-  yield* waitFor(1.0);
+  yield* waitUntil('scene_end');
 });

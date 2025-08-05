@@ -1,7 +1,7 @@
 import { makeScene2D } from '@motion-canvas/2d';
-import { all, waitFor } from '@motion-canvas/core/lib/flow';
+import { all, waitFor, waitUntil } from '@motion-canvas/core/lib/flow';
 import { createRef } from '@motion-canvas/core/lib/utils';
-import { createSignal } from '@motion-canvas/core';
+import { createSignal, fadeTransition } from '@motion-canvas/core';
 import { Rect, Circle, Txt, Line, Code } from '@motion-canvas/2d/lib/components';
 import { CodeCard } from '../components/CodeCard';
 import { Background } from '../components/Background';
@@ -32,6 +32,8 @@ export default makeScene2D(function* (view) {
 
   // Background
   view.add(<Background />);
+
+  yield* fadeTransition(1);
 
   // Scene Card (representing a Motion Canvas scene)
   view.add(
@@ -216,37 +218,35 @@ export default makeScene2D(function* (view) {
     duration: 1,
     fromScale: 0,
     toScale: 1,
-    overshoot: true
   });
 
-  yield* waitFor(0.5);
+  yield* waitUntil('show_center_circle');
 
   // 2. Show center circle
   yield* zoomIn(centerCircleRef(), {
     duration: 0.8,
     fromScale: 0,
     toScale: 1,
-    overshoot: true
   });
 
-  yield* waitFor(1);
+  yield* waitUntil('show_distance_arrows');
 
   // 3. Show distance indicators
   yield* fadeIn(topArrowRef(), { duration: 0.6 });
 
-  yield* waitFor(0.3);
+  yield* waitUntil('right_arrow');
 
   yield* fadeIn(rightArrowRef(), { duration: 0.6 });
 
-  yield* waitFor(0.3);
+  yield* waitUntil('bottom_arrow');
 
   yield* fadeIn(bottomArrowRef(), { duration: 0.6 });
 
-  yield* waitFor(0.3);
+  yield* waitUntil('left_arrow');
 
   yield* fadeIn(leftArrowRef(), { duration: 0.6 });
 
-  yield* waitFor(2);
+  yield* waitUntil('fade_distance_arrows');
 
   // 4. Fade out distance indicators
   yield* all(
@@ -256,7 +256,7 @@ export default makeScene2D(function* (view) {
     fadeOut(leftArrowRef(), { duration: 0.5 }),
   );
 
-  yield* waitFor(0.5);
+  yield* waitUntil('show_coordinates');
 
   // 5. Show coordinate system
   yield* all(
@@ -264,19 +264,19 @@ export default makeScene2D(function* (view) {
     fadeIn(xLabelRef(), { duration: 0.8 }),
   );
 
-  yield* waitFor(0.3);
+  yield* waitUntil('show_y_axis');
 
   yield* all(
     fadeIn(yAxisArrowRef(), { duration: 0.8 }),
     fadeIn(yLabelRef(), { duration: 0.8 }),
   );
 
-  yield* waitFor(0.5);
+  yield* waitUntil('show_code_card');
 
   // 6. Show code card
   yield* fadeIn(codeCardRef(), { duration: 0.8 });
 
-  yield* waitFor(1);
+  yield* waitUntil('animate_x_value');
 
   // 6.5. Animate code to show x and y props with synchronized circle movement
   yield* all(
@@ -284,12 +284,12 @@ export default makeScene2D(function* (view) {
     xValue(100, 0.8),
   );
   
-  yield* waitFor(0.5);
+  yield* waitUntil('animate_y_value');
   
   yield* all(
     codeRef().code.insert([0, 15], 0.8)` y={100}`,
     yValue(100, 0.8),
   );
 
-  yield* waitFor(2);
+  yield* waitUntil('scene_end');
 });

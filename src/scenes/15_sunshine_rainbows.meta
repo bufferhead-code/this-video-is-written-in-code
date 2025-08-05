@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "timeEvents": [
+    {
+      "name": "text_appears",
+      "targetTime": 1
+    },
+    {
+      "name": "typewriter_starts",
+      "targetTime": 1.5
+    },
+    {
+      "name": "text_complete",
+      "targetTime": 3.499999999999998
+    },
+    {
+      "name": "text_fade_out",
+      "targetTime": 6.462516243291953
+    },
+    {
+      "name": "video_zoom",
+      "targetTime": 8.445034869712288
+    },
+    {
+      "name": "scene_end",
+      "targetTime": 29.489018199863136
+    }
+  ],
+  "seed": 884066850,
+  "name": "Sunshine & Rainbows",
+  "description": "A scene with rainbow background and typewriter text"
+}

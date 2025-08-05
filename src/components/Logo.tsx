@@ -189,7 +189,7 @@ export class Logo extends Layout {
         new Vector2(halfSize, halfSize),
       ],
       stroke: '#ff0000',
-      lineWidth: 8,
+      lineWidth: 25,
       end: 0,
       zIndex: 10,
     });
@@ -200,7 +200,7 @@ export class Logo extends Layout {
         new Vector2(-halfSize, halfSize),
       ],
       stroke: '#ff0000',
-      lineWidth: 8,
+      lineWidth: 25,
       end: 0,
       zIndex: 10,
     });
@@ -257,7 +257,7 @@ export class Logo extends Layout {
     this.add(this.container);
   }
 
-  public *crossOut(duration: number = 0.8) {
+  public *crossOut(duration: number = 0.5) {
     yield* all(
       this.crossLine1.end(1, duration),
       delay(duration * 0.5, this.crossLine2.end(1, duration)),
@@ -333,7 +333,7 @@ export class Logo extends Layout {
   }
 
   // Typewriter effect for the text
-  public *typewriteText(text: string, duration: number = 1, delay: number = 0) {
+  public *typewriteText(text: string, duration: number = 0.7, delay: number = 0) {
     // Set the text opacity to visible first
     this.styledText.opacity(this.textOpacity());
 

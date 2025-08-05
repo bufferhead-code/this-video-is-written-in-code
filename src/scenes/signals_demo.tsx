@@ -1,7 +1,7 @@
 import { makeScene2D } from '@motion-canvas/2d/lib/scenes';
 import { Layout, Rect, Txt, Code, Img, Node, signal } from '@motion-canvas/2d';
-import { all, Vector2, waitFor, createSignal, SimpleSignal, createRef } from '@motion-canvas/core';
-import { CodeCard } from '../components/CodeCard';
+import { all, Vector2, waitFor, waitUntil, createSignal, SimpleSignal, createRef } from '@motion-canvas/core';
+import { CodeCard, CodeCardInstance } from '../components/CodeCard';
 import { fadeIn, slideInLeft, slideInRight, zoomIn, fadeOut } from '../animation';
 import { DynamicColumnLayout } from '../components/DynamicColumnLayout';
 import { SillyEmoji } from '../components/SillyEmoji';
@@ -16,8 +16,8 @@ export default makeScene2D(function* (view) {
   
   const signalCard = (
     <CodeCard
-      code={`@signal()
-public declare readonly opacity: SimpleSignal<number, this>;`}
+      code={`@vector2Signal()
+public declare readonly position: Vector2Signal<this>;`}
       width={1280}
       opacity={0}
       codeRef={signalCodeRef}
@@ -26,22 +26,22 @@ public declare readonly opacity: SimpleSignal<number, this>;`}
   view.add(signalCard);
 
   yield* fadeIn(signalCard, { duration: 0.8 });
-  yield* waitFor(1);
+  yield* waitUntil('show_opacity_signal');
 
-  // Animate to show position signal
-  yield* signalCodeRef().code(`@signal()
-public declare readonly opacity: SimpleSignal<number, this>;
+  // Animate to show opacity signal
+  yield* signalCodeRef().code(`@vector2Signal()
+public declare readonly position: Vector2Signal<this>;
 
-@vector2Signal()
-public declare readonly position: Vector2Signal<this>;`, 1);
-  yield* waitFor(1);
+@signal()
+public declare readonly opacity: SimpleSignal<number, this>;`, 1);
+  yield* waitUntil('show_scale_signal');
 
   // Animate to show scale signal
-  yield* signalCodeRef().code(`@signal()
-public declare readonly opacity: SimpleSignal<number, this>;
-
-@vector2Signal()
+  yield* signalCodeRef().code(`@vector2Signal()
 public declare readonly position: Vector2Signal<this>;
+
+@signal()
+public declare readonly opacity: SimpleSignal<number, this>;
 
 @vector2Signal('scale')
 public declare readonly scale: Vector2Signal<this>;`, 1);
@@ -101,7 +101,7 @@ public declare readonly scale: Vector2Signal<this>;`, 1);
       height={500}
       alignItems="center"
     />
-  );
+  ) as CodeCardInstance;
 
   leftSide.add([customNodeCard]);
 
@@ -144,7 +144,28 @@ public declare readonly scale: Vector2Signal<this>;`, 1);
   yield* customNodeLayout.addItem(leftSide, 1100);
   yield* waitFor(0.3);
   yield* customNodeLayout.addItem(rightSide, 600);
-  yield* waitFor(2);
+  yield* waitFor(1);
+
+  // Highlight "extends Node"
+  yield* waitUntil('highlight_extends_node');
+  yield* customNodeCard.highlight('extends Node', 0.5);
+  yield* waitFor(1);
+
+  // Highlight the signal decorator
+  yield* waitUntil('highlight_signal_decorator');
+  yield* customNodeCard.highlight('@signal()', 0.5);
+  yield* waitFor(1);
+
+  // Highlight the silliness property
+  yield* waitUntil('highlight_silliness_property');
+  yield* customNodeCard.highlight('@signal()\n  public declare readonly silliness;', 0.5);
+  yield* waitFor(1);
+
+  // Clear highlight
+  yield* customNodeCard.resetHighlight(0.3);
+  yield* waitFor(0.5);
+
+  yield* waitUntil('show_animation_code');
 
   // ==================== PART 3: Replace with Animation Code ====================
   
@@ -160,7 +181,7 @@ public declare readonly scale: Vector2Signal<this>;`, 1);
       opacity={0}
       codeRef={animationCodeRef}
     />
-  );
+  ) as CodeCardInstance;
 
   // Replace the custom node card with animation code
   yield* fadeOut(customNodeCard, { duration: 0.5 });
@@ -171,7 +192,23 @@ public declare readonly scale: Vector2Signal<this>;`, 1);
   // Update title
   codeTitleRef().text("Animating the Signal");
 
+  yield* waitFor(1);
+
+  // Highlight the method call
+  yield* waitUntil('highlight_method_call');
+  yield* animationCodeCard.highlight('emoji().silliness(100, 1)', 0.5);
+  yield* waitFor(1);
+
+  // Highlight the comment
+  yield* waitUntil('highlight_comment');
+  yield* animationCodeCard.highlight('// silliness: 0', 0.5);
+  yield* waitFor(1);
+
+  // Clear highlight
+  yield* animationCodeCard.resetHighlight(0.3);
   yield* waitFor(0.5);
+
+  yield* waitUntil('animate_silliness');
 
   // Animate the silliness signal with counter update in code comment
   yield* all(
@@ -189,6 +226,8 @@ public declare readonly scale: Vector2Signal<this>;`, 1);
 
   // Final fade out
   yield* waitFor(0.5);
+
+  yield* waitUntil('final_silliness_animations');
 
   // change silliness to 10000
   emoji.silliness(10000, 1);

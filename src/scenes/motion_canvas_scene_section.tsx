@@ -1,8 +1,8 @@
 import { makeScene2D } from '@motion-canvas/2d/lib/scenes';
 import { View2D, Layout, Rect, Txt } from '@motion-canvas/2d/lib/components';
 import { ElementCard } from '../components/ElementCard';
-import { all, waitFor } from '@motion-canvas/core';
-import { zoomIn } from '../animation';
+import { all, waitFor, waitUntil, fadeTransition } from '@motion-canvas/core';
+import { fadeIn, zoomIn } from '../animation';
 import { CodeCard } from '../components/CodeCard';
 
 export default makeScene2D(function* (view) {
@@ -10,6 +10,9 @@ export default makeScene2D(function* (view) {
   view.add(
     <Rect width={"100%"} height={"100%"} fill="#1d1d1f" />
   );
+
+  yield* fadeTransition(1);
+
   // Motion Canvas elements to display
   const elements = [
     'Bezier', 'Camera', 'Circle', 'Code', 'CubicBezier', 'Curve', 'Grid', 'Icon', 'Img', 'Knot', 'Latex', 'Layout', 'Line', 'Node', 'Path', 'Polygon', 'QuadBezier', 'Ray', 'Rect', 'SVG', 'Shape', 'Spline', 'Txt', 'Video', 'View2D'
@@ -32,7 +35,6 @@ export default makeScene2D(function* (view) {
   elements.forEach((elementName, index) => {
     const card = new ElementCard({
       elementName,
-      scale: 0,
       opacity: 0,
     });
     cards.push(card);
@@ -42,14 +44,20 @@ export default makeScene2D(function* (view) {
   // Add layout to view
   view.add(gridLayout);
 
-  // Animate cards appearing one by one with zoom in effect
-  for (let i = 0; i < cards.length; i++) {
-    yield* zoomIn(cards[i], { duration: 0.4 });
-    yield* waitFor(0.1);
-  }
+  // Animate cards appearing with staggered, overlapping effect
+  const staggerDelay = 0.1; // Shorter delay for more overlap
+  const animationDuration = 0.4;
+  
+  // Start multiple animations simultaneously with staggered delays
+  const animations = cards.map((card, index) => 
+    fadeIn(card, { duration: animationDuration, delay: index * staggerDelay })
+  );
+  
+  // Run all animations concurrently
+  yield* all(...animations);
 
   // Wait at the end
-  yield* waitFor(2);
+  yield* waitUntil('show_code_example');
 
 
   const codeExample = CodeCard({
@@ -79,5 +87,5 @@ export default makeScene2D(function* (view) {
     blurBackground.opacity(1, 0.4),
   ) 
 
-  yield* waitFor(2);
+  yield* waitUntil('scene_end');
 });

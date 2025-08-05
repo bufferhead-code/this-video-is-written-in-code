@@ -1,5 +1,26 @@
 {
   "version": 0,
-  "timeEvents": [],
+  "timeEvents": [
+    {
+      "name": "show_browser",
+      "targetTime": 3.351502511573644
+    },
+    {
+      "name": "zoom_browser",
+      "targetTime": 5.445774030176737
+    },
+    {
+      "name": "aarthificial_intro",
+      "targetTime": 8.460275627704313
+    },
+    {
+      "name": "timeline_control",
+      "targetTime": 12.1587078333448
+    },
+    {
+      "name": "scene_end",
+      "targetTime": 13.4878642841058
+    }
+  ],
   "seed": 2949066454
 }

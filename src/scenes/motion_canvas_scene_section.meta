@@ -1,5 +1,14 @@
 {
   "version": 1,
-  "timeEvents": [],
+  "timeEvents": [
+    {
+      "name": "show_code_example",
+      "targetTime": 5.01023439634813
+    },
+    {
+      "name": "scene_end",
+      "targetTime": 11.927719651886186
+    }
+  ],
   "seed": 2150566671
 }

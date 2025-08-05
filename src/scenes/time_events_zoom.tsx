@@ -1,5 +1,5 @@
 import { makeScene2D } from '@motion-canvas/2d';
-import { waitFor, all } from '@motion-canvas/core';
+import { waitFor, waitUntil, all, fadeTransition } from '@motion-canvas/core';
 import { createRef } from '@motion-canvas/core/lib/utils';
 import { Img, Circle, Txt } from '@motion-canvas/2d/lib/components';
 import { HexagonLayout } from '../components/HexagonLayout';
@@ -93,8 +93,10 @@ export default makeScene2D(function* (view) {
     />
   );
 
+  yield* fadeTransition(0.5);
+
   // Wait for a moment
-  yield* waitFor(1);
+  yield* waitUntil('zoom_to_time_events');
 
   // Zoom into fifth circle (index 4) for "Time Events" - top left position
   yield* all(
@@ -107,10 +109,11 @@ export default makeScene2D(function* (view) {
   yield* timeEventsTextRef().typewrite("Time Events", 0.5);
 
   // Fade out number 5 and zoom in time events icon
+  yield* fadeOut(numberRefs[4](), {
+    duration: 0.8,
+  });
+
   yield* all(
-    fadeOut(numberRefs[4](), {
-      duration: 0.8,
-    }),
     zoomIn(timeEventsIconRef(), {
       fromScale: 0,
       toScale: 1,
@@ -118,6 +121,6 @@ export default makeScene2D(function* (view) {
     })
   );
 
-  yield* waitFor(2);
+  yield* waitUntil('end');
 
 });

@@ -30,6 +30,10 @@ export interface StyledTextProps extends NodeProps {
    * If true, use monospace font for code blocks.
    */
   monospace?: boolean;
+  /**
+   * Text alignment: 'left', 'center', or 'right'
+   */
+  textAlign?: SignalValue<'left' | 'center' | 'right'>;
 }
 
 /**
@@ -48,6 +52,10 @@ export class StyledText extends Node {
   @initial(true)
   @signal()
   declare public readonly fixWidth: SimpleSignal<boolean>;
+
+  @initial('center')
+  @signal()
+  declare public readonly textAlign: SimpleSignal<'left' | 'center' | 'right'>;
 
   private strokeText: Txt;
   private fillText: Txt;
@@ -76,6 +84,7 @@ export class StyledText extends Node {
       fontStyle: 'normal',
       text: props?.text ?? '',
       opacity: () => this.opacity(),
+      textAlign: props?.textAlign ?? 'center',
     };
 
     // Create the stroke text (rendered first, underneath)
@@ -137,9 +146,9 @@ export class StyledText extends Node {
     this.strokeText.text('');
     this.fillText.text('');
 
-    // Set text alignment to left for proper left-to-right appearance
-    this.strokeText.textAlign('left');
-    this.fillText.textAlign('left');
+    // Set text alignment based on component setting
+    this.strokeText.textAlign(this.textAlign());
+    this.fillText.textAlign(this.textAlign());
 
     // Implement fixWidth: measure the full text width and set it from the beginning
     if (this.fixWidth()) {
@@ -183,9 +192,9 @@ export class StyledText extends Node {
     this.strokeText.text('');
     this.fillText.text('');
 
-    // Set text alignment to left for proper left-to-right appearance
-    this.strokeText.textAlign('left');
-    this.fillText.textAlign('left');
+    // Set text alignment based on component setting
+    this.strokeText.textAlign(this.textAlign());
+    this.fillText.textAlign(this.textAlign());
 
     // Implement fixWidth: measure the full text width including cursor space
     if (this.fixWidth()) {

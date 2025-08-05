@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "timeEvents": [
+    {
+      "name": "show_solidtime",
+      "targetTime": 12.211211413509364
+    }
+  ],
+  "seed": 1119715384,
+  "name": "GitHub Browser Demo",
+  "description": "A scene showing a MacOS background with a browser containing GitHub Motion Canvas examples and a Discord logo"
+}

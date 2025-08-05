@@ -2,8 +2,20 @@
   "version": 0,
   "timeEvents": [
     {
-      "name": "70$",
-      "targetTime": 4.329692893569836
+      "name": "pricing_page_start",
+      "targetTime": 1
+    },
+    {
+      "name": "zoom_start",
+      "targetTime": 4.6430414135126385
+    },
+    {
+      "name": "text_marker_start",
+      "targetTime": 6.6935911064712785
+    },
+    {
+      "name": "scene_end",
+      "targetTime": 12.762515226424785
     }
   ],
   "seed": 1609532459

@@ -1,5 +1,5 @@
 import { makeScene2D } from '@motion-canvas/2d';
-import { all, waitFor } from '@motion-canvas/core/lib/flow';
+import { all, waitFor, waitUntil } from '@motion-canvas/core/lib/flow';
 import { createRef } from '@motion-canvas/core/lib/utils';
 import { Img, Rect, Circle, Txt } from '@motion-canvas/2d/lib/components';
 import { HexagonLayout } from '../components/HexagonLayout';
@@ -9,6 +9,7 @@ import { zoomIn, fadeOut } from '../animation';
 import motionCanvasLogoColored from '../images/motion-canvas-logo-colored.svg';
 import motionCanvasLogoWhite from '../images/motion-canvas-logo-white.svg';
 import positionIcon from '../images/position-icon.svg';
+import { fadeTransition } from '@motion-canvas/core';
 
 export default makeScene2D(function* (view) {
   const backgroundRef = createRef<Rect>();
@@ -121,38 +122,40 @@ export default makeScene2D(function* (view) {
     />
   );
 
+  yield* fadeTransition(1);
+
+
   // Animate both logo parts zoom fade in together
   yield* all(
     zoomIn(logoColoredRef(), {
-      duration: 1.5,
+      duration: 0.7,
       fromScale: 0,
       toScale: 1,
-      overshoot: true
     }),
     zoomIn(logoWhiteRef(), {
-      duration: 1.5,
+      duration: 0.7,
       fromScale: 0,
       toScale: 1,
-      overshoot: true
     })
   );
 
-  yield* waitFor(0.5);
+
+  yield* waitUntil('logo_fade_start');
 
   // Fade out only the colored parts of the logo
   yield* fadeOut(logoColoredRef(), {
-    duration: 1,
+    duration: 0.5,
   });
 
-  yield* waitFor(1);
+  yield* waitUntil('logo_scale_up');
 
   // scale up the white parts of the logo and move it to the center of the screen
   yield* all(
-    logoWhiteRef().position([-115, -115], 1),
-    logoWhiteRef().scale(2.5, 1),
+    logoWhiteRef().position([-115, -115], 0.5),
+    logoWhiteRef().scale(2.5, 0.5),
   );
 
-  yield* waitFor(1);
+  yield* waitUntil('show_numbers');
 
   // Animate circles and numbers appearing one by one
   for (let i = 0; i < 5; i++) {
@@ -172,7 +175,7 @@ export default makeScene2D(function* (view) {
     );
   }
 
-  yield* waitFor(2);
+  yield* waitUntil('zoom_to_position');
 
   // Zoom into second circle (index 1) for "Position"
   yield* all(
@@ -185,10 +188,11 @@ export default makeScene2D(function* (view) {
   yield* positionTextRef().typewrite("Position", 0.5);
 
   // Fade out number 2 and zoom in position icon
+  yield* fadeOut(numberRefs[1](), {
+    duration: 0.8,
+  });
+
   yield* all(
-    fadeOut(numberRefs[1](), {
-      duration: 0.8,
-    }),
     zoomIn(positionIconRef(), {
       fromScale: 0,
       toScale: 1,
@@ -196,5 +200,5 @@ export default makeScene2D(function* (view) {
     })
   );
 
-  yield* waitFor(2);
+  yield* waitUntil('scene_end');
 });

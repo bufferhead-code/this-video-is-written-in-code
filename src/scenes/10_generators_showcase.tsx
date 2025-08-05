@@ -1,7 +1,8 @@
 import { makeScene2D } from '@motion-canvas/2d';
-import { all, waitFor } from '@motion-canvas/core/lib/flow';
+import { all, waitFor, waitUntil } from '@motion-canvas/core/lib/flow';
 import { createRef } from '@motion-canvas/core/lib/utils';
 import { Rect, Code } from '@motion-canvas/2d/lib/components';
+import { fadeTransition } from '@motion-canvas/core';
 import { StyledText } from '../components/StyledText';
 import { CodeCard } from '../components/CodeCard';
 import { BufferheadCharacter } from '../components/BufferheadCharacter';
@@ -19,6 +20,8 @@ export default makeScene2D(function* (view) {
 
   // Add background
   view.add(<Background />);
+
+  yield* fadeTransition(1);
 
   // Add CodeCard with yield statements (initially hidden)
   view.add(
@@ -68,36 +71,36 @@ export default makeScene2D(function* (view) {
     />
   );
 
-  yield* waitFor(1);
+  yield* waitUntil('show_code_card');
 
   // Slide in CodeCard from bottom
   yield* slideInBottom(codeCardRef(), {
     overshoot: true
   });
 
-  yield* waitFor(0.5);
+  yield* waitUntil('highlight_yields');
 
   // Highlight all yield statements
   yield* codeRef().selection(codeRef().findAllRanges(/yield\*/g), 0.8);
 
-  yield* waitFor(1);
+  yield* waitUntil('show_generators_text');
 
   // Show "Generators" text with typewriter
   yield* generatorsTextRef().opacity(1, 0.5);
   yield* generatorsTextRef().typewrite("Generators", 0.5);
 
-  yield* waitFor(1);
+  yield* waitUntil('show_bufferhead');
 
   // Slide in BufferheadCharacter from bottom
   yield* slideInBottom(bufferheadRef(), {
     overshoot: true
   });
 
-  yield* waitFor(0.5);
+  yield* waitUntil('show_clueless_text');
 
   // Show "clueless" text with arrow
   yield* arrowWithTextRef().scaleIn(1.5);
   yield* arrowWithTextRef().typewrite("CLUELESS", 0.5);
 
-  yield* waitFor(3);
+  yield* waitUntil('end_scene');
 }); 

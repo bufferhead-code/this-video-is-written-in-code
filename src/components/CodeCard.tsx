@@ -8,6 +8,7 @@ import { Node, NodeProps } from '@motion-canvas/2d/lib/components';
 import { createRef } from '@motion-canvas/core/lib/utils';
 import { ThreadGenerator } from '@motion-canvas/core/lib/threading';
 import { DEFAULT } from '@motion-canvas/core';
+import { COLORS } from '../utils/colors';
 
 export interface CodeCardProps extends RectProps {
   code: string;
@@ -63,7 +64,7 @@ export const CodeCard = ({
       padding={36}
       shadowBlur={24}
       lineWidth={2}
-      fill={'#23272e'}
+      fill={COLORS.grayBgCard}
       stroke={'#353b45'}
       shadowColor={'rgba(0, 0, 0, 0.10)'}
       shadowOffsetY={10}

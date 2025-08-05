@@ -1,5 +1,30 @@
 {
   "version": 0,
-  "timeEvents": [],
+  "timeEvents": [
+    {
+      "name": "show_code_card",
+      "targetTime": 1
+    },
+    {
+      "name": "highlight_yields",
+      "targetTime": 1.5
+    },
+    {
+      "name": "show_generators_text",
+      "targetTime": 6.331007042690744
+    },
+    {
+      "name": "show_bufferhead",
+      "targetTime": 7.331007042690742
+    },
+    {
+      "name": "show_clueless_text",
+      "targetTime": 7.831007042690742
+    },
+    {
+      "name": "end_scene",
+      "targetTime": 23.05848082431588
+    }
+  ],
   "seed": 2516751292
 }

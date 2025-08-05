@@ -1,8 +1,8 @@
 import { grayscale, makeScene2D, saturate } from '@motion-canvas/2d';
-import { all, delay, waitFor } from '@motion-canvas/core/lib/flow';
+import { all, delay, waitFor, waitUntil } from '@motion-canvas/core/lib/flow';
 import { createRef } from '@motion-canvas/core/lib/utils';
 import { Img, Rect, Txt } from '@motion-canvas/2d/lib/components';
-import { sound } from '@motion-canvas/core';
+import { sound, fadeTransition } from '@motion-canvas/core';
 import { PremiereProWithErrors } from '../components/PremiereProWithErrors';
 import { MacOSBackground } from '../components/MacOSBackground';
 import { RainbowBackground } from '../components/RainbowBackground';
@@ -17,9 +17,7 @@ export default makeScene2D(function* (view) {
 
   view.add(<MacOSBackground ref={backgroundRef} />);
 
-  yield* backgroundRef().animateMenuBar(true);
-
-  yield* waitFor(0.2);
+  yield* waitUntil('premiere_appears');
 
   // Create the Premiere Pro with errors component
   const premiereWithErrors = yield* PremiereProWithErrors({
@@ -32,7 +30,7 @@ export default makeScene2D(function* (view) {
   // Run the animation sequence
   yield* premiereWithErrors.animateSequence();
 
-  // Add the rainbow background scene (initially hidden)
+  // Add the rainbow background scene (initially hidden) 
   view.add(
     <Rect ref={rainbowSceneRef} opacity={0} width={'100%'} height={'100%'}>
       <RainbowBackground width={'100%'} height={'100%'} />
@@ -46,7 +44,7 @@ export default makeScene2D(function* (view) {
   );
 
   // Scale and move Premiere Pro window to top center, and fade out error windows at the same time
-  yield* waitFor(1.0); // Add delay before animations
+  yield* waitUntil('time_for_change_start');
   yield* all(
     premiereWithErrors.fadeOutSequence(),
     rainbowSceneRef().opacity(1, 0.5),
@@ -56,21 +54,14 @@ export default makeScene2D(function* (view) {
   const fullText = 'Time for a change';
   const typewriterAudio = sound(typewriterSound);
 
-  // Play typewriter sound at regular intervals during the animation
-  const soundInterval = 1.6 / fullText.length; // Match the typewriter duration
-  const playTypewriterSound = function* () {
-    for (let i = 0; i < fullText.length; i++) {
-      typewriterAudio.play();
-      yield* waitFor(soundInterval);
-    }
-  };
+  typewriterAudio.gain(0);
+  typewriterAudio.trim(0, 1);
 
-  const playTypewriterAnimation = function* () {
-    yield* typewriterTextRef().typewrite(fullText, 1.6);
-  };
+  yield* waitUntil('time_for_change_text');
 
   // Run typewriter animation and sound in parallel
-  yield* all(playTypewriterAnimation(), playTypewriterSound());
+  typewriterAudio.play();
+  yield* typewriterTextRef().typewrite(fullText, 1);
 
-  yield* waitFor(2.0); // Wait time to see the final text
+  yield* waitUntil('scene_end');
 });

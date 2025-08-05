@@ -4,14 +4,14 @@ import { NodeTree } from '../components/NodeTree';
 import { MacWindow } from '../components/MacWindow';
 import { Terminal } from '../components/Terminal';
 import { DynamicColumnLayout } from '../components/DynamicColumnLayout';
-import { waitFor, all } from '@motion-canvas/core';
+import { waitFor, all, waitUntil, fadeTransition } from '@motion-canvas/core';
 import { fadeIn, slideInLeft, slideInRight, zoomIn, fadeOut, slideInBottom } from '../animation';
 import { MacTerminalWindow } from '../components/MacTerminalWindow';
 import { MacOSBackground } from '../components/MacOSBackground';
 import { Browser } from '../components/Browser';
 import motionCanvasEditor from '../images/motion_canvas_editor.jpeg';
 
-export default makeScene2D(function* (view) {
+export default  makeScene2D(function* (view) {
   // Create macOS background
   const macBackground = new MacOSBackground({
     showMenuBar: false,
@@ -20,6 +20,8 @@ export default makeScene2D(function* (view) {
 
   // Add background to view
   view.add(macBackground);
+
+  yield* fadeTransition(1);
 
   // ==================== PART 1: Terminal/Motion Canvas Init ====================
   
@@ -37,26 +39,26 @@ export default makeScene2D(function* (view) {
   // Add window to view
   view.add(macTerminalWindow);
 
-  yield* waitFor(0.5);
+  yield* waitUntil('terminal_appear');
 
   // Animate the window zooming in
   yield* zoomIn(macTerminalWindow, { duration: 1, toScale: 2 });
 
   // Wait a moment before starting to type
-  yield* waitFor(0.5);
+  yield* waitUntil('npm_command');
 
   // Type the npm init command with typewriter effect
   yield* macTerminalWindow.getTerminal().typeCommandWithCursor('npm init @motion-canvas@latest', 2, 0, 2);
 
   // Wait for a moment
-  yield* waitFor(1.5);
+  yield* waitUntil('terminal_fade');
 
   // Fade out terminal
   yield* fadeOut(macTerminalWindow, { duration: 1 });
 
   // ==================== TRANSITION ====================
   
-  yield* waitFor(0.5);
+  yield* waitUntil('show_editor');
 
   // ==================== PART 1.5: Browser with Motion Canvas Editor ====================
   
@@ -78,36 +80,36 @@ export default makeScene2D(function* (view) {
   yield* slideInBottom(browser, { duration: 1.5, distance: 200 });
 
   // Wait for a moment to show the browser
-  yield* waitFor(2);
+  yield* waitUntil('editor_fade');
 
   // Fade out browser
   yield* fadeOut(browser, { duration: 1 });
 
-  yield* waitFor(0.5);
+  yield* waitUntil('node_tree_start');
 
   // ==================== PART 2: Node Tree Example ====================
   
-  // Create main layout container for NodeTree section
-  const nodeTreeLayout = new Layout({
-    layout: true,
-    direction: 'row',
+  // Create main layout container for NodeTree section using DynamicColumnLayout
+  const nodeTreeLayout = new DynamicColumnLayout({
     width: '100%',
     height: '100%',
-    gap: 40,
+    itemGap: 40,
     justifyContent: 'center',
     alignItems: 'start',
     paddingTop: 50,
   });
 
   // Left side - HTML DOM Tree structure
-  const leftSide = new Layout({
+  const leftSide = new Rect({
     layout: true,
     direction: 'column',
     width: 800,
-    gap: 20,
+    height: 1500,
+    fill: '#2d2d2f',
+    radius: 10,
+    padding: 40,
+    opacity: 0,
   });
-
-
 
   // HTML DOM node tree structure
   const htmlTreeStructure = [
@@ -148,28 +150,6 @@ export default makeScene2D(function* (view) {
     },
   ];
 
-  const leftTitle = new Txt({
-    text: 'HTML Binary Tree',
-    fontSize: 40,
-    fontWeight: 700,
-    fill: '#ffffff',
-    fontFamily: '"Baloo 2", "Baloo", Arial, sans-serif',
-    opacity: 0,
-  });
-  leftSide.add(leftTitle);
-
-  const leftContainer = new Rect({
-    layout: true,
-    direction: 'column',
-    width: '100%',
-    height: 1500,
-    fill: '#2d2d2f',
-    radius: 10,
-    padding: 40,
-    opacity: 0,
-  });
-  leftSide.add(leftContainer);
-
   const htmlTree = new NodeTree({
     structure: htmlTreeStructure,
     elementColor: '#4fc3f7',
@@ -178,17 +158,19 @@ export default makeScene2D(function* (view) {
     textSize: 32,
     rowSize: 48,
   });
-  leftContainer.add(htmlTree);
+  leftSide.add(htmlTree);
 
   // Right side - Motion Canvas Component Tree
-  const rightSide = new Layout({
+  const rightSide = new Rect({
     layout: true,
     direction: 'column',
     width: 800,
-    gap: 20,
+    height: 1500,
+    fill: '#2d2d2f',
+    radius: 10,
+    padding: 40,
+    opacity: 0,
   });
-
-
 
   // Motion Canvas component node tree structure
   const sceneTreeStructure = [
@@ -216,28 +198,6 @@ export default makeScene2D(function* (view) {
     },
   ];
 
-  const rightTitle = new Txt({
-    text: 'Component Binary Tree',
-    fontSize: 40,
-    fontWeight: 700,
-    fill: '#ffffff',
-    fontFamily: '"Baloo 2", "Baloo", Arial, sans-serif',
-    opacity: 0,
-  });
-  rightSide.add(rightTitle);
-
-  const rightContainer = new Rect({
-    layout: true,
-    direction: 'column',
-    width: '100%',
-    height: 1500,
-    fill: '#2d2d2f',
-    radius: 10,
-    padding: 40,
-    opacity: 0,
-  });
-  rightSide.add(rightContainer);
-
   const sceneTree = new NodeTree({
     structure: sceneTreeStructure,
     elementColor: '#ff6b6b',
@@ -246,48 +206,39 @@ export default makeScene2D(function* (view) {
     textSize: 32,
     rowSize: 48,
   });
-  rightContainer.add(sceneTree);
-
-  // Add sides to nodeTree layout
-  nodeTreeLayout.add(leftSide);
-  nodeTreeLayout.add(rightSide);
+  rightSide.add(sceneTree);
 
   // Add nodeTree layout to view
   view.add(nodeTreeLayout);
 
   // ==================== PART 2 ANIMATION: NodeTree Demo ====================
   
-  yield* waitFor(0.5);
+  yield* waitUntil('dom_tree_card');
 
-  // Animate titles in
-  yield* all(
-    fadeIn(leftTitle, { duration: 0.8 }),
-    fadeIn(rightTitle, { duration: 0.8 }),
-  );
+  // Add DOM tree card first using DynamicColumnLayout
+  yield* nodeTreeLayout.addItem(leftSide, 800);
 
-  yield* waitFor(0.3);
+  yield* waitUntil('dom_tree_fade');
 
-  // Animate containers sliding in
-  yield* all(
-    slideInLeft(leftContainer, { duration: 1, distance: 100 }),
-    slideInRight(rightContainer, { duration: 1, distance: 100 }),
-  );
-
-  yield* waitFor(0.5);
-
-  // Sequential fade-in animations - DOM tree first, then Motion Canvas tree
-  yield* htmlTree.fadeInSequentially(0.2, 0.1);
+  // Fade in the DOM tree nodes sequentially
+  yield* htmlTree.fadeInSequentially(0.2, 0);
   
-  yield* waitFor(0.3);
+  yield* waitUntil('binary_tree_card');
   
-  yield* sceneTree.fadeInSequentially(0.2, 0.1);
+  // Add Binary Tree card using DynamicColumnLayout
+  yield* nodeTreeLayout.addItem(rightSide, 800);
+  
+  yield* waitUntil('mc_tree_fade');
+  
+  // Fade in the Motion Canvas tree nodes sequentially
+  yield* sceneTree.fadeInSequentially(0.2, 0.01);
 
-  yield* waitFor(2);
+  yield* waitUntil('trees_fade_out');
 
   // Fade out the DOM trees
   yield* fadeOut(nodeTreeLayout, { duration: 1 });
 
-  yield* waitFor(0.5);
+  yield* waitUntil('jsx_example');
 
   // ==================== PART 3: Code Examples ====================
   
@@ -405,14 +356,14 @@ view.add([
   // Use DynamicColumnLayout to animate the code blocks appearing
   yield* codeLayout.addItem(jsxSection, 580);
   
-  yield* waitFor(0.5);
+  yield* waitUntil('no_jsx_example');
   
   yield* codeLayout.addItem(nonJsxSection, 580);
 
-  yield* waitFor(3);
+  yield* waitUntil('jsx_fade_out');
 
   // Final fade out
   yield* fadeOut(codeLayout, { duration: 1 });
 
-  yield* waitFor(0.5);
+  yield* waitUntil('scene_end');
 });

@@ -1,5 +1,34 @@
 {
   "version": 0,
-  "timeEvents": [],
+  "timeEvents": [
+    {
+      "name": "show_speech_bubble",
+      "targetTime": 0.8919175708914566
+    },
+    {
+      "name": "typewriter_text",
+      "targetTime": 1.4919175708914567
+    },
+    {
+      "name": "hide_speech_bubble",
+      "targetTime": 4.552271255032635
+    },
+    {
+      "name": "highlight_300",
+      "targetTime": 12.876532841347107
+    },
+    {
+      "name": "highlight_1",
+      "targetTime": 16.08578050167106
+    },
+    {
+      "name": "highlight_ease",
+      "targetTime": 22.817558291685074
+    },
+    {
+      "name": "end",
+      "targetTime": 27.652950489632836
+    }
+  ],
   "seed": 1234567890
 }

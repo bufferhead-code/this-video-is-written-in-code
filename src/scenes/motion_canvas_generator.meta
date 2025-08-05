@@ -1,5 +1,118 @@
 {
   "version": 1,
-  "timeEvents": [],
+  "timeEvents": [
+    {
+      "name": "remotion_comparison",
+      "targetTime": 1.9
+    },
+    {
+      "name": "remotion_frame_based",
+      "targetTime": 2.5
+    },
+    {
+      "name": "remotion_showcase",
+      "targetTime": 3.1
+    },
+    {
+      "name": "frame_based_example",
+      "targetTime": 4.6
+    },
+    {
+      "name": "frame_calculation",
+      "targetTime": 5.3999999999999995
+    },
+    {
+      "name": "transform_example",
+      "targetTime": 5.6
+    },
+    {
+      "name": "preview_animate",
+      "targetTime": 6.199999999999999
+    },
+    {
+      "name": "messy_process",
+      "targetTime": 8.2
+    },
+    {
+      "name": "brain_mess_meme",
+      "targetTime": 9.1
+    },
+    {
+      "name": "motion_canvas_intro",
+      "targetTime": 9.9
+    },
+    {
+      "name": "sequential_order",
+      "targetTime": 10.5
+    },
+    {
+      "name": "motion_canvas_example",
+      "targetTime": 11.1
+    },
+    {
+      "name": "move_position_example",
+      "targetTime": 11.7
+    },
+    {
+      "name": "motion_canvas_code",
+      "targetTime": 12.7
+    },
+    {
+      "name": "add_preview",
+      "targetTime": 13.2
+    },
+    {
+      "name": "preview_setup",
+      "targetTime": 14.2
+    },
+    {
+      "name": "animate_preview",
+      "targetTime": 14.2
+    },
+    {
+      "name": "wait_second",
+      "targetTime": 15.8
+    },
+    {
+      "name": "move_back",
+      "targetTime": 17.1
+    },
+    {
+      "name": "comparison_analysis",
+      "targetTime": 17.900000000000002
+    },
+    {
+      "name": "remove_preview",
+      "targetTime": 17.900000000000002
+    },
+    {
+      "name": "add_remotion_code",
+      "targetTime": 19.45000000000001
+    },
+    {
+      "name": "fade_out_comparison",
+      "targetTime": 20.25000000000001
+    },
+    {
+      "name": "cross_out_remotion",
+      "targetTime": 21.25000000000001
+    },
+    {
+      "name": "gray_out_remotion",
+      "targetTime": 22.45000000000001
+    },
+    {
+      "name": "motion_canvas_crown",
+      "targetTime": 23.25000000000001
+    },
+    {
+      "name": "crown_complete",
+      "targetTime": 24.45000000000001
+    },
+    {
+      "name": "scene_end",
+      "targetTime": 24.45000000000001
+    }
+  ],
   "seed": 3631563773
 }

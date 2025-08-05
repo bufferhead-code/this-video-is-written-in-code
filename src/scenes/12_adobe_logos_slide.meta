@@ -1,0 +1,18 @@
+{
+  "version": 0,
+  "timeEvents": [
+    {
+      "name": "logos_slide_start",
+      "targetTime": 0.6817475289888244
+    },
+    {
+      "name": "logos_hold",
+      "targetTime": 5.303086633438214
+    },
+    {
+      "name": "scene_end",
+      "targetTime": 7.675849228643368
+    }
+  ],
+  "seed": 123456789
+}

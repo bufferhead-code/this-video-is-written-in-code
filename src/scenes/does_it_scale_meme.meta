@@ -1,4 +1,28 @@
 {
+  "version": 1,
+  "timeEvents": [
+    {
+      "name": "meme-visible",
+      "targetTime": 4.7701178516741995
+    },
+    {
+      "name": "meme-faded",
+      "targetTime": 5.2701178516741995
+    },
+    {
+      "name": "browser-visible",
+      "targetTime": 11.138602976808446
+    },
+    {
+      "name": "browser-faded",
+      "targetTime": 11.638602976808446
+    },
+    {
+      "name": "end",
+      "targetTime": 29.612636505367682
+    }
+  ],
+  "seed": 4228255030,
   "name": "Does It Scale Meme",
   "description": "A scene featuring the 'Does It Scale' meme with zoomIn animation"
 }

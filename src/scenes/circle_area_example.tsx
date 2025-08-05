@@ -1,5 +1,5 @@
 import {Circle, Line, Txt, Rect, makeScene2D} from '@motion-canvas/2d';
-import {Vector2, all, createSignal, waitFor} from '@motion-canvas/core';
+import {Vector2, all, createSignal, waitFor, waitUntil} from '@motion-canvas/core';
 import {COLORS} from '../utils/colors';
 import {CodeCard, CodeCardInstance} from '../components/CodeCard';
 import {DynamicColumnLayout} from '../components/DynamicColumnLayout';
@@ -116,22 +116,30 @@ yield* radius(4, 2).to(3, 2);`;
 
   // highlight createSignal(3) on the code card, selection
   yield* codeCard.highlight('createSignal(3)', 0.5);
-  yield* waitFor(1);
+  yield* waitUntil('clear_highlight');
 
   // Clear the selection
   yield* codeCard.resetHighlight(0.5);
-  yield* waitFor(1);
+  yield* waitUntil('highlight_area');
+
+  // highlight area variable definition
+  yield* codeCard.highlight('const area = createSignal(\n  () => Math.PI * radius() * radius()\n);', 0.5);
+  yield* waitUntil('clear_area_highlight');
+
+  // Clear the selection
+  yield* codeCard.resetHighlight(0.5);
+  yield* waitUntil('add_preview');
 
   yield* layout.addItem(preview, 500);
   // Clear the selection
-  yield* waitFor(1);
+  yield* waitUntil('animate_radius');
 
   yield* all(
     codeCard.highlight('yield* radius(4, 2).to(3, 2);', 0.5),
     radius(4, 2).to(3, 2)
   );
-  yield* waitFor(1);
+  yield* waitUntil('reset_final_highlight');
   yield* codeCard.resetHighlight(0.5);
-  yield* waitFor(1);
+  yield* waitUntil('end');
 
 });

@@ -1,0 +1,14 @@
+{
+  "version": 0,
+  "timeEvents": [
+    {
+      "name": "layout_appears",
+      "targetTime": 1
+    },
+    {
+      "name": "scene_end",
+      "targetTime": 28.315390292226514
+    }
+  ],
+  "seed": 3429
+}

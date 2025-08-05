@@ -6,7 +6,7 @@ import { CodeCard } from '../components/CodeCard';
 import { DynamicColumnLayout } from '../components/DynamicColumnLayout';
 import banner from '../images/banner.svg';
 import filmTape from '../images/film_tape.svg';
-import { all, DEFAULT, waitFor } from '@motion-canvas/core';
+import { all, DEFAULT, fadeTransition, waitUntil } from '@motion-canvas/core';
 
 export default makeScene2D(function* (view) {
   const containerRef = createRef<Rect>();
@@ -110,6 +110,8 @@ export default makeScene2D(function* (view) {
     </>
   );
 
+  yield* fadeTransition(1);
+
   yield* bannerRef().opacity(1, 0.5);
 
   yield* textRef().typewrite("CRASH COURSE", 0.5);
@@ -117,7 +119,7 @@ export default makeScene2D(function* (view) {
   // Center the Generator text on the screen
   yield* generatorTextRef().typewrite("GENERATORS", 0.5);
 
-  yield* waitFor(1);
+  yield* waitUntil('center_generator');
   yield* all(
     generatorTextRef().position([0, 85], 0.5),
     generatorTextRef().scale(0.4, 0.5),
@@ -150,26 +152,26 @@ export default makeScene2D(function* (view) {
     />
   );
   yield* columnLayoutRef().addItem(codeCard1, 700);
-  yield* waitFor(0.5);
+  yield* waitUntil('highlight_function_star');
 
   // highlight function*
   const functionStarRange = codeCardCode1Ref().findFirstRange('function*');
   yield* codeCardCode1Ref().selection(functionStarRange, 0.5);
 
-  yield* waitFor(1);
+  yield* waitUntil('highlight_yields');
 
   // highlight yields 
   const yieldRanges = codeCardCode1Ref().findAllRanges('yield');
   yield* codeCardCode1Ref().selection(yieldRanges, 0.5);
 
-  yield* waitFor(1);
+  yield* waitUntil('reset_selection');
 
   // reset to default
   yield* codeCardCode1Ref().selection(DEFAULT, 0.5);
 
   yield* columnLayoutRef().addItem(codeCard2, 700);
 
-  yield* waitFor(1);
+  yield* waitUntil('highlight_first_yield');
 
   // hightlight yield i; on the first card and gen.next().value; on the second card
   const yieldRange = codeCardCode1Ref().findFirstRange('yield i;');
@@ -179,7 +181,7 @@ export default makeScene2D(function* (view) {
     codeCard2CodeRef().selection(nextRange, 0.5)
   );
 
-  yield* waitFor(1);
+  yield* waitUntil('highlight_second_yield');
 
   // highlight yield i + 10; on the first card and gen.next().value; on the second card
   const yieldRange2 = codeCardCode1Ref().findFirstRange('yield i + 10;');
@@ -189,7 +191,7 @@ export default makeScene2D(function* (view) {
     codeCard2CodeRef().selection(nextRange2, 0.5)
   );
 
-  yield* waitFor(1);
+  yield* waitUntil('reset_all_selections');
 
   // reset to default
   yield* all(
@@ -197,9 +199,9 @@ export default makeScene2D(function* (view) {
     codeCard2CodeRef().selection(DEFAULT, 0.5)
   );
 
-  yield* waitFor(1);
+  yield* waitUntil('edit_code');
   yield* codeCardCode1Ref().code.edit(0)`function* generator(i) {\n  // some code...\n  yield i;\n  // some more code...\n  yield i + 10;\n}`;
-  yield* waitFor(1);
+  yield* waitUntil('remove_second_card');
 
   // reset to default
   yield* codeCardCode1Ref().selection(DEFAULT, 0.5);
@@ -207,25 +209,25 @@ export default makeScene2D(function* (view) {
   // remove the second card from the column layout
   yield* columnLayoutRef().removeByIndex(1, 0.5);
 
-  yield* waitFor(1);
+  yield* waitUntil('scale_first_card');
 
   // scale up the first card
   yield* codeCard1Ref().scale(1.5, 0.5);
 
-  yield* waitFor(1);
+  yield* waitUntil('show_film_tape');
 
   // reset to default
   yield* codeCard1Ref().opacity(0, 0.5);
   yield* filmTapeRef().opacity(1, 0.5);
 
-  yield* waitFor(1);
+  yield* waitUntil('fade_in_code_components');
 
   // Fade in the 5 Code components one after the other after the film tape appears
   for (let i = 0; i < codeRefs.length; i++) {
     yield* codeRefs[i]().opacity(1, 0.3);
   }
 
-  yield* waitFor(1);
+  yield* waitUntil('end');
 
   // remove the first card from the column layout
 });

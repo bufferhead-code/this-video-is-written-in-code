@@ -1,5 +1,5 @@
 import { makeScene2D } from '@motion-canvas/2d';
-import { all, waitFor } from '@motion-canvas/core/lib/flow';
+import { all, waitFor, waitUntil } from '@motion-canvas/core/lib/flow';
 import { createRef } from '@motion-canvas/core/lib/utils';
 import { Rect } from '@motion-canvas/2d/lib/components';
 import { Logo } from '../components/Logo';
@@ -80,19 +80,19 @@ export default makeScene2D(function* (view) {
     overshoot: true
   });
 
-  yield* waitFor(0.5);
+  yield* waitUntil('show_speech_bubble');
 
   // 2. Speech bubble appears first
   yield* fadeIn(speechBubbleRef(), {
     duration: 0.6
   });
 
-  yield* waitFor(0.3);
+  yield* waitUntil('typewriter_text');
 
   // 3. Typewriter effect: "I got you"
   yield* speechBubbleRef().typewrite("I got you", 0.5);
 
-  yield* waitFor(2);
+  yield* waitUntil('hide_speech_bubble');
 
   yield* fadeOut(speechBubbleRef(), {
     duration: 0.6
@@ -112,7 +112,7 @@ export default makeScene2D(function* (view) {
 
 
   // wait for 0.5 seconds
-  yield* waitFor(0.5);
+  yield* waitUntil('highlight_300');
 
 
   // highlight code "300"
@@ -122,7 +122,7 @@ export default makeScene2D(function* (view) {
   );
 
   // wait for 0.5 seconds
-  yield* waitFor(0.5);
+  yield* waitUntil('highlight_1');
 
   // highlight code "1"
   yield* all(
@@ -131,7 +131,7 @@ export default makeScene2D(function* (view) {
   );
 
   // wait for 0.5 seconds
-  yield* waitFor(0.5);
+  yield* waitUntil('highlight_ease');
 
   // highlight code "1"
   yield* all(
@@ -140,7 +140,7 @@ export default makeScene2D(function* (view) {
   );
 
   // Hold the final frame for a moment
-  yield* waitFor(2);
+  yield* waitUntil('end');
 
   // reset selection  
   yield* codeRef().selection(DEFAULT, 0.5);

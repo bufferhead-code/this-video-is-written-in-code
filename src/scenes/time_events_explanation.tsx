@@ -1,5 +1,5 @@
 import { makeScene2D, Rect } from '@motion-canvas/2d';
-import { all, waitFor, waitUntil, createRef, easeOutCubic } from '@motion-canvas/core';
+import { all, waitFor, waitUntil, createRef, easeOutCubic, fadeTransition } from '@motion-canvas/core';
 import { MacOSBackground } from '../components/MacOSBackground';
 import { CodeCard } from '../components/CodeCard';
 import { DynamicColumnLayout } from '../components/DynamicColumnLayout';
@@ -81,13 +81,16 @@ export default makeScene2D(function* (view) {
     </Rect>
   );
 
+
+  yield* fadeTransition(1);
+  
   yield* all(
     codeCardInstance.position([0, 0], 0.8, easeOutCubic),
     codeCardInstance.opacity(1, 0.8, easeOutCubic),
   );
 
   // Wait for 2 seconds
-  yield* waitFor(2);
+  yield* waitUntil('change_to_waituntil');
 
   // Animate the code change from waitFor(2) to waitUntil('event')
   yield* codeRef().code.replace(
@@ -97,7 +100,10 @@ export default makeScene2D(function* (view) {
   );
 
   // Wait a bit
-  yield* waitFor(1);
+  yield* waitUntil('remove_code_card');
+
+  // fade out the code card
+  yield* fadeOut(codeCardInstance, {duration: 0.5});
 
   // Remove code card
   codeCardInstance.remove();
@@ -111,7 +117,7 @@ export default makeScene2D(function* (view) {
   // Video is already set to play automatically
 
   // Wait a bit for video to play
-  yield* waitFor(2);
+  yield* waitUntil('zoom_to_bottom');
 
   // Zoom in to bottom area
   yield* all(
@@ -122,10 +128,10 @@ export default makeScene2D(function* (view) {
 
   // play video
   video().play();
-  yield* waitFor(5);
+  yield* waitUntil('wait_for_video');
 
   // Wait for zoom effect
-  yield* waitFor(3);
+  yield* waitUntil('zoom_out');
 
   // Zoom out to default
   yield* all(
@@ -134,7 +140,7 @@ export default makeScene2D(function* (view) {
   );
 
   // Wait for final state
-  yield* waitFor(2);
+  yield* waitUntil('add_zoom_code_card');
 
   // Create new CodeCard with zoomIn animation content
   const zoomCodeRef = createRef<Code>();
@@ -152,7 +158,7 @@ export default makeScene2D(function* (view) {
 
 
   // Wait a bit
-  yield* waitFor(1);
+  yield* waitUntil('fade_in_workplace');
 
 
   // Fade in workplace image
@@ -165,7 +171,7 @@ export default makeScene2D(function* (view) {
   );
 
   // Wait for final state
-  yield* waitFor(2);
+  yield* waitUntil('slide_in_zoom_code');
 
     // Position the new code card off-screen initially
     zoomCodeCardInstance.position([0, 600]);
@@ -188,13 +194,13 @@ export default makeScene2D(function* (view) {
   yield* zoomCodeCardInstance.highlight("useDuration('event')", 0.5);
 
   // Wait for highlight
-  yield* waitFor(2);
+  yield* waitUntil('reset_highlight');
 
   // Reset highlight
   yield* zoomCodeCardInstance.resetHighlight(0.5);
 
   // Wait a bit more
-  yield* waitFor(1);
+  yield* waitUntil('remove_blur');
 
   // remove blur and grayscale and remove code card
   yield* all(
@@ -204,7 +210,7 @@ export default makeScene2D(function* (view) {
   );
 
   // Wait a bit more
-  yield* waitFor(1);
+  yield* waitUntil('zoom_back');
 
   // zoom back to the default
   yield* all(
@@ -213,5 +219,5 @@ export default makeScene2D(function* (view) {
   );
 
   // Wait a bit more
-  yield* waitFor(1);
+  yield* waitUntil('end');
 }); 

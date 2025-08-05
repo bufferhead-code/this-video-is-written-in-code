@@ -19,7 +19,7 @@ import loadingBars from './scenes/loading_bars?scene';
 import motionCanvasSceneSection from './scenes/motion_canvas_scene_section?scene';
 import scriptEditor from './script-editor';
 import './global.css';
-import audio from '../audio/voiceover.mp3';
+import audio from '../audio/volceover.flac';
 import generatorsShowcase from './scenes/10_generators_showcase?scene';
 import crashCourseBanner from './scenes/crash_course_banner?scene';
 import logoSpeechBubble from './scenes/11_logo_speech_bubble?scene';
@@ -30,6 +30,11 @@ import signalsDemo from './scenes/signals_demo?scene';
 import circleAreaExample from './scenes/circle_area_example?scene';
 import logoZoomDemo from './scenes/logo_zoom_demo?scene';
 import doesItScaleMeme from './scenes/does_it_scale_meme?scene';
+import adobeLogosSlide from './scenes/12_adobe_logos_slide?scene';
+import cursorScreenshotSlide from './scenes/13_cursor_screenshot_slide?scene';
+import layoutToPremiere from './scenes/14_layout_to_premiere?scene';
+import sunshineRainbows from './scenes/15_sunshine_rainbows?scene';
+import githubBrowserDemo from './scenes/github_browser_demo?scene';
 
 import { Code, LezerHighlighter } from '@motion-canvas/2d';
 import { parser } from '@lezer/javascript';
@@ -68,6 +73,11 @@ export default makeProject({
     timeEventsExplanation,
     logoZoomDemo,
     doesItScaleMeme,
+    adobeLogosSlide,
+    cursorScreenshotSlide,
+    layoutToPremiere,
+    sunshineRainbows,
+    githubBrowserDemo,
   ],
   experimentalFeatures: true,
   plugins: [scriptEditor],

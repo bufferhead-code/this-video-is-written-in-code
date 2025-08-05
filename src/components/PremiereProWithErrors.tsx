@@ -82,6 +82,7 @@ export function* PremiereProWithErrors({
     );
 
     const errorAudio = sound(errorSound);
+    errorAudio.gain(-15);
 
     errorAudio.play();
     yield* error1Ref().opacity(1, 0.2);
@@ -108,7 +109,7 @@ export function* PremiereProWithErrors({
       error2Ref().opacity(0, 1),
       error3Ref().opacity(0, 1),
       error1Ref().opacity(0, 1),
-      delay(1, premiereWindowRef().opacity(0, 1.5)),
+      premiereWindowRef().opacity(0, 1.5),
       // Keep error windows visible (don't fade them out)
     );
   };

@@ -28,7 +28,7 @@ export class DynamicColumnLayout extends Layout {
   @signal()
   declare public readonly itemGap: SimpleSignal<number>;
 
-  @initial(0.4)
+  @initial(0.5)
   @signal()
   declare public readonly animationDuration: SimpleSignal<number>;
 
@@ -67,7 +67,7 @@ export class DynamicColumnLayout extends Layout {
       this.addToLayout(newItem);
       yield* all(
         node.width(targetWidth, this.animationDuration(), easeOutCubic),
-        node.opacity(1, this.animationDuration() * 0.6, easeOutCubic),
+        node.opacity(1, this.animationDuration(), easeOutCubic),
       );
       this.isAnimating = false;
       return;
@@ -90,7 +90,7 @@ export class DynamicColumnLayout extends Layout {
 
     // Step 3: Animate the new element appearing while the first element settles
     yield* node.width(targetWidth, this.animationDuration(), easeOutCubic);
-    yield* node.opacity(1, this.animationDuration() * 0.6, easeOutCubic);
+    yield* node.opacity(1, this.animationDuration(), easeOutCubic);
 
     this.isAnimating = false;
   }
@@ -216,7 +216,7 @@ export class DynamicColumnLayout extends Layout {
 
   public *removeByRef(nodeToRemove: Reference<Rect>): ThreadGenerator {
     if (this.isAnimating) {
-      yield* waitFor(0.1);
+      yield* waitFor(0.5);
       return yield* this.removeByRef(nodeToRemove);
     }
 
@@ -228,7 +228,7 @@ export class DynamicColumnLayout extends Layout {
 
   public *removeByIndex(index: number): ThreadGenerator {
     if (this.isAnimating) {
-      yield* waitFor(0.1);
+      yield* waitFor(0.5);
       return yield* this.removeByIndex(index);
     }
 
