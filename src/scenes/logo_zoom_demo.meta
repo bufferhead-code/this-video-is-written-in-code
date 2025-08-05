@@ -3,15 +3,15 @@
   "timeEvents": [
     {
       "name": "show_aarthificial",
-      "targetTime": 3.7
+      "targetTime": 2.8
     },
     {
       "name": "hide_aarthificial",
-      "targetTime": 7.397759932388566
+      "targetTime": 6.497759932388565
     },
     {
       "name": "end",
-      "targetTime": 18.37852820262196
+      "targetTime": 17.47852820262196
     }
   ],
   "seed": 2526940134,

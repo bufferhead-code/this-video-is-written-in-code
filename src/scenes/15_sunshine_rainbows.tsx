@@ -59,7 +59,7 @@ export default makeScene2D(function* (view) {
   yield* waitUntil('typewriter_starts');
 
   // Typewrite the text
-  yield* text().typewrite("Sunshine & Rainbows", 2);
+  yield* text().typewrite("Sunshine & Rainbows", 1);
 
   // Wait for completion
   yield* waitUntil('text_complete');

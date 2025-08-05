@@ -76,7 +76,7 @@ export default makeScene2D(function* (view) {
 
   // Single zoomIn animation
   yield* zoomIn(logoRef(), {
-    duration: 1.5,
+    duration: 1,
     fromScale: 0,
     toScale: 2,
     overshoot: true

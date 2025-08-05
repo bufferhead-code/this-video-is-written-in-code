@@ -3,15 +3,15 @@
   "timeEvents": [
     {
       "name": "logos_slide_start",
-      "targetTime": 0.6817475289888244
+      "targetTime": 1
     },
     {
       "name": "logos_hold",
-      "targetTime": 5.303086633438214
+      "targetTime": 3.7953048175842037
     },
     {
       "name": "scene_end",
-      "targetTime": 7.675849228643368
+      "targetTime": 6.168067412789357
     }
   ],
   "seed": 123456789

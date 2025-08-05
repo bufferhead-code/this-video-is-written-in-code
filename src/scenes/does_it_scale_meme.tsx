@@ -4,11 +4,12 @@ import { waitFor, waitUntil, all } from '@motion-canvas/core/lib/flow';
 import { Img, Video } from '@motion-canvas/2d/lib/components';
 import { Background } from '../components/Background';
 import { MEME_STYLE } from '../components/MemeStyle';
-import { zoomIn } from '../animation';
+import { slideInBottom, zoomIn } from '../animation';
 import { Browser } from '../components/Browser';
 import doesItScaleImage from '../images/does_it_scale.png';
 import canvasScreenshot from '../components/media/canvas_screenshot.jpeg';
 import motionCanvasScrubbing from '../images/motion_canvas_scrubbing.mov?url';
+import { fadeTransition } from '@motion-canvas/core';
 
 export default makeScene2D(function* (view) {
   const backgroundRef = createRef<Img>();
@@ -26,12 +27,15 @@ export default makeScene2D(function* (view) {
       src={doesItScaleImage}
       height={1080 * 0.9} // 70% of screen height
       {...MEME_STYLE}
+      opacity={0}
     />,
   );
 
+  yield* fadeTransition(1);
+
   // Animate the meme with zoomIn from center
   yield* zoomIn(memeRef(), {
-    duration: 0.8,
+    duration: 1,
     fromScale: 0,
     toScale: 1,
   });
@@ -84,10 +88,9 @@ export default makeScene2D(function* (view) {
   );
 
   // Animate video with meme-style zoom in from center
-  yield* zoomIn(videoRef(), {
-    duration: 0.8,
-    fromScale: 0,
-    toScale: 1,
+  yield* slideInBottom(videoRef(), {
+    duration: 0.5,
+  
   });
 
   // Wait a bit to show the video

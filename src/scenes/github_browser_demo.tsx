@@ -3,12 +3,14 @@ import { all, createSignal, easeInOutCubic, easeOutCubic, fadeTransition, waitFo
 import { Vector2 } from '@motion-canvas/core/lib/types';
 import { MacOSBackground } from '../components/MacOSBackground';
 import { Browser } from '../components/Browser';
-import { DynamicColumnLayout } from '../components/DynamicColumnLayout';
 import { Logo } from '../components/Logo';
+import { StyledText } from '../components/StyledText';
+import { YoutubeChannelCard } from '../components/YouTubeChannelCard';
 import { slideInBottom } from '../animation';
 import githubScreenshot from '../images/github_motion_canvas_example.jpeg?url';
 import discordLogo from '../images/discord-logo.svg?url';
 import solidtimeScreenshot from '../images/solidtime_screenshot.jpeg?url';
+import bufferheadAvatar from '../images/bufferhead_avatar.svg?url';
 
 export default makeScene2D(function* (view) {
   // Create signals for animation control
@@ -22,13 +24,13 @@ export default makeScene2D(function* (view) {
   });
   view.add(macBackground);
 
-  // Create dynamic column layout for browser and discord
-  const columnLayout = new DynamicColumnLayout({
-    itemGap: 40,
-    animationDuration: 0.8,
+  // Create regular layout for browser and discord
+  const columnLayout = new Layout({
+    gap: 150,
     position: [0, 0],
     alignItems: 'center',
     opacity: () => layoutOpacity(),
+    layout: true,
   });
 
   // Create browser with GitHub screenshot
@@ -37,6 +39,9 @@ export default makeScene2D(function* (view) {
     screenshotSrc: githubScreenshot,
     url: 'https://github.com/motion-canvas/examples',
     screenshotDelay: 0.3,
+    opacity: 0,
+    position: [0, -50],
+
   });
 
 
@@ -54,41 +59,78 @@ export default makeScene2D(function* (view) {
   // Create Discord logo using Logo component wrapped in a Rect
   const discordLogoComponent = new Logo({
     src: discordLogo,
-    containerSize: 150,
-    logoWidth: 100,
+    containerSize: 450,
+    logoWidth: 300,
     logoHeight: 78,
   });
 
-  // Wrap the logo in a Rect container for DynamicColumnLayout compatibility
+  // Wrap the logo in a Rect container for layout compatibility
   const discordContainer = new Rect({
-    width: 150,
-    height: 150,
+    width: 350,
+    height: 350,
     fill: 'rgba(0,0,0,0)',
     alignItems: 'center',
     justifyContent: 'center',
+    opacity: 0,
   });
   discordContainer.add(discordLogoComponent);
 
-  // Add browser to column layout
+  // Create StyledText component for "Community"
+  const communityText = new StyledText({
+    text: '',
+    size: 'xl',
+    colorType: 'secondary',
+    textAlign: 'center',
+    position: [0, 0],
+    opacity: 0,
+  });
+
+  // Add browser to layout
   columnLayout.add(browser);
+  columnLayout.add(discordContainer);
 
   // Add column layout to view
   view.add(columnLayout);
 
+  // Add community text to view
+  view.add(communityText);
+
   // Add solidtime browser to view (initially hidden)
   view.add(solidtimeBrowser);
 
-  // Set initial position of browser below screen
-  browser.position([0, 1080]);
+  // Create YouTubeChannelCard for Bufferhead
+  const bufferheadCard = new YoutubeChannelCard({
+    channelName: 'Bufferhead',
+    username: '@bufferhead_',
+    subscribers: '7.64K subscribers',
+    videos: '28 videos',
+    description: 'expert in breaking ci pipelines. i do silly web projects sometimes.',
+    cardWidth: 1300,
+    cardHeight: 420,
+    avatarSrc: bufferheadAvatar,
+    opacity: 0,
+    scale: 0,
+  });
+  view.add(bufferheadCard);
 
   // Fade transition
   yield* fadeTransition(1);
 
-  // Wait a moment
+
+  // Show community text with typewriter effect at the start
+  yield* waitUntil('community_text');
+  yield* communityText.opacity(1, 0.3, easeOutCubic);
+  yield* communityText.typewrite('Community', 1, 0);
+
+  // Wait a moment after community text
   yield* waitFor(0.5);
 
   // Slide browser in from bottom using animation preset
-  yield* slideInBottom(browser, { duration: 1, distance: 1080 });
+  yield* waitUntil('browser_slide_in');
+  yield* all(
+    slideInBottom(browser, { duration: 1, distance: 1080 }),
+    communityText.opacity(0, 0.8, easeOutCubic),
+  );
 
   // Wait for browser to settle
   yield* waitFor(1);
@@ -96,13 +138,12 @@ export default makeScene2D(function* (view) {
   // Wait for browser to be ready before adding Discord logo
   yield* waitFor(0.1);
 
-  // Add Discord logo to the right side
-  yield* columnLayout.addItem(discordContainer, 150);
-
-  // Animate Discord logo appearance
+    // Animate Discord logo appearance
+  yield* waitUntil('discord_fade_in');
   yield* all(
     discordOpacity(1, 0.6, easeOutCubic),
     discordScale(1, 0.6, easeOutCubic),
+    discordContainer.opacity(1, 0.6, easeOutCubic),
   );
 
   // Hold the scene
@@ -123,6 +164,36 @@ export default makeScene2D(function* (view) {
   // Slide in the solidtime browser from bottom using animation preset
   yield* slideInBottom(solidtimeBrowser, { duration: 1, distance: 1080 });
 
-  // Hold the final scene
+  // Hold the solidtime browser scene
   yield* waitFor(2);
+
+  // Fade out solidtime browser before showing Bufferhead card
+  yield* waitUntil('fade_out_solidtime');
+  yield* solidtimeBrowser.opacity(0, 0.8, easeOutCubic);
+
+  // Wait a moment after fade out
+  yield* waitFor(0.3);
+
+  // Show Bufferhead YouTube card with ZoomIn effect
+  yield* waitUntil('bufferhead_card');
+  yield* all(
+    bufferheadCard.opacity(1, 0.8, easeOutCubic),
+    bufferheadCard.scale(1, 0.8, easeOutCubic),
+  );
+
+  // Hold the Bufferhead card scene
+  yield* waitFor(2);
+
+  // Fade out the Bufferhead YouTube card
+  yield* waitUntil('fade_out_bufferhead');
+  yield* all(
+    bufferheadCard.opacity(0, 0.8, easeOutCubic),
+    bufferheadCard.scale(0.8, 0.8, easeOutCubic),
+  );
+
+  // Hold the final scene
+  yield* waitFor(1);
+
+  yield* waitUntil('scene_end');
+
 }); 

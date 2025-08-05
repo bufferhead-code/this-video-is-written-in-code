@@ -15,39 +15,51 @@
     },
     {
       "name": "wait_for_video",
-      "targetTime": 14.997546777854392
+      "targetTime": 15.314945683048215
     },
     {
       "name": "zoom_out",
-      "targetTime": 14.997546777854392
+      "targetTime": 17.462950570996817
     },
     {
       "name": "add_zoom_code_card",
-      "targetTime": 19.4298073058033
+      "targetTime": 18.861848045196002
     },
     {
       "name": "fade_in_workplace",
-      "targetTime": 23.698920585263124
+      "targetTime": 25.640012837393524
+    },
+    {
+      "name": "add_shift_key",
+      "targetTime": 31.125202990963725
+    },
+    {
+      "name": "fade_out_shift_key",
+      "targetTime": 32.33410268550779
+    },
+    {
+      "name": "add_waituntil_code",
+      "targetTime": 33.134102685507784
     },
     {
       "name": "slide_in_zoom_code",
-      "targetTime": 25.698920585263124
+      "targetTime": 40.125139561586785
     },
     {
       "name": "reset_highlight",
-      "targetTime": 26.998920585263125
+      "targetTime": 44.81394727844163
     },
     {
       "name": "remove_blur",
-      "targetTime": 27.912226029820527
+      "targetTime": 50.2283416737626
     },
     {
       "name": "zoom_back",
-      "targetTime": 31.83715686822675
+      "targetTime": 52.904792364197526
     },
     {
       "name": "end",
-      "targetTime": 32.83715686822675
+      "targetTime": 54.63688114996405
     }
   ],
   "seed": 1234567890

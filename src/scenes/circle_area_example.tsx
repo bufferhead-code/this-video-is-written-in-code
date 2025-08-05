@@ -27,8 +27,7 @@ const area = createSignal(
 
 ...
 
-yield* radius(4, 2).to(3, 2);
-yield* waitFor(1);`;
+yield* radius(4, 2).to(3, 2);`;
 
   // Create preview visualization
   const previewContent = (

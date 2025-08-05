@@ -53,7 +53,7 @@ export class StyledText extends Node {
   @signal()
   declare public readonly fixWidth: SimpleSignal<boolean>;
 
-  @initial('center')
+  @initial('left')
   @signal()
   declare public readonly textAlign: SimpleSignal<'left' | 'center' | 'right'>;
 

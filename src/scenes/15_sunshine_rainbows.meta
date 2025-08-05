@@ -15,15 +15,15 @@
     },
     {
       "name": "text_fade_out",
-      "targetTime": 6.462516243291953
+      "targetTime": 7.292970500865884
     },
     {
       "name": "video_zoom",
-      "targetTime": 8.445034869712288
+      "targetTime": 9.421349725051028
     },
     {
       "name": "scene_end",
-      "targetTime": 29.489018199863136
+      "targetTime": 25.463748816907795
     }
   ],
   "seed": 884066850,

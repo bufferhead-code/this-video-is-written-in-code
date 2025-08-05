@@ -5,8 +5,10 @@ import { CodeCard } from '../components/CodeCard';
 import { DynamicColumnLayout } from '../components/DynamicColumnLayout';
 import { Video, Code, Img } from '@motion-canvas/2d/lib/components';
 import { MEME_STYLE } from '../components/MemeStyle';
+import { Arrow } from '../components/Arrow';
 import timeEventsDemo from '../images/time_events_demo.mov?url';
 import workplaceScreen from '../images/workplace_screen.jpg?url';
+import shiftKey from '../images/shift-key.svg?url';
 import { fadeOut } from '../animation';
 
 export default makeScene2D(function* (view) {
@@ -142,6 +144,22 @@ export default makeScene2D(function* (view) {
   // Wait for final state
   yield* waitUntil('add_zoom_code_card');
 
+  // Add Arrow component
+  const arrow = createRef<Arrow>();
+  const arrowInstance = (
+    <Arrow
+      ref={arrow}
+      width={300}
+      height={150}
+      opacity={1}
+      x={350}
+      y={320}
+    />
+  );
+  view.add(arrowInstance);
+
+  yield* arrow().fadeIn(0.5);
+
   // Create new CodeCard with zoomIn animation content
   const zoomCodeRef = createRef<Code>();
   const zoomCodeCard = createRef<typeof CodeCard>();
@@ -164,10 +182,71 @@ export default makeScene2D(function* (view) {
   // Fade in workplace image
   yield* workplaceElement.opacity(1, 1, easeOutCubic);
 
+  yield* arrow().fadeOut(0.5);
 
   yield* all(
     wrapperRect().scale(0.56, 1, easeOutCubic),
     wrapperRect().position([-6, -52], 1, easeOutCubic),
+  );
+
+  // Wait for final state
+  yield* waitUntil('add_shift_key');
+
+  // Add shift key image at bottom center
+  const shiftKeyImage = createRef<Img>();
+  const shiftKeyElement = (
+    <Img
+      ref={shiftKeyImage}
+      src={shiftKey}
+      width={412}
+      height={144}
+      position={[0, 400]}
+      opacity={0}
+    />
+  );
+  view.add(shiftKeyElement);
+
+  // Fade in the shift key
+  yield* shiftKeyElement.opacity(1, 0.8, easeOutCubic);
+
+  // Wait for shift key to fade out
+  yield* waitUntil('fade_out_shift_key');
+
+  // Fade out the shift key
+  yield* shiftKeyElement.opacity(0, 0.8, easeOutCubic);
+
+  // Wait for new code card
+  yield* waitUntil('add_waituntil_code');
+
+  // Create new CodeCard with waitUntil examples
+  const waitUntilCodeRef = createRef<Code>();
+  const waitUntilCodeCard = createRef<typeof CodeCard>();
+  const waitUntilCodeCardInstance = CodeCard({
+    ref: waitUntilCodeCard,
+    codeRef: waitUntilCodeRef,
+    code: 'yield* waitUntil(\'first\');\nyield* waitUntil(\'second\');',
+    width: 700,
+    height: 220,
+    alignItems: 'center',
+    scale: 1.4,
+    justifyContent: 'center',
+  });
+
+  // Position the new code card off-screen initially
+  waitUntilCodeCardInstance.position([0, 600]);
+  waitUntilCodeCardInstance.opacity(0);
+
+  // Add the new code card to the view
+  view.add(waitUntilCodeCardInstance);
+
+  // Slide in the new code card
+  yield* all(
+    waitUntilCodeCardInstance.position([0, 0], 0.8, easeOutCubic),
+    waitUntilCodeCardInstance.opacity(1, 0.8, easeOutCubic),
+      // blur rect behind code card
+    wrapperRect().filters.blur(5, 0.8),
+    wrapperRect().filters.grayscale(1, 0.8),
+    
   );
 
   // Wait for final state
@@ -180,15 +259,13 @@ export default makeScene2D(function* (view) {
     // Add the new code card to the wrapper
     view.add(zoomCodeCardInstance);
 
-    // Slide in the new code card
+    // Slide in the new code card and fade out the waitUntil code card
     yield* all(
       zoomCodeCardInstance.position([0, -50], 0.8, easeOutCubic),
       zoomCodeCardInstance.opacity(1, 0.8, easeOutCubic),
+      waitUntilCodeCardInstance.opacity(0, 0.8, easeOutCubic),
     );
 
-    // blur rect behind code card
-    wrapperRect().filters.blur(5);
-    wrapperRect().filters.grayscale(1);
 
       // Highlight the useDuration('event') part
   yield* zoomCodeCardInstance.highlight("useDuration('event')", 0.5);

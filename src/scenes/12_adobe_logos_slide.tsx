@@ -8,6 +8,7 @@ import { easeInOutSine } from '@motion-canvas/core/lib/tweening';
 import premiereProLogo from '../images/premiere-pro-logo.svg';
 import afterEffectsLogo from '../images/after-effects-logo.svg';
 import screenIcon from '../components/media/screen.svg';
+import { fadeTransition } from '@motion-canvas/core';
 
 export default makeScene2D(function* (view) {
   const containerRef = createRef<Rect>();
@@ -74,6 +75,8 @@ export default makeScene2D(function* (view) {
     </Rect>
   );
 
+
+  yield* fadeTransition(1);
   // Wait for the scene to start
   yield* waitUntil('logos_slide_start');
 
