@@ -3,6 +3,7 @@ import { initial, signal } from '@motion-canvas/2d/lib/decorators';
 import { SignalValue, SimpleSignal } from '@motion-canvas/core/lib/signals';
 import { waitFor } from '@motion-canvas/core';
 import { COLORS, ColorType } from '../utils/colors';
+import { playTypewriter } from '../soundeffects';
 
 const SIZES = {
   '3xl': 192,
@@ -22,6 +23,18 @@ export interface StyledTextProps extends NodeProps {
   fontSize?: SignalValue<number>;
   opacity?: SignalValue<number>;
   fixWidth?: SignalValue<boolean>;
+  /**
+   * Custom stroke width for the outline. If provided, overrides the default calculated value.
+   */
+  strokeWidth?: SignalValue<number>;
+  /**
+   * If true, use monospace font for code blocks.
+   */
+  monospace?: boolean;
+  /**
+   * Text alignment: 'left', 'center', or 'right'
+   */
+  textAlign?: SignalValue<'left' | 'center' | 'right'>;
 }
 
 /**
@@ -41,6 +54,10 @@ export class StyledText extends Node {
   @signal()
   declare public readonly fixWidth: SimpleSignal<boolean>;
 
+  @initial('left')
+  @signal()
+  declare public readonly textAlign: SimpleSignal<'left' | 'center' | 'right'>;
+
   private strokeText: Txt;
   private fillText: Txt;
 
@@ -53,16 +70,22 @@ export class StyledText extends Node {
     const fontSize =
       typeof fontSizeValue === 'number' ? fontSizeValue : SIZES.sm;
 
-    // Calculate stroke width proportional to font size (approximately 3% of font size)
-    const strokeWidth = fontSize * 0.25;
+    // Determine font family
+    const fontFamily = props?.monospace
+      ? 'Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace'
+      : '"Baloo 2", "Baloo", Arial, sans-serif';
+
+    // Use custom strokeWidth if provided, otherwise calculate proportional to font size (approximately 3% of font size)
+    const strokeWidth = props?.strokeWidth ?? fontSize * 0.25;
 
     const baseStyle = {
-      fontFamily: '"Baloo 2", "Baloo", Arial, sans-serif',
+      fontFamily,
       fontSize: fontSizeValue,
       fontWeight: 700,
       fontStyle: 'normal',
       text: props?.text ?? '',
       opacity: () => this.opacity(),
+      textAlign: props?.textAlign ?? 'center',
     };
 
     // Create the stroke text (rendered first, underneath)
@@ -124,9 +147,9 @@ export class StyledText extends Node {
     this.strokeText.text('');
     this.fillText.text('');
 
-    // Set text alignment to left for proper left-to-right appearance
-    this.strokeText.textAlign('left');
-    this.fillText.textAlign('left');
+    // Set text alignment based on component setting
+    this.strokeText.textAlign(this.textAlign());
+    this.fillText.textAlign(this.textAlign());
 
     // Implement fixWidth: measure the full text width and set it from the beginning
     if (this.fixWidth()) {
@@ -139,6 +162,9 @@ export class StyledText extends Node {
     if (delay > 0) {
       yield* waitFor(delay);
     }
+
+    // Play typewriter sound
+    playTypewriter();
 
     // Calculate time per character
     const timePerChar = duration / text.length;
@@ -170,9 +196,9 @@ export class StyledText extends Node {
     this.strokeText.text('');
     this.fillText.text('');
 
-    // Set text alignment to left for proper left-to-right appearance
-    this.strokeText.textAlign('left');
-    this.fillText.textAlign('left');
+    // Set text alignment based on component setting
+    this.strokeText.textAlign(this.textAlign());
+    this.fillText.textAlign(this.textAlign());
 
     // Implement fixWidth: measure the full text width including cursor space
     if (this.fixWidth()) {

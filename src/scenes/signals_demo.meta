@@ -1,0 +1,38 @@
+{
+  "version": 0,
+  "timeEvents": [
+    {
+      "name": "show_opacity_signal",
+      "targetTime": 4.668125496335425
+    },
+    {
+      "name": "show_scale_signal",
+      "targetTime": 5.668125496335425
+    },
+    {
+      "name": "highlight_extends_node",
+      "targetTime": 12.468125496335425
+    },
+    {
+      "name": "highlight_signal_decorator",
+      "targetTime": 17.93568121843178
+    },
+    {
+      "name": "highlight_silliness_property",
+      "targetTime": 20.667888484966838
+    },
+    {
+      "name": "show_animation_code",
+      "targetTime": 22.96788848496684
+    },
+    {
+      "name": "animate_silliness",
+      "targetTime": 30.73633177171456
+    },
+    {
+      "name": "final_silliness_animations",
+      "targetTime": 34.787468907181506
+    }
+  ],
+  "seed": 2283614918
+}

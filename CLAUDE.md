@@ -80,6 +80,10 @@ Scenes are imported with `?scene` suffix and defined in `src/project.ts`. Curren
 4. `06_code_automation` - Benefits of code-based automation
 5. `07_manim_python` - Manim and Python discussion
 
+### Code Animations
+
+when doing Code animations look at https://motioncanvas.io/docs/code/ for reference
+
 ### Audio Integration
 
 - Main voiceover: `audio/voiceover.mp3`

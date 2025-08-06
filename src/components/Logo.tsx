@@ -13,6 +13,7 @@ import { all, delay } from '@motion-canvas/core/lib/flow';
 import { StyledText, StyledTextProps } from './StyledText';
 import { ColorType } from '../utils/colors';
 import crownSvg from './media/crown.svg';
+import teachPng from './media/teach.png';
 
 /**
  * Logo Component with Crown Animation
@@ -132,6 +133,7 @@ export class Logo extends Layout {
   private crossLine2: Line;
   private styledText: StyledText;
   private crown: Img;
+  private teach: Img;
   private props: LogoProps;
 
   public constructor(props?: LogoProps) {
@@ -187,7 +189,7 @@ export class Logo extends Layout {
         new Vector2(halfSize, halfSize),
       ],
       stroke: '#ff0000',
-      lineWidth: 8,
+      lineWidth: 25,
       end: 0,
       zIndex: 10,
     });
@@ -198,7 +200,7 @@ export class Logo extends Layout {
         new Vector2(-halfSize, halfSize),
       ],
       stroke: '#ff0000',
-      lineWidth: 8,
+      lineWidth: 25,
       end: 0,
       zIndex: 10,
     });
@@ -212,6 +214,17 @@ export class Logo extends Layout {
       // Position at top right with slight tilt
       y: () => -this.containerSize() * 0.6,
       rotation: 0,
+    });
+
+    // Create teach image (initially hidden)
+    this.teach = new Img({
+      src: teachPng,
+      width: this.containerSize(),
+      opacity: 0,
+      zIndex: 15,
+      x: () => -this.containerSize() * 0.93, // Position to the left of the logo
+      y: () => -this.containerSize() * 0.2, // Position to the left of the logo
+      rotation: 7,
     });
 
     // Create the styled text component positioned at bottom center
@@ -234,6 +247,7 @@ export class Logo extends Layout {
     this.container.add(this.crossLine1);
     this.container.add(this.crossLine2);
     this.container.add(this.crown);
+    this.container.add(this.teach);
     this.container.add(this.styledText);
 
     this.crossLine1.end(1, 0.8);
@@ -243,7 +257,7 @@ export class Logo extends Layout {
     this.add(this.container);
   }
 
-  public *crossOut(duration: number = 0.8) {
+  public *crossOut(duration: number = 0.5) {
     yield* all(
       this.crossLine1.end(1, duration),
       delay(duration * 0.5, this.crossLine2.end(1, duration)),
@@ -280,6 +294,34 @@ export class Logo extends Layout {
     yield* this.crown.opacity(0, duration);
   }
 
+  /**
+   * Shows the teach image with a fade-in animation
+   * @param duration - Duration of the fade-in animation in seconds (default: 0.8)
+   * @example
+   * // Show teach image with default duration
+   * yield* logo.showTeach();
+   *
+   * // Show teach image with custom duration
+   * yield* logo.showTeach(1.2);
+   */
+  public *showTeach(duration: number = 0.8) {
+    yield* this.teach.opacity(1, duration);
+  }
+
+  /**
+   * Hides the teach image with a fade-out animation
+   * @param duration - Duration of the fade-out animation in seconds (default: 0.5)
+   * @example
+   * // Hide teach image with default duration
+   * yield* logo.hideTeach();
+   *
+   * // Hide teach image with custom duration
+   * yield* logo.hideTeach(0.8);
+   */
+  public *hideTeach(duration: number = 0.5) {
+    yield* this.teach.opacity(0, duration);
+  }
+
   // Show the text with optional fade-in animation
   public *showText(duration: number = 0.5) {
     yield* this.styledText.opacity(this.textOpacity(), duration);
@@ -291,7 +333,7 @@ export class Logo extends Layout {
   }
 
   // Typewriter effect for the text
-  public *typewriteText(text: string, duration: number = 1, delay: number = 0) {
+  public *typewriteText(text: string, duration: number = 0.7, delay: number = 0) {
     // Set the text opacity to visible first
     this.styledText.opacity(this.textOpacity());
 

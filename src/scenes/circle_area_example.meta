@@ -1,0 +1,34 @@
+{
+  "version": 1,
+  "timeEvents": [
+    {
+      "name": "clear_highlight",
+      "targetTime": 8.15725312805673
+    },
+    {
+      "name": "highlight_area",
+      "targetTime": 9.837058300059024
+    },
+    {
+      "name": "clear_area_highlight",
+      "targetTime": 13.203245767727552
+    },
+    {
+      "name": "add_preview",
+      "targetTime": 15.173634470710748
+    },
+    {
+      "name": "animate_radius",
+      "targetTime": 19.14023939159054
+    },
+    {
+      "name": "reset_final_highlight",
+      "targetTime": 23.14023939159054
+    },
+    {
+      "name": "end",
+      "targetTime": 38.01870257213804
+    }
+  ],
+  "seed": 1821849156
+}

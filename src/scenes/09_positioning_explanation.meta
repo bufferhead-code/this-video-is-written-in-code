@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "timeEvents": [
+    {
+      "name": "show_center_circle",
+      "targetTime": 2.8
+    },
+    {
+      "name": "show_distance_arrows",
+      "targetTime": 9.532028550858128
+    },
+    {
+      "name": "fade_distance_arrows",
+      "targetTime": 14.598496900548035
+    },
+    {
+      "name": "show_coordinates",
+      "targetTime": 15.297889483174117
+    },
+    {
+      "name": "show_y_axis",
+      "targetTime": 16.097889483174118
+    },
+    {
+      "name": "show_code_card",
+      "targetTime": 16.89788948317412
+    },
+    {
+      "name": "animate_x_value",
+      "targetTime": 17.69788948317412
+    },
+    {
+      "name": "animate_y_value",
+      "targetTime": 19.383603921819752
+    },
+    {
+      "name": "scene_end",
+      "targetTime": 25.675820402892843
+    }
+  ],
+  "seed": 3694159992
+}

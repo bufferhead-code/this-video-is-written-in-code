@@ -1,0 +1,58 @@
+{
+  "version": 1,
+  "timeEvents": [
+    {
+      "name": "terminal_appear",
+      "targetTime": 1
+    },
+    {
+      "name": "npm_command",
+      "targetTime": 2.8
+    },
+    {
+      "name": "terminal_fade",
+      "targetTime": 6
+    },
+    {
+      "name": "show_editor",
+      "targetTime": 7
+    },
+    {
+      "name": "editor_fade",
+      "targetTime": 13.1321574976489
+    },
+    {
+      "name": "node_tree_start",
+      "targetTime": 14.1321574976489
+    },
+    {
+      "name": "dom_tree_card",
+      "targetTime": 14.1321574976489
+    },
+    {
+      "name": "dom_tree_fade",
+      "targetTime": 14.6321574976489
+    },
+    {
+      "name": "trees_fade_out",
+      "targetTime": 18.68354379522993
+    },
+    {
+      "name": "jsx_example",
+      "targetTime": 19.68354379522993
+    },
+    {
+      "name": "no_jsx_example",
+      "targetTime": 32.51335814427582
+    },
+    {
+      "name": "jsx_fade_out",
+      "targetTime": 39.91366554472524
+    },
+    {
+      "name": "scene_end",
+      "targetTime": 40.91366554472524
+    }
+  ],
+  "seed": 3750633995
+}

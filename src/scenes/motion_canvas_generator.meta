@@ -1,5 +1,118 @@
 {
-  "version": 0,
-  "timeEvents": [],
-  "seed": 2247075239
+  "version": 1,
+  "timeEvents": [
+    {
+      "name": "remotion_comparison",
+      "targetTime": 3.120310332060707
+    },
+    {
+      "name": "remotion_frame_based",
+      "targetTime": 3.98213936882469
+    },
+    {
+      "name": "remotion_showcase",
+      "targetTime": 5.1151484793799415
+    },
+    {
+      "name": "frame_based_example",
+      "targetTime": 8.92017910660572
+    },
+    {
+      "name": "frame_calculation",
+      "targetTime": 11.754029660040233
+    },
+    {
+      "name": "transform_example",
+      "targetTime": 13.496950769542277
+    },
+    {
+      "name": "preview_animate",
+      "targetTime": 16.14950339703136
+    },
+    {
+      "name": "messy_process",
+      "targetTime": 26.62621846226532
+    },
+    {
+      "name": "brain_mess_meme",
+      "targetTime": 35.357711972616606
+    },
+    {
+      "name": "motion_canvas_intro",
+      "targetTime": 36.1577119726166
+    },
+    {
+      "name": "sequential_order",
+      "targetTime": 37.28604556465822
+    },
+    {
+      "name": "motion_canvas_example",
+      "targetTime": 38.722963378600234
+    },
+    {
+      "name": "move_position_example",
+      "targetTime": 40.29079571092424
+    },
+    {
+      "name": "motion_canvas_code",
+      "targetTime": 41.29079571092424
+    },
+    {
+      "name": "add_preview",
+      "targetTime": 42.26302308080214
+    },
+    {
+      "name": "preview_setup",
+      "targetTime": 43.26302308080214
+    },
+    {
+      "name": "animate_preview",
+      "targetTime": 46.35354081831987
+    },
+    {
+      "name": "wait_second",
+      "targetTime": 49.45438226119913
+    },
+    {
+      "name": "move_back",
+      "targetTime": 51.020886816476754
+    },
+    {
+      "name": "comparison_analysis",
+      "targetTime": 51.82088681647676
+    },
+    {
+      "name": "remove_preview",
+      "targetTime": 51.82088681647676
+    },
+    {
+      "name": "add_remotion_code",
+      "targetTime": 53.67479551986353
+    },
+    {
+      "name": "fade_out_comparison",
+      "targetTime": 56.42448674005247
+    },
+    {
+      "name": "cross_out_remotion",
+      "targetTime": 58.7242808868451
+    },
+    {
+      "name": "gray_out_remotion",
+      "targetTime": 59.9242808868451
+    },
+    {
+      "name": "motion_canvas_crown",
+      "targetTime": 61.03754062725915
+    },
+    {
+      "name": "crown_complete",
+      "targetTime": 62.23754062725915
+    },
+    {
+      "name": "scene_end",
+      "targetTime": 65.75433349951315
+    }
+  ],
+  "seed": 3631563773
 }

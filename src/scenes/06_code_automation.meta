@@ -2,8 +2,56 @@
   "version": 0,
   "timeEvents": [
     {
+      "name": "github_search",
+      "targetTime": 2.4400000000000004
+    },
+    {
+      "name": "manim_website",
+      "targetTime": 2.4400000000000004
+    },
+    {
+      "name": "zoom_browser",
+      "targetTime": 3.4400000000000004
+    },
+    {
+      "name": "3blue1brown_intro",
+      "targetTime": 5.70572908067424
+    },
+    {
+      "name": "show_3blue1brown",
+      "targetTime": 6.041281615762119
+    },
+    {
+      "name": "mathematical_animations",
+      "targetTime": 10.678924259853579
+    },
+    {
+      "name": "python_hate_start",
+      "targetTime": 17.21929256702016
+    },
+    {
+      "name": "python_written",
+      "targetTime": 20.616875654747194
+    },
+    {
+      "name": "python_marker",
+      "targetTime": 22.496888399227657
+    },
+    {
+      "name": "video_background_ready",
+      "targetTime": 23.818842075641772
+    },
+    {
+      "name": "code_logo_ready",
+      "targetTime": 27.719496718777
+    },
+    {
+      "name": "erase_python_complete",
+      "targetTime": 29.47949671877701
+    },
+    {
       "name": "end_scene_6",
-      "targetTime": 26.92263193601109
+      "targetTime": 31.677746804840634
     }
   ],
   "seed": 2702262632

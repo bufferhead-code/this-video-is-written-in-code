@@ -1,6 +1,6 @@
 /* @jsxImportSource preact */
 
-import {Vector2} from '@motion-canvas/core';
+import { Vector2 } from '@motion-canvas/core';
 import {
   MouseButton,
   OverlayWrapper,
@@ -8,17 +8,19 @@ import {
   useViewportContext,
   useViewportMatrix,
 } from '@motion-canvas/ui';
-import {ComponentChildren, FunctionComponent} from 'preact';
-import {usePluginState} from './Provider';
+import { ComponentChildren, FunctionComponent } from 'preact';
+import { usePluginState } from './Provider';
 
-const Component: FunctionComponent<{children?: ComponentChildren}> = ({children}) => {
+const Component: FunctionComponent<{ children?: ComponentChildren }> = ({
+  children,
+}) => {
   const state = useViewportContext();
-  const {scene, selectElement} = usePluginState();
+  const { scene, selectElement } = usePluginState();
   const matrix = useViewportMatrix();
 
   return (
     <OverlayWrapper
-      onPointerDown={event => {
+      onPointerDown={(event) => {
         if (event.button !== MouseButton.Left || event.shiftKey) return;
         if (!scene.value) return;
         event.stopPropagation();
@@ -29,7 +31,9 @@ const Component: FunctionComponent<{children?: ComponentChildren}> = ({children}
         ).transformAsPoint(matrix.inverse());
 
         // For script editor, we can implement custom element selection logic here
-        selectElement(`script-element-${Math.floor(position.x)}-${Math.floor(position.y)}`);
+        selectElement(
+          `script-element-${Math.floor(position.x)}-${Math.floor(position.y)}`,
+        );
       }}
     >
       {children}
@@ -38,7 +42,7 @@ const Component: FunctionComponent<{children?: ComponentChildren}> = ({children}
 };
 
 function drawHook() {
-  const {selectedElement, hoveredKey, afterRender, scene} = usePluginState();
+  const { selectedElement, hoveredKey, afterRender, scene } = usePluginState();
   selectedElement.value;
   hoveredKey.value;
   afterRender.value;
@@ -69,4 +73,4 @@ function drawHook() {
 export const PreviewOverlayConfig: PluginOverlayConfig = {
   drawHook,
   component: Component as any,
-}; 
+};

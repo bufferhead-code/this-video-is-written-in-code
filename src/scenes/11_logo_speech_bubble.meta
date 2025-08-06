@@ -1,0 +1,38 @@
+{
+  "version": 0,
+  "timeEvents": [
+    {
+      "name": "show_speech_bubble",
+      "targetTime": 1.5
+    },
+    {
+      "name": "typewriter_text",
+      "targetTime": 2.1
+    },
+    {
+      "name": "hide_speech_bubble",
+      "targetTime": 4.552271255032635
+    },
+    {
+      "name": "show_teach",
+      "targetTime": 13.393037330859293
+    },
+    {
+      "name": "highlight_300",
+      "targetTime": 14.732105206182908
+    },
+    {
+      "name": "highlight_1",
+      "targetTime": 17.57830609947377
+    },
+    {
+      "name": "highlight_ease",
+      "targetTime": 19.973691949925854
+    },
+    {
+      "name": "end",
+      "targetTime": 24.117408399067997
+    }
+  ],
+  "seed": 1234567890
+}

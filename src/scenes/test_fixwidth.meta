@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "timeEvents": [
+    {
+      "name": "start_typewriter",
+      "targetTime": 1
+    },
+    {
+      "name": "scene_end",
+      "targetTime": 2.9999999999999973
+    }
+  ],
+  "seed": 312446390,
+  "name": "Test FixWidth",
+  "description": "Test scene to verify fixWidth functionality is working"
+}

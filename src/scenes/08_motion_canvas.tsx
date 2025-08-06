@@ -1,6 +1,6 @@
 import { makeScene2D } from '@motion-canvas/2d';
 import { fadeTransition, createSignal } from '@motion-canvas/core';
-import { all, waitFor } from '@motion-canvas/core/lib/flow';
+import { all, waitFor, waitUntil } from '@motion-canvas/core/lib/flow';
 import { createRef } from '@motion-canvas/core/lib/utils';
 import { Rect, Code, Video } from '@motion-canvas/2d/lib/components';
 import { Logo } from '../components/Logo';
@@ -8,6 +8,7 @@ import { Browser } from '../components/Browser';
 import { YoutubeChannelCard } from '../components/YouTubeChannelCard';
 import { BlueprintBackground } from '../components/BlueprintBackground';
 import { zoomIn, slideInBottom } from '../animation';
+import { playZoomIn } from '../soundeffects';
 import { MEME_STYLE } from '../components/MemeStyle';
 
 import motionCanvasLogo from '../images/motion-canvas-logo.svg';
@@ -69,9 +70,8 @@ export default makeScene2D(function* (view) {
     overshoot: true,
   });
 
-  yield* waitFor(1.0); // Let the logo settle
 
-  yield* waitFor(0.5); // Brief pause after cross-out
+  yield* waitUntil('show_browser');
 
   // Hide Motion Canvas logo and show browser with Motion Canvas website
   yield* all(
@@ -85,15 +85,16 @@ export default makeScene2D(function* (view) {
     }),
   );
 
-  yield* waitFor(0.5);
+  yield* waitUntil('zoom_browser');
 
   // zoom in to Motion Canvas browser
+  playZoomIn({ duration: 1 });
   yield* all(
     motionCanvasBrowserRef().scale(2, 1),
     motionCanvasBrowserRef().position([0, 100], 1),
   );
 
-  yield* waitFor(2.0);
+  yield* waitUntil('aarthificial_intro');
 
   // Show aarthificial YouTube channel card
   yield* all(
@@ -101,7 +102,7 @@ export default makeScene2D(function* (view) {
     motionCanvasBrowserRef().filters.blur(10, 0.5),
   );
 
-  yield* waitFor(1.5);
+  yield* waitUntil('timeline_control');
 
   // Hide YouTube channel card and unblur browser
   yield* all(
@@ -109,7 +110,7 @@ export default makeScene2D(function* (view) {
     aarthificialCardRef().opacity(0, 0.5),
   );
 
-  yield* waitFor(1.0);
+  yield* waitUntil('scene_end');
 
   // Show the meme video with zoomIn effect
 });

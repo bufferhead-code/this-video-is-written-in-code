@@ -1,5 +1,46 @@
 {
   "version": 0,
-  "timeEvents": [],
+  "timeEvents": [
+    {
+      "name": "manim_cross_out",
+      "targetTime": 2.6561776553120113
+    },
+    {
+      "name": "remotion_appear",
+      "targetTime": 7.3945654521911806
+    },
+    {
+      "name": "logos_merge",
+      "targetTime": 8.994565452191184
+    },
+    {
+      "name": "show_remotion_website",
+      "targetTime": 11.952655757847293
+    },
+    {
+      "name": "zoom_remotion",
+      "targetTime": 14.685361013777644
+    },
+    {
+      "name": "youtube_thumbnail_appear",
+      "targetTime": 16.096501942212942
+    },
+    {
+      "name": "primary_use_case",
+      "targetTime": 22.756001551300567
+    },
+    {
+      "name": "data_driven_videos",
+      "targetTime": 24.26386588034071
+    },
+    {
+      "name": "another_tool",
+      "targetTime": 25.991018584510755
+    },
+    {
+      "name": "scene_end",
+      "targetTime": 33.03298826165125
+    }
+  ],
   "seed": 2506929568
 }

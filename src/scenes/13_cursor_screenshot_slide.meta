@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "timeEvents": [
+    {
+      "name": "scene_end",
+      "targetTime": 16.186072306065924
+    }
+  ],
+  "seed": 108269737,
+  "name": "Cursor Screenshot Slide",
+  "description": "Scene showing MacOS background with cursor screenshot sliding in from bottom"
+}

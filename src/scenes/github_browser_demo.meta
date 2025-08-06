@@ -1,0 +1,40 @@
+{
+  "version": 1,
+  "timeEvents": [
+    {
+      "name": "community_text",
+      "targetTime": 1
+    },
+    {
+      "name": "browser_slide_in",
+      "targetTime": 5.452154023075318
+    },
+    {
+      "name": "discord_fade_in",
+      "targetTime": 10.126756809589434
+    },
+    {
+      "name": "show_solidtime",
+      "targetTime": 16.032284963461368
+    },
+    {
+      "name": "fade_out_solidtime",
+      "targetTime": 25.769258243611922
+    },
+    {
+      "name": "bufferhead_card",
+      "targetTime": 26.869258243611924
+    },
+    {
+      "name": "fade_out_bufferhead",
+      "targetTime": 33.38236307317571
+    },
+    {
+      "name": "scene_end",
+      "targetTime": 41.02027234338642
+    }
+  ],
+  "seed": 1119715384,
+  "name": "GitHub Browser Demo",
+  "description": "A scene showing a MacOS background with a browser containing GitHub Motion Canvas examples and a Discord logo"
+}

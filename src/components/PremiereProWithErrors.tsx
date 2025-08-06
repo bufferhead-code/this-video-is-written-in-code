@@ -1,13 +1,12 @@
 import { Img, Rect } from '@motion-canvas/2d/lib/components';
 import { createRef } from '@motion-canvas/core/lib/utils';
 import { all, delay, waitFor } from '@motion-canvas/core/lib/flow';
-import { sound } from '@motion-canvas/core';
 import { PremiereProWindow } from './PremiereProWindow';
 import { MacErrorWindow } from './MacErrorWindow';
 import { MacWindow } from './MacWindow';
 import { slideInBottom } from '../animation';
 
-import errorSound from '../sounds/error.mp3';
+import { createErrorSound } from '../soundeffects';
 
 export interface PremiereProWithErrorsProps {
   zIndex?: number;
@@ -81,15 +80,15 @@ export function* PremiereProWithErrors({
       error3Ref().opacity(0, 0.3),
     );
 
-    const errorAudio = sound(errorSound);
+    const errorAudio = createErrorSound();
 
-    errorAudio.play();
+    errorAudio?.play();
     yield* error1Ref().opacity(1, 0.2);
 
-    errorAudio.play();
+    errorAudio?.play();
     yield* error2Ref().opacity(1, 0.2);
 
-    errorAudio.play();
+    errorAudio?.play();
     yield* error3Ref().opacity(1, 0.2);
   };
 
@@ -108,7 +107,7 @@ export function* PremiereProWithErrors({
       error2Ref().opacity(0, 1),
       error3Ref().opacity(0, 1),
       error1Ref().opacity(0, 1),
-      delay(1, premiereWindowRef().opacity(0, 1.5)),
+      premiereWindowRef().opacity(0, 1.5),
       // Keep error windows visible (don't fade them out)
     );
   };

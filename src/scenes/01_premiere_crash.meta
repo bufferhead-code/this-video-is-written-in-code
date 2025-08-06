@@ -1,5 +1,22 @@
 {
   "version": 0,
-  "timeEvents": [],
+  "timeEvents": [
+    {
+      "name": "premiere_appears",
+      "targetTime": 0.2591662800981679
+    },
+    {
+      "name": "time_for_change_start",
+      "targetTime": 3.0932382371026357
+    },
+    {
+      "name": "time_for_change_text",
+      "targetTime": 4.7646173580978886
+    },
+    {
+      "name": "scene_end",
+      "targetTime": 7.517624721651891
+    }
+  ],
   "seed": 906770324
 }

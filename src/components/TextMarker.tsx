@@ -4,6 +4,7 @@ import { SignalValue, SimpleSignal } from '@motion-canvas/core/lib/signals';
 import { Color, Vector2, PossibleColor } from '@motion-canvas/core';
 import { all, waitFor, tween } from '@motion-canvas/core';
 import { COLORS } from '../utils/colors';
+import { playHighlighter } from '../soundeffects';
 
 export interface TextMarkerProps extends LayoutProps {
   markerColor?: SignalValue<PossibleColor>;
@@ -11,6 +12,7 @@ export interface TextMarkerProps extends LayoutProps {
   animationDuration?: SignalValue<number>;
   markerThickness?: SignalValue<number>;
   debugMode?: SignalValue<boolean>;
+  markerCompositeOperation?: SignalValue<GlobalCompositeOperation>;
 }
 
 export class TextMarker extends Layout {
@@ -33,6 +35,10 @@ export class TextMarker extends Layout {
   @initial(false)
   @signal()
   declare public readonly debugMode: SimpleSignal<boolean>;
+
+  @initial('lighter')
+  @signal()
+  declare public readonly markerCompositeOperation: SimpleSignal<GlobalCompositeOperation>;
 
   private markerNode: Rect;
 
@@ -60,7 +66,7 @@ export class TextMarker extends Layout {
       shadowColor: 'rgba(0,0,0,0.3)',
       shadowBlur: 6,
       shadowOffset: new Vector2(2, 2),
-      compositeOperation: 'lighter',
+      compositeOperation: this.markerCompositeOperation(),
     });
 
     this.add(this.markerNode);
@@ -69,6 +75,7 @@ export class TextMarker extends Layout {
   // Animation method: marker pen style (draws from left to right)
   public *animateMarkerPen(delay: number = 0) {
     yield* waitFor(delay);
+    playHighlighter();
     yield* this.animateSingleMarkerPen(this.markerNode);
   }
 
@@ -96,6 +103,7 @@ export class TextMarker extends Layout {
   // Animation method: fade in effect
   public *animateFadeIn(delay: number = 0) {
     yield* waitFor(delay);
+    playHighlighter();
     yield* this.markerNode.opacity(
       this.markerOpacity(),
       this.animationDuration(),
@@ -105,6 +113,7 @@ export class TextMarker extends Layout {
   // Animation method: typewriter style (appears as text is "detected")
   public *animateTypewriter(delay: number = 0, characterDelay: number = 0.05) {
     yield* waitFor(delay);
+    playHighlighter();
 
     // Use Layout dimensions for estimation
     const estimatedTextLength = Math.floor(this.width() / 10) || 10; // Rough estimate
@@ -117,6 +126,7 @@ export class TextMarker extends Layout {
   // Animation method: pulse effect
   public *animatePulse(delay: number = 0, pulseCount: number = 2) {
     yield* waitFor(delay);
+    playHighlighter();
 
     for (let i = 0; i < pulseCount; i++) {
       yield* this.markerNode.opacity(this.markerOpacity(), 0.3);
@@ -136,6 +146,7 @@ export class TextMarker extends Layout {
     color?: PossibleColor;
     opacity?: number;
     thickness?: number;
+    compositeOperation?: GlobalCompositeOperation;
   }) {
     if (properties.color !== undefined) {
       this.markerColor(properties.color);
@@ -147,6 +158,10 @@ export class TextMarker extends Layout {
     }
     if (properties.thickness !== undefined) {
       this.markerThickness(properties.thickness);
+    }
+    if (properties.compositeOperation !== undefined) {
+      this.markerCompositeOperation(properties.compositeOperation);
+      this.markerNode.compositeOperation(properties.compositeOperation);
     }
   }
 }

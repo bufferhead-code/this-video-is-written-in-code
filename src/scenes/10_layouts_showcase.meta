@@ -1,0 +1,54 @@
+{
+  "version": 1,
+  "timeEvents": [
+    {
+      "name": "cross_out_css",
+      "targetTime": 1.5
+    },
+    {
+      "name": "show_browser",
+      "targetTime": 3.1951287200332166
+    },
+    {
+      "name": "show_code",
+      "targetTime": 9.14237521168868
+    },
+    {
+      "name": "add_layout_property",
+      "targetTime": 11.355676048254326
+    },
+    {
+      "name": "transform_to_layout",
+      "targetTime": 15.023436197466262
+    },
+    {
+      "name": "add_layout_attributes",
+      "targetTime": 18.04228004985724
+    },
+    {
+      "name": "highlight_alignItems",
+      "targetTime": 20.073000456165094
+    },
+    {
+      "name": "highlight_justifyContent",
+      "targetTime": 21.45819437661456
+    },
+    {
+      "name": "highlight_gap",
+      "targetTime": 22.488548844944745
+    },
+    {
+      "name": "highlight_direction",
+      "targetTime": 23.7924951432138
+    },
+    {
+      "name": "clear_selection",
+      "targetTime": 26.78975901290226
+    },
+    {
+      "name": "scene_end",
+      "targetTime": 29.23746692011877
+    }
+  ],
+  "seed": 617168422
+}

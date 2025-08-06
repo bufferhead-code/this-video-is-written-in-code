@@ -2,8 +2,36 @@
   "version": 0,
   "timeEvents": [
     {
+      "name": "scene_start",
+      "targetTime": 1.248624116237979
+    },
+    {
+      "name": "meme_appear",
+      "targetTime": 4.804537557894635
+    },
+    {
+      "name": "code_block_appear",
+      "targetTime": 6.857505871405704
+    },
+    {
+      "name": "new_meme_transition",
+      "targetTime": 11.155771056906659
+    },
+    {
+      "name": "text_appear",
+      "targetTime": 14.947560804642073
+    },
+    {
+      "name": "mac_window_appear",
+      "targetTime": 16.9475608046421
+    },
+    {
+      "name": "scale_down_background",
+      "targetTime": 17.747560804642102
+    },
+    {
       "name": "end",
-      "targetTime": 12.537768363635807
+      "targetTime": 24.019207714565354
     }
   ],
   "seed": 2974113429

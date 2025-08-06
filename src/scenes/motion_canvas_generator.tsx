@@ -1,6 +1,6 @@
 import { makeScene2D } from '@motion-canvas/2d';
-import { fadeTransition, createSignal, DEFAULT } from '@motion-canvas/core';
-import { all, waitFor } from '@motion-canvas/core/lib/flow';
+import { fadeTransition, DEFAULT, createSignal } from '@motion-canvas/core';
+import { all, waitFor, waitUntil } from '@motion-canvas/core/lib/flow';
 import { createRef } from '@motion-canvas/core/lib/utils';
 import { Rect, Code, Video, Txt } from '@motion-canvas/2d/lib/components';
 import { blur } from '@motion-canvas/2d';
@@ -37,8 +37,8 @@ export default makeScene2D(function* (view) {
   const memeVideoRef = createRef<any>();
   const remotionFullCodeRef = createRef<Code>();
   const remotionPreviewLayoutRef = createRef<Layout>();
-  // Selection signal for Remotion code block highlighting
-  const selection = createSignal([]);
+  const mcCodeCardRef = createRef<any>(); // Ref for CodeCard to use highlight methods
+  // Selection signal for Remotion code block highlighting (removed unused signal)
   const codeExample = `export default makeScene2D(function* (view) {
   const rect = createRef<Rect>();
   
@@ -145,6 +145,7 @@ export const MoveRightAndBack: React.FC = () => {
         opacity={0}
       >
         <CodeCard
+          ref={mcCodeCardRef}
           code={`export const MyComposition = () => {\n  const frame = useCurrentFrame();\n \n  return (\n    <AbsoluteFill\n        style={{ ...\n         transform: \`translateX(\${frame}px)\` \n         }}\n      />\n\n  );\n};`}
           codeRef={mcCodeRef}
           width={1000}
@@ -166,6 +167,7 @@ export const MoveRightAndBack: React.FC = () => {
             direction={'column'}
             alignItems={'center'}
             justifyContent={'center'}
+            fill={COLORS.lightGrayCard}
             radius={12}
             width={600}
             height={500}
@@ -208,7 +210,6 @@ export const MoveRightAndBack: React.FC = () => {
         zIndex={200}
         height={900}
         loop
-        play
         {...MEME_STYLE}
       />
       {/* Meme video with meme style */}
@@ -220,50 +221,52 @@ export const MoveRightAndBack: React.FC = () => {
 
   // 1. Scale in both logos
   yield* all(zoomIn(motionCanvasLogoRef()), zoomIn(remotionLogoRef()));
-  yield* waitFor(1.0);
+  yield* waitUntil('remotion_comparison');
 
-  // 2. Immediately scale both logos down to the top, make MC transparent
+  // 2. Make motion canvas logo transparent first
+  yield* all(
+    motionCanvasLogoRef().opacity(0.5, 0.6),
+    motionCanvasLogoRef().filters.grayscale(1, 0.6),
+  );
+  yield* waitUntil('remotion_frame_based');
+  
+  // 3. Then scale both logos down to the top
   yield* all(
     logoLayoutRef().scale(0.4, 0.6),
     logoLayoutRef().y(-350, 0.6),
     logoLayoutRef().gap(100, 0.6),
   );
-  yield* waitFor(0.2);
-  // make motion canvas logo transparent
-  yield* all(
-    motionCanvasLogoRef().opacity(0.5, 0.6),
-    motionCanvasLogoRef().filters.grayscale(1, 0.6),
-  );
-  yield* waitFor(0.2);
+  yield* waitUntil('remotion_showcase');
 
   // 3. Slide in MC CodeCard and Preview
   yield* mcShowcaseLayoutRef().opacity(1, 1.0);
   yield* all(mcPreviewRectRef().opacity(1, 0.5));
-  yield* waitFor(1.5);
+  yield* waitUntil('frame_based_example');
 
-  // 4. Animate the preview rectangle
-  const frameRange = mcCodeRef().findFirstRange(
-    'const frame = useCurrentFrame();',
-  );
-  mcCodeRef().selection(frameRange);
-  yield* waitFor(1.0);
-  mcCodeRef().selection(DEFAULT);
+  // 4. Enhanced code highlight animations for Motion Canvas using CodeCard highlight methods
+  yield* mcCodeCardRef().highlight('const frame = useCurrentFrame();', 0.3);
   yield* waitFor(0.5);
-  yield* waitFor(1.0);
+  
+  yield* waitUntil('frame_calculation');
+  yield* mcCodeCardRef().resetHighlight(0.2);
+  yield* waitUntil('transform_example');
 
-  const transformRange = mcCodeRef().findFirstRange(
-    'transform: `translateX(${frame}px)`',
-  );
-  mcCodeRef().selection(transformRange);
-  yield* waitFor(0.5);
+  // Animate transform highlight
+  yield* mcCodeCardRef().highlight('transform: `translateX(${frame}px)`', 0.3);
+  yield* waitFor(0.3);
+  
+  yield* waitUntil('preview_animate');
   yield* mcPreviewRectRef().x(1200, 2.0);
-  yield* waitFor(1.0);
+  yield* waitUntil('messy_process');
   // 6. Show the meme video with zoomIn effect
+  // Start playing the video when it becomes visible
+  memeVideoRef().play();
+
   yield* all(
     zoomIn(memeVideoRef()),
     mcShowcaseLayoutRef().filters.blur(10, 0.5),
   );
-  yield* waitFor(1.0);
+  yield* waitUntil('brain_mess_meme');
 
   // Fade out MC showcase
   yield* all(
@@ -272,7 +275,12 @@ export const MoveRightAndBack: React.FC = () => {
     memeVideoRef().opacity(0, 0.8),
     mcShowcaseLayoutRef().filters.blur(0, 0.8),
   );
-  yield* waitFor(0.2);
+  // Pause the video when it's hidden
+  memeVideoRef().pause();
+  
+  // Remove the MC showcase layout from the scene to prevent conflicts
+  mcShowcaseLayoutRef().remove();
+  yield* waitUntil('motion_canvas_intro');
 
   // Scale logos back to center
   yield* all(
@@ -280,26 +288,26 @@ export const MoveRightAndBack: React.FC = () => {
     logoLayoutRef().y(0, 0.6),
     logoLayoutRef().gap(60, 0.6),
   );
-  yield* waitFor(0.2);
-  // Switch opacity/grayscale to indicate Remotion
+  yield* waitUntil('sequential_order');
+  // Switch opacity/grayscale to indicate Remotion first
   yield* all(
     motionCanvasLogoRef().opacity(1, 0.6),
     motionCanvasLogoRef().filters.grayscale(0, 0.6),
     remotionLogoRef().opacity(0.5, 0.6),
     remotionLogoRef().filters.grayscale(1, 0.6),
   );
-  yield* waitFor(0.2);
-  // Scale logos back to top
+  yield* waitUntil('motion_canvas_example');
+  // Then scale logos back to top
   yield* all(
     logoLayoutRef().scale(0.4, 0.6),
     logoLayoutRef().y(-400, 0.6),
     logoLayoutRef().gap(100, 0.6),
   );
-  yield* waitFor(0.2);
+  yield* waitUntil('move_position_example');
 
   // Slide in Remotion CodeCard and Preview
   yield* showcaseLayoutRef().opacity(1, 1.0);
-  yield* waitFor(0.5);
+  yield* waitUntil('motion_canvas_code');
 
   // Create Remotion React CodeCard as Rect
   const remotionReactCard = new Rect({
@@ -332,33 +340,18 @@ export const MoveRightAndBack: React.FC = () => {
 
   remotionReactCard.add(remotionReactCodeElement);
 
-  // Create Motion Canvas CodeCard as Rect
-  const motionCanvasCodeCard = new Rect({
-    radius: 18,
-    padding: 36,
-    shadowBlur: 24,
-    lineWidth: 2,
-    fill: '#23272e',
-    stroke: '#353b45',
-    shadowColor: 'rgba(0, 0, 0, 0.10)',
-    shadowOffsetY: 10,
-    layout: true,
-    direction: 'row',
-    gap: 60,
+  // Create Motion Canvas CodeCard using the CodeCard component
+  const motionCanvasCodeCardRef = createRef<any>();
+  const motionCanvasCodeFontSize = createSignal(32);
+  const motionCanvasCodeCard = CodeCard({
+    code: `export default makeScene2D(function* (view) {\n  const rect = createRef<Rect>();\n  \n  view.add(<Rect ref={rect} width={100} height={100} fill=\"#e13238\" />);\n  \n  yield* rect().position.x(300, 1);\n  yield* waitFor(1);\n  yield* rect().position.x(-300, 1);\n});`,
+    fontSize: motionCanvasCodeFontSize(),
     width: 1000,
     height: 500,
   });
-
-  const motionCanvasCodeElement = new Code({
-    code: `export default makeScene2D(function* (view) {\n  const rect = createRef<Rect>();\n  \n  view.add(<Rect ref={rect} width={100} height={100} fill=\"#e13238\" />);\n  \n  yield* rect().position.x(300, 1);\n  yield* waitFor(1);\n  yield* rect().position.x(-300, 1);\n});`,
-    fontSize: 32,
-    fontFamily: 'Fira Code, Consolas, monospace',
-    fill: '#d4d4d4',
-    offsetX: -1,
-    offsetY: -1,
-  });
-
-  motionCanvasCodeCard.add(motionCanvasCodeElement);
+  
+  // Store the ref for later use
+  motionCanvasCodeCardRef(motionCanvasCodeCard);
 
   // Create Preview Container (as Rect to work with addItem)
   const previewContainer = new Rect({
@@ -367,6 +360,7 @@ export const MoveRightAndBack: React.FC = () => {
     direction: 'column',
     alignItems: 'center',
     justifyContent: 'center',
+    fill: COLORS.lightGrayCard,
     radius: 12,
     width: 600,
     height: 500,
@@ -390,7 +384,7 @@ export const MoveRightAndBack: React.FC = () => {
     layout: false,
     fill: '#e13238',
     radius: 10,
-    opacity: 0,
+    opacity: 1,
     stroke: '#888',
     lineWidth: 3,
   });
@@ -400,35 +394,30 @@ export const MoveRightAndBack: React.FC = () => {
 
   // Add items to the dynamic layout
   yield* showcaseLayoutRef().addItem(motionCanvasCodeCard, 1000);
-  yield* waitFor(0.5);
+  yield* waitUntil('add_preview');
   yield* showcaseLayoutRef().addItem(previewContainer, 600);
-  yield* waitFor(0.5);
+  yield* waitUntil('preview_setup');
 
   // Set up the preview rectangle reference for animations
   const previewRectRef = createRef<Rect>();
   previewRectRef(previewRect);
+  yield* waitUntil('animate_preview');
 
-  yield* previewRectRef().opacity(1, 0.8);
-  yield* waitFor(0.5);
-
-  const moveRightRange = motionCanvasCodeElement.findFirstRange(
-    'yield* rect().position.x(300, 1);',
-  );
-  motionCanvasCodeElement.selection(moveRightRange);
+  // Enhanced Motion Canvas code highlight animations using CodeCard highlight methods
+  // Animate move right highlight
+  yield* motionCanvasCodeCardRef().highlight('yield* rect().position.x(300, 1);', 0.3);
   yield* previewRectRef().x(300, 1);
-  const waitForRange =
-    motionCanvasCodeElement.findFirstRange('yield* waitFor(1);');
-  motionCanvasCodeElement.selection(waitForRange);
-  yield* waitFor(1);
-  const moveLeftRange = motionCanvasCodeElement.findFirstRange(
-    'yield* rect().position.x(-300, 1);',
-  );
-  motionCanvasCodeElement.selection(moveLeftRange);
+  
+  // Animate wait highlight
+  yield* motionCanvasCodeCardRef().highlight('yield* waitFor(1);', 0.3);
+  yield* waitUntil('wait_second');
+  
+  // Animate move left highlight
+  yield* motionCanvasCodeCardRef().highlight('yield* rect().position.x(-300, 1);', 0.3);
   yield* previewRectRef().x(0, 1);
-  yield* waitFor(1);
-  motionCanvasCodeElement.selection([]);
-  yield* waitFor(1);
-  motionCanvasCodeElement.selection(DEFAULT);
+  
+  yield* waitUntil('move_back');
+  yield* motionCanvasCodeCardRef().resetHighlight(0.2);
 
   // 4. After Remotion example, make Remotion logo transparent, MC logo 100%
   yield* all(
@@ -436,7 +425,7 @@ export const MoveRightAndBack: React.FC = () => {
     remotionLogoRef().filters.grayscale(0, 0.6),
     motionCanvasLogoRef().opacity(1, 0.6),
   );
-  yield* waitFor(0.2);
+  yield* waitUntil('comparison_analysis');
 
   // Show crown on Motion Canvas logo
 
@@ -464,43 +453,31 @@ export const MoveRightAndBack: React.FC = () => {
 
   motionCanvasCard.add(mcCode);
 
-  const remotionCard = new Rect({
-    width: 800,
-    height: 800,
-    clip: true,
-    fill: '#1e1e1e',
-    stroke: '#333',
-    lineWidth: 2,
-    radius: 12,
-    layout: true,
-    direction: 'column',
-    padding: 20,
-    gap: 10,
-  });
-
-  const remotionCodeSnippet = new Code({
+  // Create Remotion CodeCard using the CodeCard component
+  const remotionCodeCardRef = createRef<any>();
+  const remotionCard = CodeCard({
     code: remotionReactCode,
     fontSize: 12,
-    fontFamily: 'Fira Code, monospace',
+    width: 800,
+    height: 800,
   });
+  
+  // Store the ref for later use
+  remotionCodeCardRef(remotionCard);
 
-  remotionCard.add(remotionCodeSnippet);
-
-  yield* waitFor(0.5);
-  yield* showcaseLayoutRef().removeByIndex(1);
-
-  yield* waitFor(0.5);
+  yield* waitUntil('remove_preview');
 
   yield* all(
-    motionCanvasCodeElement.fontSize(10, 0.8),
-    motionCanvasCodeCard.width(800, 0.8),
-    motionCanvasCodeCard.height(800, 0.8),
+    showcaseLayoutRef().removeByIndex(1),
+    showcaseLayoutRef().insertItem(remotionCard, 0, 800),
+    motionCanvasCodeCard.width(800, 0.5),
+    motionCanvasCodeCard.height(800, 0.5),
+    motionCanvasCodeFontSize(12, 0.5),
+    // scale down the text of the motion canvas code card to match the remotion one
   );
-  yield* waitFor(0.5);
-  yield* showcaseLayoutRef().insertItem(remotionCard, 0, 800);
 
-  yield* waitFor(0.8);
-
+  yield* waitUntil('add_remotion_code');
+  
   // scale up the logos, improve gap and move down
   yield* all(
     motionCanvasLogoRef().scale(1.5, 0.8),
@@ -509,7 +486,7 @@ export const MoveRightAndBack: React.FC = () => {
     logoLayoutRef().y(-300, 0.8),
     showcaseLayoutRef().y(150, 0.8),
   );
-  yield* waitFor(0.5);
+  yield* waitUntil('fade_out_comparison');
 
   // Final animation: fade out code blocks and scale logos back to original position
   yield* all(
@@ -519,20 +496,20 @@ export const MoveRightAndBack: React.FC = () => {
     logoLayoutRef().y(0, 0.8),
     logoLayoutRef().gap(500, 0.8),
   );
-  yield* waitFor(0.5);
+  yield* waitUntil('cross_out_remotion');
   // cross out remotion
   yield* remotionLogoRef().crossOut(0.8);
-  yield* waitFor(0.3);
+  yield* waitUntil('gray_out_remotion');
   yield* all(
     remotionLogoRef().opacity(0.5, 0.8),
     remotionLogoRef().filters.grayscale(1, 0.8),
   );
 
-  yield* waitFor(0.5);
+  yield* waitUntil('motion_canvas_crown');
 
   // Final crown animation on Motion Canvas logo
   yield* motionCanvasLogoRef().showCrown(1.2);
-  yield* waitFor(2.0);
+  yield* waitUntil('crown_complete');
 
-  yield* waitFor(1.0);
+  yield* waitUntil('scene_end');
 });
