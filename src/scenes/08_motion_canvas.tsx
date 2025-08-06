@@ -8,6 +8,7 @@ import { Browser } from '../components/Browser';
 import { YoutubeChannelCard } from '../components/YouTubeChannelCard';
 import { BlueprintBackground } from '../components/BlueprintBackground';
 import { zoomIn, slideInBottom } from '../animation';
+import { playZoomIn } from '../soundeffects';
 import { MEME_STYLE } from '../components/MemeStyle';
 
 import motionCanvasLogo from '../images/motion-canvas-logo.svg';
@@ -87,6 +88,7 @@ export default makeScene2D(function* (view) {
   yield* waitUntil('zoom_browser');
 
   // zoom in to Motion Canvas browser
+  playZoomIn({ duration: 1 });
   yield* all(
     motionCanvasBrowserRef().scale(2, 1),
     motionCanvasBrowserRef().position([0, 100], 1),

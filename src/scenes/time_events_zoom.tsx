@@ -5,6 +5,7 @@ import { Img, Circle, Txt } from '@motion-canvas/2d/lib/components';
 import { HexagonLayout } from '../components/HexagonLayout';
 import { StyledText } from '../components/StyledText';
 import { fadeOut, fadeIn, zoomIn } from '../animation';
+import { playZoomIn } from '../soundeffects';
 import { COLORS } from '../utils/colors';  
 import motionCanvasLogoColored from '../images/motion-canvas-logo-colored.svg';
 import motionCanvasLogoWhite from '../images/motion-canvas-logo-white.svg';
@@ -165,6 +166,7 @@ export default makeScene2D(function* (view) {
   yield* waitUntil('zoom_to_time_events');
 
   // Zoom into fifth circle (index 4) for "Time Events" - top left position
+  playZoomIn({ duration: 1.5 });
   yield* all(
     view.scale(2.5, 1.5),
     view.position([positions[4].x * -9, positions[4].y + 1400], 1.5),

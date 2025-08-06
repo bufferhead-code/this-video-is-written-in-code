@@ -210,7 +210,6 @@ export const MoveRightAndBack: React.FC = () => {
         zIndex={200}
         height={900}
         loop
-        play
         {...MEME_STYLE}
       />
       {/* Meme video with meme style */}
@@ -260,6 +259,9 @@ export const MoveRightAndBack: React.FC = () => {
   yield* mcPreviewRectRef().x(1200, 2.0);
   yield* waitUntil('messy_process');
   // 6. Show the meme video with zoomIn effect
+  // Start playing the video when it becomes visible
+  memeVideoRef().play();
+
   yield* all(
     zoomIn(memeVideoRef()),
     mcShowcaseLayoutRef().filters.blur(10, 0.5),
@@ -273,6 +275,8 @@ export const MoveRightAndBack: React.FC = () => {
     memeVideoRef().opacity(0, 0.8),
     mcShowcaseLayoutRef().filters.blur(0, 0.8),
   );
+  // Pause the video when it's hidden
+  memeVideoRef().pause();
   
   // Remove the MC showcase layout from the scene to prevent conflicts
   mcShowcaseLayoutRef().remove();

@@ -4,6 +4,7 @@ import { SignalValue, SimpleSignal } from '@motion-canvas/core/lib/signals';
 import { Color, Vector2, PossibleColor } from '@motion-canvas/core';
 import { all, waitFor, tween } from '@motion-canvas/core';
 import { COLORS } from '../utils/colors';
+import { playHighlighter } from '../soundeffects';
 
 export interface TextMarkerProps extends LayoutProps {
   markerColor?: SignalValue<PossibleColor>;
@@ -74,6 +75,7 @@ export class TextMarker extends Layout {
   // Animation method: marker pen style (draws from left to right)
   public *animateMarkerPen(delay: number = 0) {
     yield* waitFor(delay);
+    playHighlighter();
     yield* this.animateSingleMarkerPen(this.markerNode);
   }
 
@@ -101,6 +103,7 @@ export class TextMarker extends Layout {
   // Animation method: fade in effect
   public *animateFadeIn(delay: number = 0) {
     yield* waitFor(delay);
+    playHighlighter();
     yield* this.markerNode.opacity(
       this.markerOpacity(),
       this.animationDuration(),
@@ -110,6 +113,7 @@ export class TextMarker extends Layout {
   // Animation method: typewriter style (appears as text is "detected")
   public *animateTypewriter(delay: number = 0, characterDelay: number = 0.05) {
     yield* waitFor(delay);
+    playHighlighter();
 
     // Use Layout dimensions for estimation
     const estimatedTextLength = Math.floor(this.width() / 10) || 10; // Rough estimate
@@ -122,6 +126,7 @@ export class TextMarker extends Layout {
   // Animation method: pulse effect
   public *animatePulse(delay: number = 0, pulseCount: number = 2) {
     yield* waitFor(delay);
+    playHighlighter();
 
     for (let i = 0; i < pulseCount; i++) {
       yield* this.markerNode.opacity(this.markerOpacity(), 0.3);

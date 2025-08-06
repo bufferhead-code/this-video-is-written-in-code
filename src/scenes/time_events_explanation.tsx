@@ -10,6 +10,7 @@ import timeEventsDemo from '../images/time_events_demo.mov?url';
 import workplaceScreen from '../images/workplace_screen.jpg?url';
 import shiftKey from '../images/shift-key.svg?url';
 import { fadeOut } from '../animation';
+import { playZoomIn } from '../soundeffects';
 
 export default makeScene2D(function* (view) {
   // Add workplace screen image behind everything (outside camera)
@@ -64,7 +65,6 @@ export default makeScene2D(function* (view) {
       position={[0, 600]}
       opacity={0}
       scale={2}
-      loop
       {...MEME_STYLE}
       radius={5}
     />
@@ -119,11 +119,13 @@ export default makeScene2D(function* (view) {
   // Video is already set to play automatically
   // play video
   video().play();
+  video().loop();
 
   // Wait a bit for video to play
   yield* waitUntil('zoom_to_bottom');
 
   // Zoom in to bottom area
+  playZoomIn({ duration: 1 });
   yield* all(
     videoElement.scale(3.5, 1),
     videoElement.position([-300, 50], 1),
@@ -136,6 +138,7 @@ export default makeScene2D(function* (view) {
   yield* waitUntil('zoom_out');
 
   // Zoom out to default
+  playZoomIn({ duration: 1.2 });
   yield* all(
     videoElement.scale(2, 1.2, easeOutCubic),
     videoElement.position([0, 0], 1.2, easeOutCubic),
@@ -184,6 +187,7 @@ export default makeScene2D(function* (view) {
 
   yield* arrow().fadeOut(0.5);
 
+  playZoomIn({ duration: 1 });
   yield* all(
     wrapperRect().scale(0.56, 1, easeOutCubic),
     wrapperRect().position([-6, -52], 1, easeOutCubic),
@@ -290,6 +294,7 @@ export default makeScene2D(function* (view) {
   yield* waitUntil('zoom_back');
 
   // zoom back to the default
+  playZoomIn({ duration: 1 });
   yield* all(
     wrapperRect().scale(1, 1, easeOutCubic),
     wrapperRect().position([0, 0], 1, easeOutCubic),

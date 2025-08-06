@@ -3,6 +3,7 @@ import { initial, signal } from '@motion-canvas/2d/lib/decorators';
 import { SignalValue, SimpleSignal } from '@motion-canvas/core/lib/signals';
 import { waitFor } from '@motion-canvas/core';
 import { COLORS, ColorType } from '../utils/colors';
+import { playTypewriter } from '../soundeffects';
 
 const SIZES = {
   '3xl': 192,
@@ -161,6 +162,9 @@ export class StyledText extends Node {
     if (delay > 0) {
       yield* waitFor(delay);
     }
+
+    // Play typewriter sound
+    playTypewriter();
 
     // Calculate time per character
     const timePerChar = duration / text.length;

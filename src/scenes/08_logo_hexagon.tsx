@@ -6,6 +6,7 @@ import { fadeTransition } from '@motion-canvas/core';
 import { HexagonLayout } from '../components/HexagonLayout';
 import { StyledText } from '../components/StyledText';
 import { zoomIn, fadeOut, slideOutBottom } from '../animation';
+import { playZoomIn } from '../soundeffects';
 
 import motionCanvasLogoColored from '../images/motion-canvas-logo-colored.svg';
 import motionCanvasLogoWhite from '../images/motion-canvas-logo-white.svg';
@@ -181,6 +182,7 @@ export default makeScene2D(function* (view) {
   yield* waitUntil('zoom_to_scene');
 
   // Zoom into first circle (adjust position to be higher)
+  playZoomIn({ duration: 1.5 });
   yield* all(
     view.scale(3, 1.5),
     view.position([0, 1500], 1.5),

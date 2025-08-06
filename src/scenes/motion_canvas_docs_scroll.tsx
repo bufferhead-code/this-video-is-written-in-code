@@ -7,6 +7,7 @@ import { CodeCard } from '../components/CodeCard';
 import { HexagonLayout } from '../components/HexagonLayout';
 import { StyledText } from '../components/StyledText';
 import { slideInBottom, fadeOut, fadeIn, zoomIn } from '../animation';
+import { playZoomIn } from '../soundeffects';
 import { COLORS } from '../utils/colors';  
 import motionCanvasDocs from '../images/motion_canvas_docs_rect.jpeg';
 import motionCanvasLogoColored from '../images/motion-canvas-logo-colored.svg';
@@ -195,6 +196,7 @@ export default makeScene2D(function* (view) {
   }
 
   // Zoom into fourth circle (index 3) for "Signals"
+  playZoomIn({ duration: 1.5 });
   yield* all(
     view.scale(3, 1.5),
     view.position([positions[3].x * -8, positions[3].y - 100], 1.5),

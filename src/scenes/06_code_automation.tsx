@@ -10,6 +10,7 @@ import { Logo } from '../components/Logo';
 import { Browser } from '../components/Browser';
 import { BlueprintBackground } from '../components/BlueprintBackground';
 import { zoomIn, slideInBottom } from '../animation';
+import { playZoomIn } from '../soundeffects';
 import { COLORS } from '../utils/colors';
 
 import manimLogo from '../images/manim-logo.svg';
@@ -90,6 +91,7 @@ export default makeScene2D(function* (view) {
   yield* waitUntil('zoom_browser');
 
   // zoom in to manim browser
+  playZoomIn({ duration: 1 });
   yield* all(browserRef().scale(2, 1), browserRef().position([0, 100], 1));
 
   yield* waitUntil('3blue1brown_intro');
@@ -144,6 +146,7 @@ export default makeScene2D(function* (view) {
   );
 
   // Hide red button meme and continue with original scene
+  playZoomIn({ duration: 0.8 });
   yield* all(browserRef().opacity(1, 0.8), browserRef().scale(2, 0.8));
 
   const textMarkerRef = createRef<TextMarker>();

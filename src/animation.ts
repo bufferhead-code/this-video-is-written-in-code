@@ -19,6 +19,9 @@ import {
 } from '@motion-canvas/core/lib/tweening';
 import { TimingFunction } from '@motion-canvas/core/lib/tweening';
 
+import { playWhoosh, playZoomIn } from './soundeffects';
+
+
 export interface AnimationConfig {
   duration?: number;
   delay?: number;
@@ -66,6 +69,9 @@ export class AnimationPresets {
     if (delay > 0) {
       yield* waitFor(delay);
     }
+
+    // Play whoosh sound
+    playWhoosh({ duration });
 
     // Animate to final position
     yield* all(
@@ -363,6 +369,9 @@ export class AnimationPresets {
     if (delay > 0) {
       yield* waitFor(delay);
     }
+
+    // Play zoom in sound
+    playWhoosh({ duration });
 
     // Animate to final state
     yield* all(

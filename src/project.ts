@@ -19,7 +19,7 @@ import loadingBars from './scenes/loading_bars?scene';
 import motionCanvasSceneSection from './scenes/motion_canvas_scene_section?scene';
 import scriptEditor from './script-editor';
 import './global.css';
-import audio from '../audio/volceover.flac';
+import audio from '../audio/voiceover.flac';
 import generatorsShowcase from './scenes/10_generators_showcase?scene';
 import crashCourseBanner from './scenes/crash_course_banner?scene';
 import logoSpeechBubble from './scenes/11_logo_speech_bubble?scene';

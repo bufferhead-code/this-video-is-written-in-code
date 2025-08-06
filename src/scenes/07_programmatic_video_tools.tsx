@@ -8,6 +8,7 @@ import { Browser } from '../components/Browser';
 import { MEME_STYLE } from '../components/MemeStyle';
 import { BlueprintBackground } from '../components/BlueprintBackground';
 import { zoomIn, slideInBottom } from '../animation';
+import { playZoomIn } from '../soundeffects';
 
 import manimLogo from '../images/manim-logo.svg';
 import remotionLogo from '../components/media/remotion-logo.svg';
@@ -103,6 +104,7 @@ export default makeScene2D(function* (view) {
   yield* waitUntil('zoom_remotion');
 
   // zoom in to remotion browser
+  playZoomIn({ duration: 1 });
   yield* all(browserRef().scale(2, 1), browserRef().position([0, 100], 1));
 
   yield* waitUntil('youtube_thumbnail_appear');
@@ -128,6 +130,7 @@ export default makeScene2D(function* (view) {
   yield* waitUntil('data_driven_videos');
 
   // move the browser down
+  playZoomIn({ duration: 1 });
   yield* all(browserRef().position([0, -2500], 1), browserRef().scale(1.6, 1));
 
   yield* waitUntil('another_tool');

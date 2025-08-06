@@ -17,6 +17,7 @@ import capcutLogo from '../images/capcut-logo.svg';
 import finalCutProLogo from '../images/final-cut-pro-logo.webp';
 import youtubeVideoScreen from '../images/youtube_video_screen.png';
 import { fadeTransition } from '@motion-canvas/core';
+import { playZoomIn, SoundEffects } from '../soundeffects';
 
 export default makeScene2D(function* (view) {
   const sceneRef = createRef<Rect>();
@@ -144,6 +145,9 @@ export default makeScene2D(function* (view) {
   // Phase 2: Meme appears with fade in
   yield* fadeIn(memeRef(), { duration: 0.8 });
 
+  // zoom sound effect
+  playZoomIn({ duration: 1.2 });
+
   yield* all(
     // Move logo group to the right and scale down slightly
     logoGroupRef().position([500, -120], 1.2),
@@ -159,6 +163,7 @@ export default makeScene2D(function* (view) {
   // and show code block on the left (other woman position)
 
   yield* waitUntil('new_meme_transition');
+  playZoomIn({ duration: 1 });
 
   // Phase 4: Transition to new meme - fade out distracted boyfriend and code block, show new meme
   yield* all(
@@ -188,7 +193,8 @@ export default makeScene2D(function* (view) {
   yield* waitUntil('scale_down_background');
 
   // Scale down the background
-  
+  playZoomIn({ duration: 1.2 });
+
   yield* all(
     scaledBackgroundRef().scale(0.56, 1.2),
     // move up

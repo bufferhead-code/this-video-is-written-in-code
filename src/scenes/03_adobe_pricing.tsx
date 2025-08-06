@@ -6,6 +6,7 @@ import { PricingPage } from '../components/PricingPage';
 import { MacOSBackground } from '../components/MacOSBackground';
 import { TextMarker } from '../components/TextMarker';
 import { slideInBottom } from '../animation';
+import { playZoomIn } from '../soundeffects';
 import {
   Direction,
   fadeTransition,
@@ -51,6 +52,7 @@ export default  makeScene2D(function* (view) {
   yield* waitUntil('zoom_start');
 
   // Camera zoom to center left
+  playZoomIn({ duration: 1 });
   yield* all(
     pricingPageRef().scale(2.3, 1),
     pricingPageRef().position([500, -550], 1), // Move content right to focus on center-left area

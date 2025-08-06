@@ -5,6 +5,7 @@ import { Img, Rect, Circle, Txt } from '@motion-canvas/2d/lib/components';
 import { HexagonLayout } from '../components/HexagonLayout';
 import { StyledText } from '../components/StyledText';
 import { zoomIn, fadeOut } from '../animation';
+import { playZoomIn } from '../soundeffects';
 
 import motionCanvasLogoColored from '../images/motion-canvas-logo-colored.svg';
 import motionCanvasLogoWhite from '../images/motion-canvas-logo-white.svg';
@@ -178,6 +179,7 @@ export default makeScene2D(function* (view) {
   yield* waitUntil('zoom_to_position');
 
   // Zoom into second circle (index 1) for "Position"
+  playZoomIn({ duration: 1.5 });
   yield* all(
     view.scale(2.5, 1.5),
     view.position([positions[1].x * -1.3, 450], 1.5),

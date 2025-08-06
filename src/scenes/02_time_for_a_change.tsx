@@ -2,9 +2,8 @@ import { makeScene2D } from '@motion-canvas/2d';
 import { all, waitFor } from '@motion-canvas/core/lib/flow';
 import { createRef } from '@motion-canvas/core/lib/utils';
 import { Rect, Txt } from '@motion-canvas/2d/lib/components';
-import { sound } from '@motion-canvas/core';
 import { RainbowBackground } from '../components/RainbowBackground';
-import typewriterSound from '../sounds/typewriter.mp3';
+import { createTypewriterSound } from '../soundeffects';
 
 export default makeScene2D(function* (view) {
   const sceneRef = createRef<Rect>();
@@ -28,10 +27,10 @@ export default makeScene2D(function* (view) {
 
   yield* waitFor(0.1); // Start typewriter animation after scene transition
 
-  const typewriterAudio = sound(typewriterSound);
+  const typewriterAudio = createTypewriterSound();
   for (let i = 0; i <= fullText.length; i++) {
     typewriterTextRef().text(fullText.substring(0, i));
-    typewriterAudio.play();
+    typewriterAudio?.play();
     yield* waitFor(0.1);
   }
 
